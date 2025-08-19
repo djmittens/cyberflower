@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NeonGrid CRM</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="chrome" id="app">
+      <header class="topbar">
+        <div class="brand glitch" data-text="NEONGRID">
+          <span class="brand-core">NEON</span><span class="brand-accent">GRID</span>
+          <span class="brand-sub">// CRM</span>
+        </div>
+        <div class="actions">
+          <a class="btn ghost" href="data/customers.json" download>Export JSON</a>
+          <a class="btn primary" href="../docs/content-authoring.md" target="_blank">Authoring Guide</a>
+        </div>
+      </header>
+      <div class="bar-stripes"></div>
+
+      <section class="toolbar">
+        <div class="searchbox">
+          <input id="search" type="search" placeholder="Search customers, frameworks, tags, issues..." />
+          <div class="scanline"></div>
+        </div>
+        <div class="filters" id="filters">
+          <div id="facet-type" class="facet"></div>
+        </div>
+      </section>
+
+      <main class="layout">
+        <aside class="panel left cut">
+          <h3>Quick Filters</h3>
+          <div id="facet-frameworks" class="facet"></div>
+          <div id="facet-services" class="facet"></div>
+          <div id="facet-tags" class="facet"></div>
+          <h3>Sort</h3>
+          <div class="sorter">
+            <select id="sort">
+              <option value="name">Name A→Z</option>
+              <option value="updated">Recently Updated</option>
+              <option value="priority">Highest Priority</option>
+            </select>
+          </div>
+        </aside>
+
+        <section class="grid" id="grid"></section>
+      </main>
+
+      <div id="detail-modal" class="modal hidden">
+        <div class="modal-content cut">
+          <button class="close" id="close-detail">×</button>
+          <div id="detail"></div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <span>© NeonGrid | Internal CRM | Build static — no backend</span>
+      </footer>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+  </html>

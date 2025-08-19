@@ -1,0 +1,489 @@
+{
+  "teams": [
+    {
+      "id": "afterburn-ml",
+      "name": "Afterburn ML",
+      "avatar": "assets/avatars/afterburn-ml.svg",
+      "members": [
+        {
+          "name": "Zoey F",
+          "role": "ML Eng"
+        },
+        {
+          "name": "Adil M",
+          "role": "MLOps"
+        }
+      ],
+      "libraries": [
+        {
+          "name": "PyTorch",
+          "project": "Recommendations"
+        },
+        {
+          "name": "Feast",
+          "project": "Feature Store"
+        }
+      ],
+      "meeting_dates": [
+        "2025-08-29",
+        "2025-09-29"
+      ],
+      "asks": [
+        {
+          "ask": "GPU quota for training",
+          "due": "2025-09-15",
+          "status": "under-review"
+        }
+      ],
+      "body_html": "<h1>Meeting Notes</h1>\n<ul>\n<li>Online features SLA; shadow serving plan.</li>\n</ul>",
+      "updated_at": "2025-08-19T09:53:18.713Z",
+      "source_file": "content/teams/afterburn-ml.md",
+      "excerpt": "# Meeting Notes - Online features SLA; shadow serving plan.",
+      "next_meeting_at": "2025-08-29T00:00:00.000Z",
+      "next_due_ask": {
+        "ask": "GPU quota for training",
+        "due": "2025-09-15",
+        "status": "under-review"
+      }
+    },
+    {
+      "id": "cdc-rangers",
+      "name": "CDC Rangers",
+      "avatar": "assets/avatars/cdc-rangers.svg",
+      "members": [
+        {
+          "name": "Yuri A",
+          "role": "Lead"
+        },
+        {
+          "name": "Zoe Q",
+          "role": "Engineer"
+        },
+        {
+          "name": "Pavel D",
+          "role": "Engineer"
+        }
+      ],
+      "libraries": [
+        {
+          "name": "Debezium",
+          "project": "CDC"
+        },
+        {
+          "name": "Kafka Connect",
+          "project": "Pipelines"
+        }
+      ],
+      "meeting_dates": [
+        "2025-08-19",
+        "2025-09-16"
+      ],
+      "asks": [
+        {
+          "ask": "MySQL 8 GTID support",
+          "due": "2025-09-20",
+          "status": "planned"
+        }
+      ],
+      "body_html": "<h1>Meeting Notes</h1>\n<ul>\n<li>Upgrade path for source connectors; reduce downtime.</li>\n</ul>",
+      "updated_at": "2025-08-19T09:52:28.152Z",
+      "source_file": "content/teams/cdc-rangers.md",
+      "excerpt": "# Meeting Notes - Upgrade path for source connectors; reduce downtime.",
+      "next_meeting_at": "2025-09-16T00:00:00.000Z",
+      "next_due_ask": {
+        "ask": "MySQL 8 GTID support",
+        "due": "2025-09-20",
+        "status": "planned"
+      }
+    },
+    {
+      "id": "delta-forge",
+      "name": "Delta Forge",
+      "avatar": "assets/avatars/delta-forge.svg",
+      "members": [
+        {
+          "name": "Rina K",
+          "role": "Lead"
+        },
+        {
+          "name": "Tom H",
+          "role": "Data Eng"
+        }
+      ],
+      "libraries": [
+        {
+          "name": "Delta Lake",
+          "project": "Lakehouse"
+        },
+        {
+          "name": "Great Expectations",
+          "project": "Data Quality"
+        }
+      ],
+      "meeting_dates": [
+        "2025-08-21",
+        "2025-09-18"
+      ],
+      "asks": [
+        {
+          "ask": "Time travel API",
+          "due": "2025-10-01",
+          "status": "under-review"
+        }
+      ],
+      "body_html": "<h1>Meeting Notes</h1>\n<ul>\n<li>Schema drift handling; propose typed CDC envelope.</li>\n</ul>",
+      "updated_at": "2025-08-19T09:52:21.823Z",
+      "source_file": "content/teams/delta-forge.md",
+      "excerpt": "# Meeting Notes - Schema drift handling; propose typed CDC envelope.",
+      "next_meeting_at": "2025-08-21T00:00:00.000Z",
+      "next_due_ask": {
+        "ask": "Time travel API",
+        "due": "2025-10-01",
+        "status": "under-review"
+      }
+    },
+    {
+      "id": "edge-stream",
+      "name": "Edge Stream",
+      "avatar": "assets/avatars/edge-stream.svg",
+      "members": [
+        {
+          "name": "Kai Moreno",
+          "role": "Lead"
+        },
+        {
+          "name": "Ivy Chen",
+          "role": "Data Eng"
+        },
+        {
+          "name": "Noah Patel",
+          "role": "Platform"
+        }
+      ],
+      "libraries": [
+        {
+          "name": "Flink",
+          "project": "Ad Events"
+        },
+        {
+          "name": "Kafka",
+          "project": "Ingest"
+        }
+      ],
+      "meeting_dates": [
+        "2025-08-22",
+        "2025-09-19"
+      ],
+      "asks": [
+        {
+          "ask": "Exactly-once sink for SF",
+          "due": "2025-09-10",
+          "status": "proposed"
+        }
+      ],
+      "body_html": "<h1>Meeting Notes</h1>\n<ul>\n<li>POC for cross-region replication; validate failover behavior.</li>\n</ul>",
+      "updated_at": "2025-08-19T09:52:12.116Z",
+      "source_file": "content/teams/edge-stream.md",
+      "excerpt": "# Meeting Notes - POC for cross-region replication; validate failover behavior.",
+      "next_meeting_at": "2025-08-22T00:00:00.000Z",
+      "next_due_ask": {
+        "ask": "Exactly-once sink for SF",
+        "due": "2025-09-10",
+        "status": "proposed"
+      }
+    },
+    {
+      "id": "model-makers",
+      "name": "Model Makers",
+      "avatar": "assets/avatars/model-makers.svg",
+      "members": [
+        {
+          "name": "Sara D",
+          "role": "Analytics Eng"
+        },
+        {
+          "name": "Leo V",
+          "role": "Analytics Eng"
+        }
+      ],
+      "libraries": [
+        {
+          "name": "dbt",
+          "project": "Core Models"
+        },
+        {
+          "name": "DuckDB",
+          "project": "Ad-hoc"
+        }
+      ],
+      "meeting_dates": [
+        "2025-08-21",
+        "2025-09-25"
+      ],
+      "asks": [
+        {
+          "ask": "Model test coverage dashboard",
+          "due": "2025-09-30",
+          "status": "planned"
+        }
+      ],
+      "body_html": "<h1>Meeting Notes</h1>\n<ul>\n<li>Standardize model naming; add exposure metadata.</li>\n</ul>",
+      "updated_at": "2025-08-19T09:52:46.125Z",
+      "source_file": "content/teams/model-makers.md",
+      "excerpt": "# Meeting Notes - Standardize model naming; add exposure metadata.",
+      "next_meeting_at": "2025-08-21T00:00:00.000Z",
+      "next_due_ask": {
+        "ask": "Model test coverage dashboard",
+        "due": "2025-09-30",
+        "status": "planned"
+      }
+    },
+    {
+      "id": "neon-core",
+      "name": "Neon Core",
+      "avatar": "assets/avatars/neon-core.svg",
+      "members": [
+        {
+          "name": "Ava Reed",
+          "role": "Tech Lead"
+        },
+        {
+          "name": "Max Ono",
+          "role": "Data Engineer"
+        },
+        {
+          "name": "Jules Park",
+          "role": "SRE"
+        }
+      ],
+      "libraries": [
+        {
+          "name": "Spark",
+          "project": "Finance ETL"
+        },
+        {
+          "name": "Airflow",
+          "project": "Batch Orchestration"
+        },
+        {
+          "name": "Delta Lake",
+          "project": "Data Lake"
+        }
+      ],
+      "meeting_dates": [
+        "2025-08-20",
+        "2025-09-17"
+      ],
+      "asks": [
+        {
+          "ask": "Dedicated test cluster",
+          "due": "2025-09-01",
+          "status": "proposed"
+        },
+        {
+          "ask": "Infra budget approval",
+          "due": "2025-09-15",
+          "status": "under-review"
+        }
+      ],
+      "body_html": "<h1>Meeting Notes</h1>\n<ul>\n<li>Harden pipeline retries and improve Delta compaction cadence.</li>\n<li>Review cost telemetry dashboards with Finance.</li>\n</ul>",
+      "updated_at": "2025-08-19T09:52:03.663Z",
+      "source_file": "content/teams/neon-core.md",
+      "excerpt": "# Meeting Notes - Harden pipeline retries and improve Delta compaction cadence. - Review cost telemetry dashboards with Finance.",
+      "next_meeting_at": "2025-08-20T00:00:00.000Z",
+      "next_due_ask": {
+        "ask": "Dedicated test cluster",
+        "due": "2025-09-01",
+        "status": "proposed"
+      }
+    },
+    {
+      "id": "ops-squad",
+      "name": "Ops Squad",
+      "avatar": "assets/avatars/ops-squad.svg",
+      "members": [
+        {
+          "name": "Theo J",
+          "role": "On-call"
+        },
+        {
+          "name": "Priya C",
+          "role": "Reliability"
+        }
+      ],
+      "libraries": [
+        {
+          "name": "Terraform",
+          "project": "Infra"
+        },
+        {
+          "name": "Flyway",
+          "project": "DB Migrations"
+        }
+      ],
+      "meeting_dates": [
+        "2025-08-19",
+        "2025-09-12"
+      ],
+      "asks": [
+        {
+          "ask": "Pager SLO budget",
+          "due": "2025-09-05",
+          "status": "proposed"
+        }
+      ],
+      "body_html": "<h1>Meeting Notes</h1>\n<ul>\n<li>Rotate on-call; improve runbooks.</li>\n</ul>",
+      "updated_at": "2025-08-19T09:52:52.995Z",
+      "source_file": "content/teams/ops-squad.md",
+      "excerpt": "# Meeting Notes - Rotate on-call; improve runbooks.",
+      "next_meeting_at": "2025-09-12T00:00:00.000Z",
+      "next_due_ask": {
+        "ask": "Pager SLO budget",
+        "due": "2025-09-05",
+        "status": "proposed"
+      }
+    },
+    {
+      "id": "platform-x",
+      "name": "Platform X",
+      "avatar": "assets/avatars/platform-x.svg",
+      "members": [
+        {
+          "name": "Owen S",
+          "role": "Architect"
+        },
+        {
+          "name": "Jia W",
+          "role": "Engineer"
+        },
+        {
+          "name": "Kira N",
+          "role": "Engineer"
+        }
+      ],
+      "libraries": [
+        {
+          "name": "Kubernetes",
+          "project": "Runtime"
+        },
+        {
+          "name": "ArgoCD",
+          "project": "GitOps"
+        }
+      ],
+      "meeting_dates": [
+        "2025-08-28",
+        "2025-09-26"
+      ],
+      "asks": [
+        {
+          "ask": "Prod multi-tenancy plan",
+          "due": "2025-10-01",
+          "status": "proposed"
+        }
+      ],
+      "body_html": "<h1>Meeting Notes</h1>\n<ul>\n<li>Evaluate node pool isolation; cost vs resilience.</li>\n</ul>",
+      "updated_at": "2025-08-19T09:53:05.364Z",
+      "source_file": "content/teams/platform-x.md",
+      "excerpt": "# Meeting Notes - Evaluate node pool isolation; cost vs resilience.",
+      "next_meeting_at": "2025-08-28T00:00:00.000Z",
+      "next_due_ask": {
+        "ask": "Prod multi-tenancy plan",
+        "due": "2025-10-01",
+        "status": "proposed"
+      }
+    },
+    {
+      "id": "quality-lab",
+      "name": "Quality Lab",
+      "avatar": "assets/avatars/quality-lab.svg",
+      "members": [
+        {
+          "name": "Nina T",
+          "role": "QA Lead"
+        },
+        {
+          "name": "Arman P",
+          "role": "QE"
+        }
+      ],
+      "libraries": [
+        {
+          "name": "Great Expectations",
+          "project": "DQ"
+        },
+        {
+          "name": "pytest",
+          "project": "Tests"
+        }
+      ],
+      "meeting_dates": [
+        "2025-08-26",
+        "2025-09-24"
+      ],
+      "asks": [
+        {
+          "ask": "Nonprod sample data",
+          "due": "2025-09-08",
+          "status": "under-review"
+        }
+      ],
+      "body_html": "<h1>Meeting Notes</h1>\n<ul>\n<li>Golden dataset v2; anonymization approach.</li>\n</ul>",
+      "updated_at": "2025-08-19T09:52:59.508Z",
+      "source_file": "content/teams/quality-lab.md",
+      "excerpt": "# Meeting Notes - Golden dataset v2; anonymization approach.",
+      "next_meeting_at": "2025-08-26T00:00:00.000Z",
+      "next_due_ask": {
+        "ask": "Nonprod sample data",
+        "due": "2025-09-08",
+        "status": "under-review"
+      }
+    },
+    {
+      "id": "realtime-unit",
+      "name": "Realtime Unit",
+      "avatar": "assets/avatars/realtime-unit.svg",
+      "members": [
+        {
+          "name": "Iris G",
+          "role": "Lead"
+        },
+        {
+          "name": "Ben C",
+          "role": "Engineer"
+        }
+      ],
+      "libraries": [
+        {
+          "name": "Materialize",
+          "project": "Realtime Views"
+        },
+        {
+          "name": "Kafka Streams",
+          "project": "Aggregation"
+        }
+      ],
+      "meeting_dates": [
+        "2025-08-27",
+        "2025-09-27"
+      ],
+      "asks": [
+        {
+          "ask": "Tier-1 SLA for streams",
+          "due": "2025-09-30",
+          "status": "planned"
+        }
+      ],
+      "body_html": "<h1>Meeting Notes</h1>\n<ul>\n<li>Latency budget review; explore persistent memory options.</li>\n</ul>",
+      "updated_at": "2025-08-19T09:53:11.980Z",
+      "source_file": "content/teams/realtime-unit.md",
+      "excerpt": "# Meeting Notes - Latency budget review; explore persistent memory options.",
+      "next_meeting_at": "2025-08-27T00:00:00.000Z",
+      "next_due_ask": {
+        "ask": "Tier-1 SLA for streams",
+        "due": "2025-09-30",
+        "status": "planned"
+      }
+    }
+  ]
+}
