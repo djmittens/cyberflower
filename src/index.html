@@ -12,13 +12,24 @@
   <body>
     <div class="chrome" id="app">
       <header class="topbar">
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle sidebar">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
         <div class="brand glitch" data-text="NEONGRID">
           <span class="brand-core">NEON</span><span class="brand-accent">GRID</span>
           <span class="brand-sub">// CRM</span>
         </div>
         <div class="actions">
-          <a class="btn ghost" href="data/customers.json" download>Export JSON</a>
-          <a class="btn primary" href="../docs/content-authoring.md" target="_blank">Authoring Guide</a>
+          <a class="btn ghost" href="data/customers.json" download>
+            <span class="btn-icon">📊</span>
+            <span class="btn-text">Export</span>
+          </a>
+          <a class="btn primary" href="../docs/content-authoring.md" target="_blank">
+            <span class="btn-icon">📝</span>
+            <span class="btn-text">Guide</span>
+          </a>
         </div>
       </header>
       <div class="bar-stripes"></div>
@@ -34,18 +45,27 @@
       </section>
 
       <main class="layout">
-        <aside class="panel left cut">
-          <h3>Quick Filters</h3>
-          <div id="facet-frameworks" class="facet"></div>
-          <div id="facet-services" class="facet"></div>
-          <div id="facet-tags" class="facet"></div>
-          <h3>Sort</h3>
-          <div class="sorter">
-            <select id="sort">
-              <option value="name">Name A→Z</option>
-              <option value="updated">Recently Updated</option>
-              <option value="priority">Highest Priority</option>
-            </select>
+        <aside class="panel left cut" id="sidebar">
+          <div class="sidebar-header">
+            <h3>Quick Filters</h3>
+            <button class="sidebar-close" id="sidebar-close" aria-label="Close sidebar">×</button>
+          </div>
+          <div class="sidebar-content">
+            <div class="filter-section">
+              <div id="facet-frameworks" class="facet"></div>
+              <div id="facet-services" class="facet"></div>
+              <div id="facet-tags" class="facet"></div>
+            </div>
+            <div class="sort-section">
+              <h3>Sort</h3>
+              <div class="sorter">
+                <select id="sort">
+                  <option value="name">Name A→Z</option>
+                  <option value="updated">Recently Updated</option>
+                  <option value="priority">Highest Priority</option>
+                </select>
+              </div>
+            </div>
           </div>
         </aside>
 
@@ -53,7 +73,7 @@
       </main>
 
       <div id="detail-modal" class="modal hidden">
-        <div class="modal-content cut">
+        <div class="modal-content">
           <button class="close" id="close-detail">×</button>
           <div id="detail"></div>
         </div>

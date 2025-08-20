@@ -43,7 +43,7 @@
         }
       ],
       "body_html": "<h1>Overview</h1>\n<p>ACME Co. runs a multi-TB nightly pipeline backed by Delta Lake. They are a high-touch strategic account with strong roadmap influence.</p>\n<h2>Recent Notes</h2>\n<ul>\n<li>Evaluating time-travel support to unblock compliance workflows.</li>\n<li>Pain around schema drift; wants better automatic resolution.</li>\n</ul>\n<h2>Links</h2>\n<ul>\n<li><a href=\"https://example.com/\" target=\"_blank\" rel=\"noreferrer noopener\">Design doc: ACME Delta Adoption</a></li>\n</ul>\n<p><pre class=\"code\"><code>sql\n-- Example of desired time-travel usage\nSELECT * FROM acme.delta_table VERSION AS OF 42;</code></pre></p>",
-      "updated_at": "2025-08-19T09:15:54.978Z",
+      "updated_at": "2025-08-19T18:30:15.974Z",
       "source_file": "content/customers/acme-co.md",
       "excerpt": "# Overview ACME Co. runs a multi-TB nightly pipeline backed by Delta Lake. They are a high-touch strategic account with strong roadmap influence. ## Recent Notes - Evaluating time-travel support to unblock compliance workflows. - Pain aroun",
       "customer_type": "external",
@@ -55,24 +55,54 @@
       "account_owner": "Zoey F",
       "frameworks": [
         "PyTorch",
-        "Feast"
+        "Feast",
+        "MLflow",
+        "Kubeflow",
+        "TensorBoard",
+        "Ray",
+        "Weights & Biases",
+        "Apache Airflow"
       ],
       "services": [],
       "tags": [
         "internal",
-        "team"
+        "team",
+        "ai",
+        "machine-learning",
+        "recommendations",
+        "high-priority"
       ],
       "feature_requests": [],
       "issues": [],
       "contacts": [
         {
           "name": "Zoey F",
-          "role": "ML Eng",
+          "role": "ML Engineering Lead",
           "email": ""
         },
         {
           "name": "Adil M",
-          "role": "MLOps",
+          "role": "MLOps Specialist",
+          "email": ""
+        },
+        {
+          "name": "Dr. Elena Rodriguez",
+          "role": "Research Scientist",
+          "email": ""
+        },
+        {
+          "name": "Jake Chen",
+          "role": "ML Engineer",
+          "email": ""
+        },
+        {
+          "name": "Priya Patel",
+          "role": "Data Scientist",
+          "email": ""
+        },
+        {
+          "name": "Alex Kumar",
+          "role": "ML Platform Engineer",
           "email": ""
         }
       ],
@@ -80,11 +110,27 @@
       "members": [
         {
           "name": "Zoey F",
-          "role": "ML Eng"
+          "role": "ML Engineering Lead"
         },
         {
           "name": "Adil M",
-          "role": "MLOps"
+          "role": "MLOps Specialist"
+        },
+        {
+          "name": "Dr. Elena Rodriguez",
+          "role": "Research Scientist"
+        },
+        {
+          "name": "Jake Chen",
+          "role": "ML Engineer"
+        },
+        {
+          "name": "Priya Patel",
+          "role": "Data Scientist"
+        },
+        {
+          "name": "Alex Kumar",
+          "role": "ML Platform Engineer"
         }
       ],
       "libraries": [
@@ -95,97 +141,226 @@
         {
           "name": "Feast",
           "project": "Feature Store"
+        },
+        {
+          "name": "MLflow",
+          "project": "Model Management"
+        },
+        {
+          "name": "Kubeflow",
+          "project": "ML Pipelines"
+        },
+        {
+          "name": "TensorBoard",
+          "project": "Experiment Tracking"
+        },
+        {
+          "name": "Ray",
+          "project": "Distributed Training"
+        },
+        {
+          "name": "Weights & Biases",
+          "project": "Experiment Management"
+        },
+        {
+          "name": "Apache Airflow",
+          "project": "ML Workflow Orchestration"
         }
       ],
       "meeting_dates": [
         "2025-08-29",
-        "2025-09-29"
+        "2025-09-29",
+        "2025-10-27",
+        "2025-11-24"
       ],
       "asks": [
         {
-          "ask": "GPU quota for training",
+          "ask": "GPU quota increase (50 V100s)",
           "due": "2025-09-15",
           "status": "under-review"
+        },
+        {
+          "ask": "Model serving infrastructure",
+          "due": "2025-09-30",
+          "status": "proposed"
+        },
+        {
+          "ask": "A100 cluster for LLM training",
+          "due": "2025-10-15",
+          "status": "planned"
+        },
+        {
+          "ask": "Feature store scaling budget",
+          "due": "2025-10-30",
+          "status": "under-review"
+        },
+        {
+          "ask": "ML monitoring platform",
+          "due": "2025-11-15",
+          "status": "proposed"
         }
       ],
-      "body_html": "<h1>Meeting Notes</h1>\n<ul>\n<li>Online features SLA; shadow serving plan.</li>\n</ul>",
-      "updated_at": "2025-08-19T09:53:18.713Z",
+      "body_html": "<h1>Afterburn ML Team Overview</h1>\n<p>The Afterburn ML team is responsible for developing and deploying machine learning models that power personalization, recommendations, and fraud detection across our platform. We serve over 100 million predictions daily with sub-100ms latency requirements.</p>\n<h2>Current ML Models in Production</h2>\n<h3>Recommendation Systems</h3>\n<ul>\n<li><strong>Product Recommendations</strong>: Deep learning model serving 50M daily recommendations</li>\n<li><strong>Content Personalization</strong>: Multi-armed bandit approach with contextual features  </li>\n<li><strong>Search Ranking</strong>: Learning-to-rank model with 15% CTR improvement</li>\n<li><strong>Similar Items</strong>: Collaborative filtering with real-time updates</li>\n</ul>\n<h3>Fraud Detection</h3>\n<ul>\n<li><strong>Transaction Anomaly Detection</strong>: Real-time scoring with 99.8% accuracy</li>\n<li><strong>Account Takeover Prevention</strong>: Behavioral analysis with ensemble models</li>\n<li><strong>Payment Risk Assessment</strong>: Gradient boosting with feature engineering pipeline</li>\n</ul>\n<h3>User Understanding</h3>\n<ul>\n<li><strong>Customer Segmentation</strong>: K-means clustering with 20+ behavioral features</li>\n<li><strong>Lifetime Value Prediction</strong>: XGBoost model for customer retention</li>\n<li><strong>Churn Prediction</strong>: Deep neural network with sequential patterns</li>\n</ul>\n<h2>Technical Architecture</h2>\n<h3>Model Serving Infrastructure</h3>\n<ul>\n<li><strong>Real-time Inference</strong>: 50+ models deployed on Kubernetes with auto-scaling</li>\n<li><strong>Batch Predictions</strong>: Daily scoring jobs processing 10TB of user interaction data</li>\n<li><strong>A/B Testing Framework</strong>: Statistical significance testing with multi-variate experiments</li>\n<li><strong>Feature Store</strong>: Low-latency feature serving with 99.99% uptime SLA</li>\n</ul>\n<h3>ML Platform Components</h3>\n<ul>\n<li><strong>Training Pipeline</strong>: Automated hyperparameter tuning with Optuna</li>\n<li><strong>Model Registry</strong>: Versioned model artifacts with automated testing</li>\n<li><strong>Monitoring System</strong>: Model drift detection and performance alerts</li>\n<li><strong>Data Pipeline</strong>: Real-time feature computation from streaming events</li>\n</ul>\n<h2>Meeting Notes</h2>\n<h3>August 29, 2025 - Quarterly Planning</h3>\n<ul>\n<li><strong>Q3 Results</strong>: Achieved 12% improvement in recommendation CTR</li>\n<li><strong>Production Issues</strong>: Resolved latency spikes in fraud detection model</li>\n<li><strong>New Initiatives</strong>: Starting LLM evaluation for customer support automation</li>\n<li><strong>Resource Planning</strong>: Projected 300% increase in training compute needs</li>\n</ul>\n<h3>Technical Deep Dives</h3>\n<ul>\n<li><strong>Model Performance</strong>: Recommendation model showing signs of drift in mobile segment</li>\n<li><strong>Infrastructure Scaling</strong>: Current GPU cluster at 95% utilization during peak hours</li>\n<li><strong>Feature Engineering</strong>: Implementing real-time feature computation for fraud signals</li>\n<li><strong>Experiment Velocity</strong>: Reduced A/B test duration from 2 weeks to 5 days</li>\n</ul>\n<h2>Current Challenges</h2>\n<h3>Infrastructure Limitations</h3>\n<ul>\n<li><strong>GPU Shortage</strong>: Training queue backlog averaging 48 hours</li>\n<li><strong>Storage Costs</strong>: Feature store growing 40% monthly, need cost optimization</li>\n<li><strong>Network Latency</strong>: Cross-region model serving adding 20ms to response times</li>\n</ul>\n<h3>Model Development</h3>\n<ul>\n<li><strong>Data Quality</strong>: 15% of training data requires manual cleaning</li>\n<li><strong>Label Scarcity</strong>: Fraud detection limited by imbalanced dataset</li>\n<li><strong>Model Complexity</strong>: Balancing accuracy vs interpretability for regulatory compliance</li>\n</ul>\n<h3>Operational Challenges</h3>\n<ul>\n<li><strong>On-call Burden</strong>: 3AM alerts for model performance degradation</li>\n<li><strong>Deployment Complexity</strong>: Manual model validation taking 2 days per release  </li>\n<li><strong>Knowledge Sharing</strong>: Need better documentation for model handoffs</li>\n</ul>\n<h2>Q4 2025 Roadmap</h2>\n<h3>Model Improvements</h3>\n<p>1. <strong>Next-Gen Recommendations</strong>: Transformer-based architecture with attention mechanisms 2. <strong>Fraud Detection 2.0</strong>: Real-time graph neural networks for transaction networks 3. <strong>Personalization Engine</strong>: Multi-task learning for unified user understanding 4. <strong>LLM Integration</strong>: Large language models for content generation and summarization</p>\n<h3>Platform Enhancements</h3>\n<p>1. <strong>AutoML Pipeline</strong>: Automated model selection and hyperparameter optimization 2. <strong>Real-time Training</strong>: Online learning for recommendation models 3. <strong>Model Compression</strong>: 10x reduction in model size for edge deployment 4. <strong>Federated Learning</strong>: Privacy-preserving model training across regions</p>\n<h3>Infrastructure Goals</h3>\n<p>1. <strong>GPU Cluster Expansion</strong>: 200 A100 GPUs for large model training 2. <strong>Edge Deployment</strong>: Model serving in 5 geographic regions 3. <strong>Cost Optimization</strong>: 30% reduction in inference costs through model efficiency 4. <strong>Disaster Recovery</strong>: Multi-region failover for critical ML services</p>\n<h2>Success Metrics</h2>\n<h3>Business Impact</h3>\n<ul>\n<li><strong>Revenue Attribution</strong>: $2.5M quarterly revenue from ML recommendations</li>\n<li><strong>Cost Savings</strong>: $800K saved through automated fraud prevention</li>\n<li><strong>User Engagement</strong>: 25% increase in session duration from personalization</li>\n</ul>\n<h3>Technical Performance</h3>\n<ul>\n<li><strong>Model Accuracy</strong>: 94.5% average across all production models</li>\n<li><strong>Inference Latency</strong>: 95th percentile under 100ms for all real-time models</li>\n<li><strong>System Uptime</strong>: 99.97% availability for ML inference services</li>\n<li><strong>Experiment Velocity</strong>: 15 A/B tests completed monthly</li>\n</ul>\n<h3>Team Development</h3>\n<ul>\n<li><strong>Research Publications</strong>: 3 papers accepted at top-tier ML conferences</li>\n<li><strong>Open Source Contributions</strong>: 5 tools released to ML community</li>\n<li><strong>Knowledge Sharing</strong>: Monthly tech talks with 200+ attendees</li>\n<li><strong>Talent Acquisition</strong>: Grown team from 2 to 6 engineers in 12 months</li>\n</ul>",
+      "updated_at": "2025-08-19T21:23:17.666Z",
       "source_file": "content/teams/afterburn-ml.md",
-      "excerpt": "# Meeting Notes - Online features SLA; shadow serving plan.",
+      "excerpt": "# Afterburn ML Team Overview The Afterburn ML team is responsible for developing and deploying machine learning models that power personalization, recommendations, and fraud detection across our platform. We serve over 100 million predictio",
       "customer_type": "internal-team"
     },
     {
       "id": "cdc-rangers",
       "name": "CDC Rangers",
-      "account_owner": "Yuri A",
+      "account_owner": "Yuri Antonov",
       "frameworks": [
         "Debezium",
-        "Kafka Connect"
+        "Kafka Connect",
+        "Apache Kafka",
+        "Schema Registry",
+        "Maxwell",
+        "Airbyte",
+        "Strimzi",
+        "Kafdrop"
       ],
       "services": [],
       "tags": [
         "internal",
-        "team"
+        "team",
+        "cdc",
+        "database-replication",
+        "data-integration",
+        "real-time"
       ],
       "feature_requests": [],
       "issues": [],
       "contacts": [
         {
-          "name": "Yuri A",
-          "role": "Lead",
+          "name": "Yuri Antonov",
+          "role": "Principal Data Integration Engineer",
           "email": ""
         },
         {
-          "name": "Zoe Q",
-          "role": "Engineer",
+          "name": "Zoe Quinn",
+          "role": "Senior CDC Specialist",
           "email": ""
         },
         {
-          "name": "Pavel D",
-          "role": "Engineer",
+          "name": "Pavel Dmitriev",
+          "role": "Database Replication Engineer",
+          "email": ""
+        },
+        {
+          "name": "Aria Chen",
+          "role": "Change Data Capture Engineer",
+          "email": ""
+        },
+        {
+          "name": "Marcus Johnson",
+          "role": "Streaming Data Engineer",
+          "email": ""
+        },
+        {
+          "name": "Sofia Rodriguez",
+          "role": "Database Platform Engineer",
           "email": ""
         }
       ],
       "avatar": "assets/avatars/cdc-rangers.svg",
       "members": [
         {
-          "name": "Yuri A",
-          "role": "Lead"
+          "name": "Yuri Antonov",
+          "role": "Principal Data Integration Engineer"
         },
         {
-          "name": "Zoe Q",
-          "role": "Engineer"
+          "name": "Zoe Quinn",
+          "role": "Senior CDC Specialist"
         },
         {
-          "name": "Pavel D",
-          "role": "Engineer"
+          "name": "Pavel Dmitriev",
+          "role": "Database Replication Engineer"
+        },
+        {
+          "name": "Aria Chen",
+          "role": "Change Data Capture Engineer"
+        },
+        {
+          "name": "Marcus Johnson",
+          "role": "Streaming Data Engineer"
+        },
+        {
+          "name": "Sofia Rodriguez",
+          "role": "Database Platform Engineer"
         }
       ],
       "libraries": [
         {
           "name": "Debezium",
-          "project": "CDC"
+          "project": "Change Data Capture Platform"
         },
         {
           "name": "Kafka Connect",
-          "project": "Pipelines"
+          "project": "Data Integration Pipelines"
+        },
+        {
+          "name": "Apache Kafka",
+          "project": "Event Streaming Infrastructure"
+        },
+        {
+          "name": "Schema Registry",
+          "project": "Schema Evolution Management"
+        },
+        {
+          "name": "Maxwell",
+          "project": "MySQL Binlog Processing"
+        },
+        {
+          "name": "Airbyte",
+          "project": "ELT Data Connectors"
+        },
+        {
+          "name": "Strimzi",
+          "project": "Kubernetes Kafka Operator"
+        },
+        {
+          "name": "Kafdrop",
+          "project": "Kafka Cluster Management"
         }
       ],
       "meeting_dates": [
         "2025-08-19",
-        "2025-09-16"
+        "2025-09-16",
+        "2025-10-14",
+        "2025-11-18"
       ],
       "asks": [
         {
-          "ask": "MySQL 8 GTID support",
+          "ask": "MySQL 8 GTID support implementation",
           "due": "2025-09-20",
+          "status": "planned"
+        },
+        {
+          "ask": "Multi-region CDC infrastructure",
+          "due": "2025-10-15",
+          "status": "under-review"
+        },
+        {
+          "ask": "CDC monitoring and alerting platform",
+          "due": "2025-10-30",
+          "status": "proposed"
+        },
+        {
+          "ask": "Database migration tooling",
+          "due": "2025-11-15",
+          "status": "under-review"
+        },
+        {
+          "ask": "Zero-downtime schema evolution",
+          "due": "2025-12-01",
           "status": "planned"
         }
       ],
-      "body_html": "<h1>Meeting Notes</h1>\n<ul>\n<li>Upgrade path for source connectors; reduce downtime.</li>\n</ul>",
-      "updated_at": "2025-08-19T09:52:28.152Z",
+      "body_html": "<h1>CDC Rangers - Change Data Capture Specialists</h1>\n<p>The CDC Rangers are the elite team responsible for capturing, transforming, and streaming database changes in real-time across our entire data ecosystem. We enable zero-downtime migrations, real-time analytics, and event-driven architectures by maintaining robust change data capture pipelines for 200+ database sources.</p>\n<h2>CDC Infrastructure Overview</h2>\n<h3>Database Source Coverage</h3>\n<ul>\n<li><strong>MySQL</strong>: 80+ production databases with binlog-based CDC using Debezium MySQL connector</li>\n<li><strong>PostgreSQL</strong>: 45+ databases using logical replication slots and Debezium Postgres connector  </li>\n<li><strong>MongoDB</strong>: 25+ collections with change streams integration</li>\n<li><strong>Oracle</strong>: 15+ legacy systems using LogMiner-based change capture</li>\n<li><strong>SQL Server</strong>: 20+ databases with transaction log-based CDC</li>\n</ul>\n<h3>Real-time Data Pipeline Architecture</h3>\n<ul>\n<li><strong>Debezium Platform</strong>: 200+ connectors processing 50M+ change events daily</li>\n<li><strong>Kafka Infrastructure</strong>: Dedicated CDC topics with 99.99% uptime SLA</li>\n<li><strong>Schema Registry</strong>: Centralized schema management with backward compatibility guarantees</li>\n<li><strong>Change Event Routing</strong>: Intelligent routing to downstream consumers based on change type</li>\n</ul>\n<h2>Major CDC Initiatives</h2>\n<h3>Project Phoenix - MySQL 8 GTID Implementation</h3>\n<p><strong>Objective</strong>: Upgrade all MySQL CDC pipelines to support Global Transaction Identifiers</p>\n<ul>\n<li><strong>Scope</strong>: 80+ MySQL databases requiring GTID-based replication</li>\n<li><strong>Challenge</strong>: Zero-downtime migration from file-position to GTID-based tracking</li>\n<li><strong>Benefits</strong>: Improved failover reliability, simplified topology management</li>\n<li><strong>Timeline</strong>: Pilot complete, production rollout starting September 2025</li>\n</ul>\n<h3>Multi-Region CDC Disaster Recovery</h3>\n<p><strong>Objective</strong>: Implement cross-region CDC replication with automatic failover</p>\n<ul>\n<li><strong>Architecture</strong>: Active-passive CDC setup across US-East, US-West, and EU regions</li>\n<li><strong>Complexity</strong>: Maintaining exactly-once semantics across region boundaries</li>\n<li><strong>Dependencies</strong>: Network infrastructure, DNS failover, and monitoring integration</li>\n<li><strong>Status</strong>: Design phase complete, infrastructure provisioning in progress</li>\n</ul>\n<h3>Zero-Downtime Schema Evolution Platform</h3>\n<p><strong>Objective</strong>: Enable database schema changes without stopping CDC pipelines</p>\n<ul>\n<li><strong>Features</strong>: Backward-compatible schema migration, gradual rollout mechanisms</li>\n<li><strong>Integration</strong>: Deep integration with database migration tools and CI/CD</li>\n<li><strong>Innovation</strong>: Custom Debezium transformations for schema compatibility layers</li>\n<li><strong>Impact</strong>: Reduce maintenance windows from hours to zero</li>\n</ul>\n<h2>Technical Expertise & Capabilities</h2>\n<h3>Change Data Capture Technologies</h3>\n<ul>\n<li><strong>Debezium Mastery</strong>: Core contributor to open source project, custom SMT development</li>\n<li><strong>Database Internals</strong>: Deep understanding of binlogs, WAL, transaction logs across databases</li>\n<li><strong>Stream Processing</strong>: Real-time change event transformation and enrichment</li>\n<li><strong>Exactly-Once Processing</strong>: Implementing idempotent change processing patterns</li>\n</ul>\n<h3>Database Platform Integration</h3>\n<ul>\n<li><strong>MySQL</strong>: Binlog configuration, GTID setup, replica lag monitoring</li>\n<li><strong>PostgreSQL</strong>: Logical replication slots, publication/subscription management</li>\n<li><strong>MongoDB</strong>: Change streams optimization, resume token management</li>\n<li><strong>Multi-Database</strong>: Cross-database transaction coordination and consistency</li>\n</ul>\n<h2>Meeting Notes & Technical Discussions</h2>\n<h3>August 19, 2025 - CDC Platform Review</h3>\n<p><strong>Infrastructure Improvements:</strong></p>\n<ul>\n<li><strong>Connector Performance</strong>: New parallel snapshot feature reducing initial sync time by 70%</li>\n<li><strong>Schema Evolution</strong>: Implemented backward-compatible schema change detection</li>\n<li><strong>Monitoring Enhancements</strong>: Real-time CDC lag monitoring with predictive alerting</li>\n<li><strong>Cost Optimization</strong>: Intelligent topic retention policies reducing storage by 40%</li>\n</ul>\n<p><strong>Database Migration Projects:</strong></p>\n<ul>\n<li><strong>Legacy Oracle Migration</strong>: Successfully migrated 5 critical Oracle databases to PostgreSQL</li>\n<li><strong>MySQL Upgrade Path</strong>: Standardized upgrade procedure from MySQL 5.7 to 8.0 with CDC</li>\n<li><strong>MongoDB Modernization</strong>: Migrated 15 MongoDB collections to time-series collections</li>\n<li><strong>SQL Server Consolidation</strong>: Reduced SQL Server instances from 30 to 15 through CDC-based merging</li>\n</ul>\n<h3>Technical Challenges & Solutions</h3>\n<p><strong>High-Volume Change Processing</strong></p>\n<ul>\n<li><strong>Challenge</strong>: Processing 10M+ changes/minute during bulk operations</li>\n<li><strong>Solution</strong>: Implemented adaptive batching and parallel processing strategies  </li>\n<li><strong>Result</strong>: Maintained sub-second latency even during peak change volumes</li>\n</ul>\n<p><strong>Schema Drift Management</strong></p>\n<ul>\n<li><strong>Challenge</strong>: Upstream schema changes breaking downstream consumers</li>\n<li><strong>Solution</strong>: Automated schema compatibility testing and gradual rollout framework</li>\n<li><strong>Result</strong>: Zero schema-related incidents in production for 6 consecutive months</li>\n</ul>\n<p><strong>Cross-Database Consistency</strong></p>\n<ul>\n<li><strong>Challenge</strong>: Maintaining consistency across heterogeneous database systems</li>\n<li><strong>Solution</strong>: Event-driven saga patterns with compensation mechanisms</li>\n<li><strong>Result</strong>: Achieved 99.99% data consistency across 200+ database sources</li>\n</ul>\n<h2>CDC Pipeline Performance Metrics</h2>\n<h3>Operational Excellence</h3>\n<ul>\n<li><strong>Change Event Latency</strong>: P99 under 100ms from database change to Kafka</li>\n<li><strong>Pipeline Uptime</strong>: 99.99% availability across all CDC connectors</li>\n<li><strong>Data Accuracy</strong>: 99.999% exactly-once change processing guarantee</li>\n<li><strong>Schema Compatibility</strong>: 100% backward compatibility maintained across schema changes</li>\n</ul>\n<h3>Database Coverage & Scale</h3>\n<ul>\n<li><strong>Source Databases</strong>: 185+ databases across 8 different database technologies</li>\n<li><strong>Daily Change Volume</strong>: 50M+ change events processed daily</li>\n<li><strong>Topic Management</strong>: 500+ CDC topics with intelligent partitioning strategies</li>\n<li><strong>Consumer Integration</strong>: 150+ downstream applications consuming change events</li>\n</ul>\n<h3>Migration & Modernization Impact</h3>\n<ul>\n<li><strong>Zero-Downtime Migrations</strong>: Completed 25+ database migrations with zero downtime</li>\n<li><strong>Legacy System Retirement</strong>: Decommissioned 40+ legacy databases through CDC-based migration</li>\n<li><strong>Real-time Analytics</strong>: Enabled real-time reporting for 80+ business-critical dashboards</li>\n<li><strong>Event-Driven Architecture</strong>: Powered 100+ microservices with real-time data synchronization</li>\n</ul>\n<h2>Innovation & Advanced CDC Patterns</h2>\n<h3>Emerging Technologies</h3>\n<ul>\n<li><strong>Kubernetes Native</strong>: Strimzi-based Kafka deployment with operator automation</li>\n<li><strong>Cloud Integration</strong>: Multi-cloud CDC setup spanning AWS, GCP, and Azure</li>\n<li><strong>Edge Computing</strong>: Lightweight CDC agents for edge database synchronization</li>\n<li><strong>Machine Learning</strong>: ML-based anomaly detection for CDC pipeline health</li>\n</ul>\n<h3>Advanced Change Processing Patterns</h3>\n<ul>\n<li><strong>Change Event Enrichment</strong>: Real-time lookup and augmentation of change events</li>\n<li><strong>Temporal Change Tracking</strong>: Historical change replay and time-travel query support</li>\n<li><strong>Cross-System Transactions</strong>: Distributed transaction coordination using CDC events</li>\n<li><strong>Change Data Virtualization</strong>: Real-time virtual views across multiple database systems</li>\n</ul>\n<h2>Database Migration Expertise</h2>\n<h3>Migration Methodologies</h3>\n<ul>\n<li><strong>Blue-Green Database Migration</strong>: Zero-downtime cutover using CDC synchronization</li>\n<li><strong>Gradual Migration Patterns</strong>: Percentage-based traffic routing during database transitions</li>\n<li><strong>Rollback Strategies</strong>: Instant rollback capabilities using bidirectional CDC</li>\n<li><strong>Data Validation</strong>: Comprehensive data integrity checking during migration processes</li>\n</ul>\n<h3>Legacy System Modernization</h3>\n<ul>\n<li><strong>Mainframe Integration</strong>: CDC from legacy mainframe systems to modern cloud databases</li>\n<li><strong>NoSQL Migration</strong>: SQL to NoSQL migration patterns preserving relational semantics</li>\n<li><strong>Cloud Migration</strong>: On-premises to cloud database migration with minimal downtime</li>\n<li><strong>Microservices Extraction</strong>: Database decomposition using CDC-based event sourcing</li>\n</ul>\n<h2>Team Development & Knowledge Sharing</h2>\n<h3>Technical Leadership</h3>\n<ul>\n<li><strong>Open Source Contributions</strong>: Core contributors to Debezium, Kafka Connect projects</li>\n<li><strong>Conference Speaking</strong>: Presented at 15+ conferences on CDC best practices</li>\n<li><strong>Community Building</strong>: Organizers of local CDC and streaming data meetups</li>\n<li><strong>Mentorship</strong>: Trained 50+ engineers across teams in CDC technologies</li>\n</ul>\n<h3>Knowledge Management</h3>\n<ul>\n<li><strong>CDC Playbooks</strong>: Comprehensive guides for database-specific CDC implementations</li>\n<li><strong>Troubleshooting Runbooks</strong>: Automated diagnostic and resolution procedures</li>\n<li><strong>Best Practices Documentation</strong>: Standards for CDC connector configuration and monitoring</li>\n<li><strong>Training Programs</strong>: Hands-on CDC workshops for development teams</li>\n</ul>\n<h2>Future Roadmap & Strategic Initiatives</h2>\n<h3>2026 Innovation Goals</h3>\n<ul>\n<li><strong>AI-Powered CDC</strong>: Machine learning optimization of CDC pipeline performance</li>\n<li><strong>Serverless CDC</strong>: Function-based CDC processing for cost optimization</li>\n<li><strong>Real-time Analytics Integration</strong>: Direct CDC to analytics pipeline integration</li>\n<li><strong>Blockchain Integration</strong>: Immutable change logging for audit and compliance</li>\n</ul>\n<h3>Emerging Database Technologies</h3>\n<ul>\n<li><strong>Graph Databases</strong>: CDC support for Neo4j and Amazon Neptune</li>\n<li><strong>Time Series Databases</strong>: Specialized CDC patterns for InfluxDB and TimescaleDB</li>\n<li><strong>Vector Databases</strong>: Change capture from AI/ML vector storage systems</li>\n<li><strong>Distributed SQL</strong>: CDC integration with CockroachDB and TiDB systems</li>\n</ul>",
+      "updated_at": "2025-08-20T00:18:42.921Z",
       "source_file": "content/teams/cdc-rangers.md",
-      "excerpt": "# Meeting Notes - Upgrade path for source connectors; reduce downtime.",
+      "excerpt": "# CDC Rangers - Change Data Capture Specialists The CDC Rangers are the elite team responsible for capturing, transforming, and streaming database changes in real-time across our entire data ecosystem. We enable zero-downtime migrations, re",
       "customer_type": "internal-team"
     },
     {
@@ -194,24 +369,53 @@
       "account_owner": "Rina K",
       "frameworks": [
         "Delta Lake",
-        "Great Expectations"
+        "Great Expectations",
+        "Apache Spark",
+        "Databricks",
+        "Apache Iceberg",
+        "DuckDB",
+        "Apache Hudi"
       ],
       "services": [],
       "tags": [
         "internal",
-        "team"
+        "team",
+        "data-platform",
+        "lakehouse",
+        "quality",
+        "governance"
       ],
       "feature_requests": [],
       "issues": [],
       "contacts": [
         {
           "name": "Rina K",
-          "role": "Lead",
+          "role": "Principal Data Architect",
           "email": ""
         },
         {
           "name": "Tom H",
-          "role": "Data Eng",
+          "role": "Senior Data Engineer",
+          "email": ""
+        },
+        {
+          "name": "Maria Santos",
+          "role": "Data Quality Engineer",
+          "email": ""
+        },
+        {
+          "name": "David Kim",
+          "role": "Platform Engineer",
+          "email": ""
+        },
+        {
+          "name": "Lisa Chen",
+          "role": "Data Engineer",
+          "email": ""
+        },
+        {
+          "name": "Ahmed Hassan",
+          "role": "DevOps Engineer",
           "email": ""
         }
       ],
@@ -219,38 +423,96 @@
       "members": [
         {
           "name": "Rina K",
-          "role": "Lead"
+          "role": "Principal Data Architect"
         },
         {
           "name": "Tom H",
-          "role": "Data Eng"
+          "role": "Senior Data Engineer"
+        },
+        {
+          "name": "Maria Santos",
+          "role": "Data Quality Engineer"
+        },
+        {
+          "name": "David Kim",
+          "role": "Platform Engineer"
+        },
+        {
+          "name": "Lisa Chen",
+          "role": "Data Engineer"
+        },
+        {
+          "name": "Ahmed Hassan",
+          "role": "DevOps Engineer"
         }
       ],
       "libraries": [
         {
           "name": "Delta Lake",
-          "project": "Lakehouse"
+          "project": "Lakehouse Architecture"
         },
         {
           "name": "Great Expectations",
-          "project": "Data Quality"
+          "project": "Data Quality Framework"
+        },
+        {
+          "name": "Apache Spark",
+          "project": "Data Processing Engine"
+        },
+        {
+          "name": "Databricks",
+          "project": "Unified Analytics Platform"
+        },
+        {
+          "name": "Apache Iceberg",
+          "project": "Table Format Evaluation"
+        },
+        {
+          "name": "DuckDB",
+          "project": "OLAP Analytics"
+        },
+        {
+          "name": "Apache Hudi",
+          "project": "Incremental Processing"
         }
       ],
       "meeting_dates": [
         "2025-08-21",
-        "2025-09-18"
+        "2025-09-18",
+        "2025-10-16",
+        "2025-11-20"
       ],
       "asks": [
         {
-          "ask": "Time travel API",
+          "ask": "Time travel API development",
           "due": "2025-10-01",
           "status": "under-review"
+        },
+        {
+          "ask": "Lakehouse compute cluster",
+          "due": "2025-09-30",
+          "status": "proposed"
+        },
+        {
+          "ask": "Data governance tooling",
+          "due": "2025-10-15",
+          "status": "planned"
+        },
+        {
+          "ask": "Schema registry infrastructure",
+          "due": "2025-11-01",
+          "status": "under-review"
+        },
+        {
+          "ask": "Cross-region replication setup",
+          "due": "2025-11-15",
+          "status": "proposed"
         }
       ],
-      "body_html": "<h1>Meeting Notes</h1>\n<ul>\n<li>Schema drift handling; propose typed CDC envelope.</li>\n</ul>",
-      "updated_at": "2025-08-19T09:52:21.823Z",
+      "body_html": "<h1>Delta Forge - Lakehouse Platform Team</h1>\n<p>Delta Forge is the specialized team responsible for building and maintaining our modern lakehouse architecture. We enable self-service analytics across the organization while ensuring data quality, governance, and performance at petabyte scale.</p>\n<h2>Platform Overview</h2>\n<h3>Lakehouse Architecture</h3>\n<ul>\n<li><strong>Multi-Engine Support</strong>: Spark, Presto, Trino for different workload types</li>\n<li><strong>ACID Transactions</strong>: Full Delta Lake implementation with merge, update, delete operations</li>\n<li><strong>Time Travel</strong>: Historical data access and audit trails for compliance</li>\n<li><strong>Schema Evolution</strong>: Automatic schema management with backward compatibility</li>\n</ul>\n<h3>Data Quality Framework</h3>\n<ul>\n<li><strong>Automated Testing</strong>: 500+ data quality checks running on every batch</li>\n<li><strong>Anomaly Detection</strong>: ML-powered detection of data distribution shifts</li>\n<li><strong>Lineage Tracking</strong>: End-to-end data flow visualization and impact analysis</li>\n<li><strong>SLA Monitoring</strong>: Real-time alerts for data freshness and quality violations</li>\n</ul>\n<h2>Current Projects</h2>\n<h3>Q3 2025 Major Initiatives</h3>\n<h4>Project Temporal</h4>\n<p>Complete implementation of time travel APIs across all business-critical datasets</p>\n<ul>\n<li><strong>Scope</strong>: 200+ tables with historical access requirements</li>\n<li><strong>Progress</strong>: 75% complete, remaining complex nested schema tables</li>\n<li><strong>Challenge</strong>: Performance optimization for queries spanning months of history</li>\n<li><strong>Timeline</strong>: Target completion October 1, 2025</li>\n</ul>\n<h4>Schema Registry v2.0</h4>\n<p>Next-generation schema management with automated evolution</p>\n<ul>\n<li><strong>Features</strong>: Backward/forward compatibility checks, schema validation pipelines</li>\n<li><strong>Integration</strong>: Kafka Connect, Delta Lake, streaming applications</li>\n<li><strong>Status</strong>: Design phase complete, implementation 30% done</li>\n<li><strong>Dependencies</strong>: Confluent Schema Registry licensing decision</li>\n</ul>\n<h4>Data Mesh Implementation</h4>\n<p>Decentralized data ownership with centralized governance</p>\n<ul>\n<li><strong>Domains</strong>: 8 business domains identified, 3 already onboarded</li>\n<li><strong>Governance</strong>: Automated policy enforcement and compliance checking</li>\n<li><strong>Self-Service</strong>: Domain teams can deploy data products independently</li>\n<li><strong>Metrics</strong>: Reduced data request fulfillment from 2 weeks to 2 days</li>\n</ul>\n<h3>Infrastructure Improvements</h3>\n<h4>Performance Optimization</h4>\n<ul>\n<li><strong>Z-Ordering</strong>: Implemented on 150+ high-traffic tables, 40% query improvement</li>\n<li><strong>Liquid Clustering</strong>: Pilot program showing 60% faster joins on fact tables</li>\n<li><strong>Compaction Strategies</strong>: Automated small file optimization reducing storage by 25%</li>\n<li><strong>Partition Optimization</strong>: Dynamic partitioning based on query patterns</li>\n</ul>\n<h4>Cost Management</h4>\n<ul>\n<li><strong>Tiered Storage</strong>: Automated lifecycle policies moving old data to cheaper tiers</li>\n<li><strong>Compute Optimization</strong>: Right-sizing clusters based on workload analysis</li>\n<li><strong>Reserved Capacity</strong>: 30% cost reduction through strategic capacity planning</li>\n<li><strong>Resource Scheduling</strong>: Off-peak processing for non-critical workloads</li>\n</ul>\n<h2>Meeting Notes</h2>\n<h3>August 21, 2025 - Architecture Review</h3>\n<ul>\n<li><strong>Schema Evolution</strong>: Discussed challenges with nested struct modifications</li>\n<li><strong>Performance Metrics</strong>: Query times improved 35% after liquid clustering pilot</li>\n<li><strong>Data Quality</strong>: New anomaly detection reduced false positive alerts by 60%</li>\n<li><strong>Compliance</strong>: GDPR right-to-be-forgotten implementation in Delta tables</li>\n</ul>\n<h3>Technical Discussions</h3>\n<ul>\n<li><strong>CDC Processing</strong>: Implementing typed envelopes for better schema handling</li>\n<li><strong>Cross-Region</strong>: Evaluating Delta Sharing vs custom replication approaches</li>\n<li><strong>Query Federation</strong>: Presto integration for cross-lakehouse analytics</li>\n<li><strong>Streaming Integration</strong>: Real-time Delta updates from Kafka topics</li>\n</ul>\n<h2>Challenges and Solutions</h2>\n<h3>Schema Management</h3>\n<p><strong>Challenge</strong>: Frequent schema changes breaking downstream consumers <strong>Solution</strong>: Automated compatibility testing and gradual rollout process <strong>Status</strong>: Reduced schema-related incidents by 80%</p>\n<h3>Performance at Scale</h3>\n<p><strong>Challenge</strong>: Query performance degradation with table growth <strong>Solution</strong>: Intelligent indexing and partition pruning strategies <strong>Status</strong>: Maintained sub-second query times on 100TB+ tables</p>\n<h3>Data Quality Enforcement</h3>\n<p><strong>Challenge</strong>: Inconsistent data quality across different source systems <strong>Solution</strong>: Upstream validation with circuit breaker patterns <strong>Status</strong>: Data quality SLA achievement increased to 99.2%</p>\n<h3>Cost Control</h3>\n<p><strong>Challenge</strong>: Exponential growth in storage and compute costs <strong>Solution</strong>: Automated optimization and policy-driven resource management <strong>Status</strong>: Achieved 40% cost reduction while scaling 3x</p>\n<h2>Upcoming Milestones</h2>\n<h3>September 2025</h3>\n<ul>\n<li>Complete time travel API for financial reporting tables</li>\n<li>Deploy automated data profiling for all new datasets</li>\n<li>Implement cross-region disaster recovery procedures</li>\n</ul>\n<h3>October 2025  </h3>\n<ul>\n<li>Launch data mesh pilot with marketing and sales domains</li>\n<li>Complete schema registry v2.0 with automated evolution</li>\n<li>Implement real-time data quality monitoring dashboard</li>\n</ul>\n<h3>November 2025</h3>\n<ul>\n<li>Deploy lakehouse federation across 3 geographic regions  </li>\n<li>Complete audit trail implementation for regulatory compliance</li>\n<li>Launch self-service data product catalog</li>\n</ul>\n<h3>December 2025</h3>\n<ul>\n<li>Achieve 99.9% data quality SLA across all critical datasets</li>\n<li>Implement predictive capacity planning for cost optimization</li>\n<li>Complete integration with enterprise data governance platform</li>\n</ul>\n<h2>Team Metrics and KPIs</h2>\n<h3>Platform Performance</h3>\n<ul>\n<li><strong>Query Performance</strong>: P95 latency under 5 seconds for analytical workloads</li>\n<li><strong>Data Freshness</strong>: 95% of datasets updated within SLA windows</li>\n<li><strong>System Uptime</strong>: 99.97% availability for lakehouse infrastructure</li>\n<li><strong>Storage Efficiency</strong>: 40% reduction in storage costs through optimization</li>\n</ul>\n<h3>Data Quality Metrics</h3>\n<ul>\n<li><strong>Data Accuracy</strong>: 99.2% of quality checks passing across all datasets</li>\n<li><strong>Schema Compliance</strong>: 100% schema validation success rate</li>\n<li><strong>Anomaly Detection</strong>: 95% accuracy in identifying data quality issues</li>\n<li><strong>Recovery Time</strong>: Average 15 minutes to resolve data quality incidents</li>\n</ul>\n<h3>Business Impact</h3>\n<ul>\n<li><strong>Self-Service Adoption</strong>: 60% of analytics workloads now self-served by domain teams</li>\n<li><strong>Time to Insights</strong>: Reduced from 2 weeks to 2 hours for new analytical requirements</li>\n<li><strong>Cost Savings</strong>: $1.2M annual savings through infrastructure optimization</li>\n<li><strong>Compliance</strong>: 100% audit success rate for data governance requirements</li>\n</ul>\n<h2>Innovation and Research</h2>\n<h3>Emerging Technologies</h3>\n<ul>\n<li><strong>Lakehouse 3.0</strong>: Evaluating Apache Polaris for multi-engine table format</li>\n<li><strong>AI Integration</strong>: ML-powered query optimization and automatic tuning</li>\n<li><strong>Edge Computing</strong>: Deploying lakehouse capabilities to regional data centers</li>\n<li><strong>Quantum-Ready</strong>: Preparing encryption strategies for post-quantum security</li>\n</ul>\n<h3>Open Source Contributions</h3>\n<ul>\n<li><strong>Delta Lake</strong>: Contributing liquid clustering improvements upstream</li>\n<li><strong>Great Expectations</strong>: Custom expectation types for financial data validation  </li>\n<li><strong>Apache Spark</strong>: Performance optimizations for nested data structures</li>\n<li><strong>Industry Standards</strong>: Participating in Data Management Body of Knowledge updates</li>\n</ul>",
+      "updated_at": "2025-08-19T21:24:10.401Z",
       "source_file": "content/teams/delta-forge.md",
-      "excerpt": "# Meeting Notes - Schema drift handling; propose typed CDC envelope.",
+      "excerpt": "# Delta Forge - Lakehouse Platform Team Delta Forge is the specialized team responsible for building and maintaining our modern lakehouse architecture. We enable self-service analytics across the organization while ensuring data quality, go",
       "customer_type": "internal-team"
     },
     {
@@ -258,30 +520,55 @@
       "name": "Edge Stream",
       "account_owner": "Kai Moreno",
       "frameworks": [
-        "Flink",
-        "Kafka"
+        "Apache Flink",
+        "Apache Kafka",
+        "Kafka Streams",
+        "Schema Registry",
+        "Kafka Connect",
+        "Apache Pulsar",
+        "Redis Streams",
+        "ClickHouse"
       ],
       "services": [],
       "tags": [
         "internal",
-        "team"
+        "team",
+        "streaming",
+        "real-time",
+        "high-throughput",
+        "mission-critical"
       ],
       "feature_requests": [],
       "issues": [],
       "contacts": [
         {
           "name": "Kai Moreno",
-          "role": "Lead",
+          "role": "Streaming Architecture Lead",
           "email": ""
         },
         {
           "name": "Ivy Chen",
-          "role": "Data Eng",
+          "role": "Senior Data Engineer",
           "email": ""
         },
         {
           "name": "Noah Patel",
-          "role": "Platform",
+          "role": "Platform Reliability Engineer",
+          "email": ""
+        },
+        {
+          "name": "Riley Zhang",
+          "role": "Real-time Systems Engineer",
+          "email": ""
+        },
+        {
+          "name": "Omar Hassan",
+          "role": "Kafka Specialist",
+          "email": ""
+        },
+        {
+          "name": "Maya Patel",
+          "role": "Stream Processing Engineer",
           "email": ""
         }
       ],
@@ -289,107 +576,257 @@
       "members": [
         {
           "name": "Kai Moreno",
-          "role": "Lead"
+          "role": "Streaming Architecture Lead"
         },
         {
           "name": "Ivy Chen",
-          "role": "Data Eng"
+          "role": "Senior Data Engineer"
         },
         {
           "name": "Noah Patel",
-          "role": "Platform"
+          "role": "Platform Reliability Engineer"
+        },
+        {
+          "name": "Riley Zhang",
+          "role": "Real-time Systems Engineer"
+        },
+        {
+          "name": "Omar Hassan",
+          "role": "Kafka Specialist"
+        },
+        {
+          "name": "Maya Patel",
+          "role": "Stream Processing Engineer"
         }
       ],
       "libraries": [
         {
-          "name": "Flink",
-          "project": "Ad Events"
+          "name": "Apache Flink",
+          "project": "Real-time Ad Events Processing"
         },
         {
-          "name": "Kafka",
-          "project": "Ingest"
+          "name": "Apache Kafka",
+          "project": "Event Streaming Platform"
+        },
+        {
+          "name": "Kafka Streams",
+          "project": "Stream Processing Applications"
+        },
+        {
+          "name": "Schema Registry",
+          "project": "Event Schema Management"
+        },
+        {
+          "name": "Kafka Connect",
+          "project": "Data Integration Connectors"
+        },
+        {
+          "name": "Apache Pulsar",
+          "project": "Multi-tenant Messaging"
+        },
+        {
+          "name": "Redis Streams",
+          "project": "Low-latency Event Caching"
+        },
+        {
+          "name": "ClickHouse",
+          "project": "Real-time Analytics Storage"
         }
       ],
       "meeting_dates": [
         "2025-08-22",
-        "2025-09-19"
+        "2025-09-19",
+        "2025-10-17",
+        "2025-11-21"
       ],
       "asks": [
         {
-          "ask": "Exactly-once sink for SF",
+          "ask": "Exactly-once Snowflake sink connector",
           "due": "2025-09-10",
           "status": "proposed"
+        },
+        {
+          "ask": "Cross-region Kafka cluster setup",
+          "due": "2025-09-25",
+          "status": "under-review"
+        },
+        {
+          "ask": "Real-time monitoring dashboard",
+          "due": "2025-10-05",
+          "status": "planned"
+        },
+        {
+          "ask": "Flink cluster autoscaling",
+          "due": "2025-10-20",
+          "status": "proposed"
+        },
+        {
+          "ask": "Event schema evolution tooling",
+          "due": "2025-11-01",
+          "status": "under-review"
         }
       ],
-      "body_html": "<h1>Meeting Notes</h1>\n<ul>\n<li>POC for cross-region replication; validate failover behavior.</li>\n</ul>",
-      "updated_at": "2025-08-19T09:52:12.116Z",
+      "body_html": "<h1>Edge Stream - Real-time Data Processing Team</h1>\n<p>Edge Stream specializes in building and maintaining high-throughput, low-latency streaming data infrastructure. We process over 50 billion events daily with sub-second latency requirements, powering real-time analytics, fraud detection, and personalization systems across the platform.</p>\n<h2>Streaming Architecture Overview</h2>\n<h3>Event Processing Pipeline</h3>\n<ul>\n<li><strong>Kafka Clusters</strong>: 12 clusters across 3 regions, handling 2M messages/second peak</li>\n<li><strong>Flink Jobs</strong>: 200+ streaming applications with exactly-once processing guarantees</li>\n<li><strong>Schema Evolution</strong>: Backward-compatible schema changes with zero downtime</li>\n<li><strong>Multi-tenancy</strong>: Isolated processing environments for different business units</li>\n</ul>\n<h3>Performance Characteristics</h3>\n<ul>\n<li><strong>Throughput</strong>: 50B+ events/day, 2M messages/second peak throughput</li>\n<li><strong>Latency</strong>: P99 end-to-end latency under 500ms for critical paths</li>\n<li><strong>Availability</strong>: 99.99% uptime SLA with automatic failover capabilities</li>\n<li><strong>Scalability</strong>: Auto-scaling from 10 to 1000+ Flink task managers</li>\n</ul>\n<h2>Current Major Projects</h2>\n<h3>Project Velocity - Real-time Ad Attribution</h3>\n<p><strong>Objective</strong>: Process advertising events in real-time to provide instant attribution insights</p>\n<ul>\n<li><strong>Scale</strong>: 100M ad events/day with complex join operations across user sessions</li>\n<li><strong>Challenge</strong>: Managing state size (10TB+) while maintaining low latency</li>\n<li><strong>Progress</strong>: 80% complete, currently optimizing state backends for better performance</li>\n<li><strong>Impact</strong>: Expected to reduce attribution delays from hours to seconds</li>\n</ul>\n<h3>Cross-Region Disaster Recovery</h3>\n<p><strong>Objective</strong>: Implement active-active Kafka clusters with automatic failover</p>\n<ul>\n<li><strong>Scope</strong>: Mirror 500+ topics across US-East, US-West, and EU regions</li>\n<li><strong>Complexity</strong>: Handling exactly-once guarantees during region failovers</li>\n<li><strong>Timeline</strong>: Pilot testing in staging, production rollout planned for Q4</li>\n<li><strong>Dependencies</strong>: Network infrastructure upgrades and DNS failover automation</li>\n</ul>\n<h3>Stream Schema Evolution Platform</h3>\n<p><strong>Objective</strong>: Enable backward/forward compatible schema changes without downtime</p>\n<ul>\n<li><strong>Features</strong>: Automated compatibility testing, gradual rollout mechanisms</li>\n<li><strong>Integration</strong>: Deep integration with Schema Registry and CI/CD pipelines  </li>\n<li><strong>Status</strong>: MVP complete, expanding to support complex nested schema evolution</li>\n<li><strong>Adoption</strong>: 80% of streaming applications now using managed schema evolution</li>\n</ul>\n<h2>Team Expertise & Responsibilities</h2>\n<h3>Streaming Technologies</h3>\n<ul>\n<li><strong>Apache Flink</strong>: Complex event processing, stateful stream processing, exactly-once semantics</li>\n<li><strong>Apache Kafka</strong>: High-throughput messaging, topic design, partition strategies</li>\n<li><strong>Stream Processing</strong>: Windowing operations, watermarks, late data handling</li>\n<li><strong>State Management</strong>: RocksDB optimization, checkpointing strategies, state evolution</li>\n</ul>\n<h3>Platform Operations</h3>\n<ul>\n<li><strong>Monitoring</strong>: Custom metrics for stream lag, processing rates, error rates</li>\n<li><strong>Alerting</strong>: Proactive alerts for partition imbalances, consumer lag, job failures</li>\n<li><strong>Capacity Planning</strong>: Predictive scaling based on traffic patterns and seasonal trends</li>\n<li><strong>Performance Tuning</strong>: JVM optimization, serialization improvements, memory management</li>\n</ul>\n<h2>Meeting Notes & Technical Discussions</h2>\n<h3>August 22, 2025 - Architecture Review</h3>\n<p><strong>Key Topics Discussed:</strong></p>\n<ul>\n<li><strong>Flink 1.18 Upgrade</strong>: New async I/O improvements showing 30% latency reduction</li>\n<li><strong>Kafka 3.6 Features</strong>: Tiered storage reducing costs by 40% for historical data</li>\n<li><strong>Cross-region Replication</strong>: MirrorMaker 2.0 vs custom replication solutions evaluation</li>\n<li><strong>Schema Registry</strong>: Confluent vs in-house schema management cost-benefit analysis</li>\n</ul>\n<p><strong>Technical Decisions Made:</strong></p>\n<ul>\n<li>Adopt Flink's new adaptive scheduler for better resource utilization</li>\n<li>Implement custom partitioning for geographically distributed consumers</li>\n<li>Standardize on Avro with JSON fallback for schema evolution flexibility</li>\n</ul>\n<h3>Performance Optimization Initiatives</h3>\n<p><strong>Memory Management</strong>: Reduced GC pressure by 60% through off-heap state backends <strong>Network Optimization</strong>: Custom serializers improved throughput by 25% <strong>State Size Reduction</strong>: Incremental cleanup reduced state storage by 50% <strong>Parallelism Tuning</strong>: Dynamic scaling based on queue depth and processing lag</p>\n<h2>Critical Challenges & Solutions</h2>\n<h3>High-Cardinality State Management</h3>\n<p><strong>Challenge</strong>: Flink jobs with billions of keys causing memory pressure and slow checkpoints <strong>Solution</strong>: Implemented incremental checkpointing with TTL-based state cleanup <strong>Result</strong>: Reduced checkpoint times from 10 minutes to 30 seconds</p>\n<h3>Exactly-Once Semantics at Scale</h3>\n<p><strong>Challenge</strong>: Maintaining exactly-once guarantees across complex multi-stage pipelines   <strong>Solution</strong>: End-to-end idempotency with custom sink connectors and deduplication <strong>Result</strong>: Zero data loss or duplication across 200+ production streaming jobs</p>\n<h3>Schema Evolution Complexity</h3>\n<p><strong>Challenge</strong>: Breaking changes in upstream systems causing downstream failures <strong>Solution</strong>: Schema compatibility testing in CI/CD with gradual rollout mechanisms <strong>Result</strong>: 99.9% deployment success rate for schema changes</p>\n<h3>Multi-Region Latency</h3>\n<p><strong>Challenge</strong>: Cross-region replication adding 200ms+ to processing latency <strong>Solution</strong>: Region-aware routing with local processing and async synchronization <strong>Result</strong>: Reduced cross-region latency to under 50ms while maintaining consistency</p>\n<h2>Upcoming Milestones & Roadmap</h2>\n<h3>September 2025</h3>\n<ul>\n<li>Complete exactly-once Snowflake connector with transactional guarantees</li>\n<li>Deploy cross-region Kafka clusters with automated failover testing</li>\n<li>Launch real-time stream processing monitoring dashboard</li>\n</ul>\n<h3>October 2025  </h3>\n<ul>\n<li>Implement Flink cluster autoscaling based on queue depth and processing lag</li>\n<li>Complete schema evolution tooling with backward compatibility validation</li>\n<li>Deploy geo-distributed stream processing for compliance requirements</li>\n</ul>\n<h3>November 2025</h3>\n<ul>\n<li>Launch next-generation event-driven architecture with Apache Pulsar</li>\n<li>Implement stream-native machine learning inference pipeline</li>\n<li>Complete migration to cloud-native Kafka with kubernetes operators</li>\n</ul>\n<h3>Q1 2026 Preview</h3>\n<ul>\n<li>Edge computing integration for ultra-low latency processing</li>\n<li>Real-time feature store integration with ML inference</li>\n<li>Quantum-resistant encryption for sensitive event streams</li>\n</ul>\n<h2>Performance Metrics & KPIs</h2>\n<h3>Operational Excellence</h3>\n<ul>\n<li><strong>Stream Processing Latency</strong>: P99 < 500ms (target: 200ms)</li>\n<li><strong>Message Throughput</strong>: 2M messages/second sustained (peak: 5M/second)</li>\n<li><strong>System Availability</strong>: 99.99% uptime (exceeded SLA for 18 consecutive months)</li>\n<li><strong>Data Accuracy</strong>: 99.999% exactly-once processing guarantee</li>\n</ul>\n<h3>Business Impact</h3>\n<ul>\n<li><strong>Real-time Insights</strong>: Reduced analytics delay from hours to seconds</li>\n<li><strong>Cost Optimization</strong>: 40% reduction in storage costs through tiered architecture</li>\n<li><strong>Fraud Prevention</strong>: Real-time scoring preventing $2M+ in fraudulent transactions monthly</li>\n<li><strong>User Experience</strong>: Sub-second personalization updates improving engagement by 35%</li>\n</ul>\n<h3>Team Development</h3>\n<ul>\n<li><strong>Technical Innovation</strong>: 5 streaming patents filed, 8 conference presentations</li>\n<li><strong>Open Source</strong>: Contributing maintainer status on Apache Flink project</li>\n<li><strong>Knowledge Sharing</strong>: Monthly streaming architecture workshops with 300+ attendees</li>\n<li><strong>Mentorship</strong>: Trained 15+ engineers across teams in streaming technologies</li>\n</ul>\n<h2>Innovation & Research</h2>\n<h3>Emerging Technologies</h3>\n<ul>\n<li><strong>Apache Pulsar</strong>: Evaluating for geo-distributed messaging with tenant isolation</li>\n<li><strong>Redpanda</strong>: Testing Kafka-compatible streaming with reduced operational overhead</li>\n<li><strong>Apache Pinot</strong>: Real-time OLAP integration for streaming analytics</li>\n<li><strong>Benthos</strong>: Lightweight stream processing for edge computing scenarios</li>\n</ul>\n<h3>Research Initiatives</h3>\n<ul>\n<li><strong>Quantum Networking</strong>: Preparing event streaming for quantum-encrypted communications</li>\n<li><strong>Edge Processing</strong>: Ultra-low latency processing at CDN edge locations</li>\n<li><strong>ML-Driven Optimization</strong>: Machine learning models for automatic resource allocation</li>\n<li><strong>Blockchain Integration</strong>: Immutable event logging for audit and compliance use cases</li>\n</ul>",
+      "updated_at": "2025-08-20T00:04:59.142Z",
       "source_file": "content/teams/edge-stream.md",
-      "excerpt": "# Meeting Notes - POC for cross-region replication; validate failover behavior.",
+      "excerpt": "# Edge Stream - Real-time Data Processing Team Edge Stream specializes in building and maintaining high-throughput, low-latency streaming data infrastructure. We process over 50 billion events daily with sub-second latency requirements, pow",
       "customer_type": "internal-team"
     },
     {
       "id": "model-makers",
       "name": "Model Makers",
-      "account_owner": "Sara D",
+      "account_owner": "Sara Davidson",
       "frameworks": [
         "dbt",
-        "DuckDB"
+        "DuckDB",
+        "Looker",
+        "Tableau",
+        "Great Expectations",
+        "Apache Superset",
+        "Metabase",
+        "Evidence"
       ],
       "services": [],
       "tags": [
         "internal",
-        "team"
+        "team",
+        "analytics",
+        "data-modeling",
+        "business-intelligence",
+        "self-service"
       ],
       "feature_requests": [],
       "issues": [],
       "contacts": [
         {
-          "name": "Sara D",
-          "role": "Analytics Eng",
+          "name": "Sara Davidson",
+          "role": "Principal Analytics Engineer",
           "email": ""
         },
         {
-          "name": "Leo V",
-          "role": "Analytics Eng",
+          "name": "Leo Volkov",
+          "role": "Senior Analytics Engineer",
+          "email": ""
+        },
+        {
+          "name": "Zoe Martinez",
+          "role": "Analytics Engineer",
+          "email": ""
+        },
+        {
+          "name": "Raj Patel",
+          "role": "Data Modeling Specialist",
+          "email": ""
+        },
+        {
+          "name": "Emma Thompson",
+          "role": "Business Intelligence Engineer",
+          "email": ""
+        },
+        {
+          "name": "Carlos Rodriguez",
+          "role": "Analytics Platform Engineer",
           "email": ""
         }
       ],
       "avatar": "assets/avatars/model-makers.svg",
       "members": [
         {
-          "name": "Sara D",
-          "role": "Analytics Eng"
+          "name": "Sara Davidson",
+          "role": "Principal Analytics Engineer"
         },
         {
-          "name": "Leo V",
-          "role": "Analytics Eng"
+          "name": "Leo Volkov",
+          "role": "Senior Analytics Engineer"
+        },
+        {
+          "name": "Zoe Martinez",
+          "role": "Analytics Engineer"
+        },
+        {
+          "name": "Raj Patel",
+          "role": "Data Modeling Specialist"
+        },
+        {
+          "name": "Emma Thompson",
+          "role": "Business Intelligence Engineer"
+        },
+        {
+          "name": "Carlos Rodriguez",
+          "role": "Analytics Platform Engineer"
         }
       ],
       "libraries": [
         {
           "name": "dbt",
-          "project": "Core Models"
+          "project": "Core Data Models & Transformations"
         },
         {
           "name": "DuckDB",
-          "project": "Ad-hoc"
+          "project": "Ad-hoc Analytics & Prototyping"
+        },
+        {
+          "name": "Looker",
+          "project": "Business Intelligence Platform"
+        },
+        {
+          "name": "Tableau",
+          "project": "Executive Dashboards"
+        },
+        {
+          "name": "Great Expectations",
+          "project": "Data Quality Testing"
+        },
+        {
+          "name": "Apache Superset",
+          "project": "Self-Service Analytics"
+        },
+        {
+          "name": "Metabase",
+          "project": "Departmental Reporting"
+        },
+        {
+          "name": "Evidence",
+          "project": "Data Documentation & Reports"
         }
       ],
       "meeting_dates": [
         "2025-08-21",
-        "2025-09-25"
+        "2025-09-25",
+        "2025-10-23",
+        "2025-11-27"
       ],
       "asks": [
         {
           "ask": "Model test coverage dashboard",
           "due": "2025-09-30",
           "status": "planned"
+        },
+        {
+          "ask": "dbt Cloud enterprise license",
+          "due": "2025-10-15",
+          "status": "under-review"
+        },
+        {
+          "ask": "Data warehouse compute scaling",
+          "due": "2025-10-30",
+          "status": "proposed"
+        },
+        {
+          "ask": "Analytics engineering hiring budget",
+          "due": "2025-11-15",
+          "status": "under-review"
+        },
+        {
+          "ask": "BI tool consolidation project",
+          "due": "2025-12-01",
+          "status": "planned"
         }
       ],
-      "body_html": "<h1>Meeting Notes</h1>\n<ul>\n<li>Standardize model naming; add exposure metadata.</li>\n</ul>",
-      "updated_at": "2025-08-19T09:52:46.125Z",
+      "body_html": "<h1>Model Makers - Analytics Engineering Team</h1>\n<p>The Model Makers are the analytics engineering powerhouse responsible for transforming raw data into reliable, accessible business insights. We maintain 500+ data models serving 1,000+ stakeholders across the organization with self-service analytics capabilities.</p>\n<h2>Data Modeling Architecture</h2>\n<h3>dbt Core Infrastructure</h3>\n<ul>\n<li><strong>Models</strong>: 500+ dbt models covering all business domains (finance, marketing, product, ops)</li>\n<li><strong>Tests</strong>: 2,000+ data quality tests ensuring model reliability and accuracy</li>\n<li><strong>Documentation</strong>: Comprehensive model lineage and business logic documentation</li>\n<li><strong>Orchestration</strong>: Automated daily builds with incremental model refresh strategies</li>\n</ul>\n<h3>Data Warehouse Design</h3>\n<ul>\n<li><strong>Star Schema</strong>: Dimensional modeling with fact/dimension tables for optimal query performance</li>\n<li><strong>SCD Type 2</strong>: Slowly changing dimensions tracking historical attribute changes</li>\n<li><strong>Aggregate Tables</strong>: Pre-computed metrics reducing query time from minutes to seconds</li>\n<li><strong>Partitioning</strong>: Time-based partitioning across 3 years of historical data</li>\n</ul>\n<h2>Current Analytics Initiatives</h2>\n<h3>Project Metrics 2.0 - Unified KPI Framework</h3>\n<p><strong>Objective</strong>: Standardize key performance indicators across all business units</p>\n<ul>\n<li><strong>Scope</strong>: Define canonical metrics for revenue, growth, retention, and operational efficiency</li>\n<li><strong>Challenge</strong>: Reconciling different calculation methodologies across departments</li>\n<li><strong>Progress</strong>: 75% complete, finance and marketing metrics standardized</li>\n<li><strong>Impact</strong>: Reduced \"metric confusion\" incidents by 90%, improved decision-making speed</li>\n</ul>\n<h3>Self-Service Analytics Platform</h3>\n<p><strong>Objective</strong>: Enable business users to create their own reports without engineering support</p>\n<ul>\n<li><strong>Tools</strong>: Looker modeling layer with curated explores and dimensions</li>\n<li><strong>Training</strong>: Quarterly workshops teaching SQL and analytics best practices</li>\n<li><strong>Adoption</strong>: 400+ business users now creating their own analyses</li>\n<li><strong>Efficiency</strong>: Reduced analytics request backlog from 200 to 20 tickets</li>\n</ul>\n<h3>Real-Time Analytics Integration</h3>\n<p><strong>Objective</strong>: Blend batch and streaming data for near real-time business insights</p>\n<ul>\n<li><strong>Architecture</strong>: dbt models consuming both warehouse and Kafka streaming data</li>\n<li><strong>Use Cases</strong>: Live product analytics, real-time fraud monitoring, instant marketing attribution</li>\n<li><strong>Timeline</strong>: Pilot with product analytics team, full rollout Q1 2026</li>\n<li><strong>Technical Challenge</strong>: Managing data freshness vs computational cost tradeoffs</li>\n</ul>\n<h2>Data Quality & Governance</h2>\n<h3>Comprehensive Testing Framework</h3>\n<ul>\n<li><strong>Model Tests</strong>: Every model has uniqueness, not-null, and referential integrity tests</li>\n<li><strong>Business Logic Tests</strong>: Custom tests validating complex business rules and calculations</li>\n<li><strong>Data Freshness</strong>: Automated alerts when critical data sources become stale</li>\n<li><strong>Anomaly Detection</strong>: Statistical tests identifying unusual patterns in key metrics</li>\n</ul>\n<h3>Documentation Standards</h3>\n<ul>\n<li><strong>Model Documentation</strong>: Every model includes purpose, business logic, and known limitations</li>\n<li><strong>Column Descriptions</strong>: All columns have human-readable descriptions and business context</li>\n<li><strong>Lineage Tracking</strong>: Visual dependency graphs showing data flow through transformation layers</li>\n<li><strong>Change Management</strong>: All model changes require peer review and impact assessment</li>\n</ul>\n<h2>Meeting Notes & Technical Discussions</h2>\n<h3>August 21, 2025 - Model Standards Review</h3>\n<p><strong>Key Initiatives:</strong></p>\n<ul>\n<li><strong>Naming Conventions</strong>: Implemented semantic model naming (fct_, dim_, int_, stg_ prefixes)</li>\n<li><strong>Metadata Framework</strong>: Added business glossary integration for consistent terminology</li>\n<li><strong>Model Contracts</strong>: Defining API contracts between upstream sources and downstream models</li>\n<li><strong>Performance Optimization</strong>: Identified 20 models consuming 80% of warehouse compute</li>\n</ul>\n<p><strong>Quality Improvements:</strong></p>\n<ul>\n<li>Introduced model-level SLAs with automated monitoring and alerting</li>\n<li>Standardized testing patterns across all business domain models</li>\n<li>Implemented automated data profiling for new data sources</li>\n<li>Created model deprecation process with stakeholder communication workflows</li>\n</ul>\n<h3>Analytics Engineering Best Practices</h3>\n<p><strong>Model Development</strong>: Git-based workflow with feature branches and code review process <strong>Testing Strategy</strong>: Test-driven development with tests written before model logic <strong>Performance Monitoring</strong>: Query performance tracking with automatic optimization recommendations <strong>Documentation</strong>: Living documentation that updates automatically with model changes</p>\n<h2>Business Impact & Stakeholder Enablement</h2>\n<h3>Finance Analytics</h3>\n<ul>\n<li><strong>Revenue Recognition</strong>: Automated monthly revenue calculations with audit trail</li>\n<li><strong>Budgeting Models</strong>: Variance analysis and forecast accuracy tracking</li>\n<li><strong>Cost Allocation</strong>: Activity-based costing models for accurate department attribution</li>\n<li><strong>Compliance Reporting</strong>: SOX-compliant financial reporting with controlled data lineage</li>\n</ul>\n<h3>Marketing Analytics</h3>\n<ul>\n<li><strong>Attribution Modeling</strong>: Multi-touch attribution across 15+ marketing channels</li>\n<li><strong>Customer Acquisition</strong>: CAC calculation by channel, campaign, and cohort</li>\n<li><strong>Lifetime Value</strong>: Predictive CLV models informing marketing spend allocation</li>\n<li><strong>Campaign Performance</strong>: Real-time campaign ROI tracking and optimization recommendations</li>\n</ul>\n<h3>Product Analytics</h3>\n<ul>\n<li><strong>User Journey Mapping</strong>: Conversion funnel analysis with statistical significance testing</li>\n<li><strong>Feature Usage</strong>: A/B test analysis framework for product experimentation</li>\n<li><strong>Retention Analysis</strong>: Cohort-based retention modeling with churn prediction</li>\n<li><strong>Product-Market Fit</strong>: Leading indicator metrics for product success</li>\n</ul>\n<h2>Technical Challenges & Solutions</h2>\n<h3>Scale & Performance</h3>\n<p><strong>Challenge</strong>: Query performance degradation as data volume grew 10x <strong>Solution</strong>: Implemented incremental models, materialized views, and query optimization <strong>Result</strong>: Reduced average query time from 45 seconds to 3 seconds</p>\n<h3>Data Source Reliability</h3>\n<p><strong>Challenge</strong>: Upstream data quality issues causing model failures <strong>Solution</strong>: Robust error handling, data validation, and graceful degradation patterns <strong>Result</strong>: Model success rate improved from 85% to 99.5%</p>\n<h3>Cross-Team Collaboration</h3>\n<p><strong>Challenge</strong>: Different teams using inconsistent metric definitions <strong>Solution</strong>: Centralized metrics store with canonical business logic <strong>Result</strong>: Eliminated \"why do these dashboards show different numbers?\" discussions</p>\n<h3>Computational Cost Management</h3>\n<p><strong>Challenge</strong>: Warehouse costs growing 300% with increased usage <strong>Solution</strong>: Smart scheduling, incremental processing, and query optimization <strong>Result</strong>: Maintained performance while reducing costs 40% through efficiency gains</p>\n<h2>Roadmap & Future Initiatives</h2>\n<h3>Q4 2025 Goals</h3>\n<ul>\n<li>Launch unified metrics catalog with searchable business glossary</li>\n<li>Implement automated model test coverage reporting and quality scoring</li>\n<li>Deploy dbt Cloud for improved collaboration and CI/CD capabilities</li>\n<li>Complete migration from legacy BI tools to standardized Looker platform</li>\n</ul>\n<h3>2026 Strategic Initiatives</h3>\n<ul>\n<li><strong>Semantic Layer</strong>: Implement dbt Semantic Layer for consistent metric calculations</li>\n<li><strong>ML Integration</strong>: Bridge analytics models with ML feature engineering pipelines</li>\n<li><strong>Real-Time Models</strong>: Extend dbt to handle streaming data transformations</li>\n<li><strong>Data Mesh</strong>: Enable domain teams to own their analytical data products</li>\n</ul>\n<h3>Innovation Experiments</h3>\n<ul>\n<li><strong>Natural Language Queries</strong>: AI-powered SQL generation for business users</li>\n<li><strong>Automated Insights</strong>: Machine learning models identifying interesting patterns in data</li>\n<li><strong>Predictive Analytics</strong>: Statistical models embedded directly in dbt transformations</li>\n<li><strong>Data Apps</strong>: Interactive applications built on top of dbt model outputs</li>\n</ul>\n<h2>Team Performance Metrics</h2>\n<h3>Technical Excellence</h3>\n<ul>\n<li><strong>Model Reliability</strong>: 99.5% successful daily build rate</li>\n<li><strong>Test Coverage</strong>: 95% of models have comprehensive test coverage</li>\n<li><strong>Documentation</strong>: 100% of production models have business documentation</li>\n<li><strong>Performance</strong>: Average query time under 5 seconds for standard reports</li>\n</ul>\n<h3>Business Value</h3>\n<ul>\n<li><strong>Self-Service Adoption</strong>: 400+ business users creating their own analyses</li>\n<li><strong>Request Fulfillment</strong>: Reduced analytics request backlog by 90%</li>\n<li><strong>Decision Speed</strong>: Faster access to insights enabling 2x faster business decisions</li>\n<li><strong>Cost Efficiency</strong>: 40% reduction in warehouse costs through optimization</li>\n</ul>\n<h3>Stakeholder Satisfaction</h3>\n<ul>\n<li><strong>User Training</strong>: 200+ stakeholders trained in self-service analytics</li>\n<li><strong>Knowledge Transfer</strong>: Monthly \"Analytics Office Hours\" with 100+ attendees</li>\n<li><strong>Cross-Team Collaboration</strong>: Embedded analytics engineers in product and marketing teams</li>\n<li><strong>Executive Reporting</strong>: Automated C-level dashboards with 99.9% uptime</li>\n</ul>",
+      "updated_at": "2025-08-20T00:06:01.223Z",
       "source_file": "content/teams/model-makers.md",
-      "excerpt": "# Meeting Notes - Standardize model naming; add exposure metadata.",
+      "excerpt": "# Model Makers - Analytics Engineering Team The Model Makers are the analytics engineering powerhouse responsible for transforming raw data into reliable, accessible business insights. We maintain 500+ data models serving 1,000+ stakeholder",
       "customer_type": "internal-team"
     },
     {
@@ -399,12 +836,20 @@
       "frameworks": [
         "Spark",
         "Airflow",
-        "Delta Lake"
+        "Delta Lake",
+        "Kubernetes",
+        "Terraform",
+        "Prometheus",
+        "Grafana",
+        "Apache Kafka"
       ],
       "services": [],
       "tags": [
         "internal",
-        "team"
+        "team",
+        "critical",
+        "finance",
+        "core-infrastructure"
       ],
       "feature_requests": [],
       "issues": [],
@@ -423,6 +868,21 @@
           "name": "Jules Park",
           "role": "SRE",
           "email": ""
+        },
+        {
+          "name": "Chen Li",
+          "role": "Senior Data Engineer",
+          "email": ""
+        },
+        {
+          "name": "Sarah Kim",
+          "role": "DevOps Engineer",
+          "email": ""
+        },
+        {
+          "name": "Marcus Thompson",
+          "role": "Platform Engineer",
+          "email": ""
         }
       ],
       "avatar": "assets/avatars/neon-core.svg",
@@ -438,6 +898,18 @@
         {
           "name": "Jules Park",
           "role": "SRE"
+        },
+        {
+          "name": "Chen Li",
+          "role": "Senior Data Engineer"
+        },
+        {
+          "name": "Sarah Kim",
+          "role": "DevOps Engineer"
+        },
+        {
+          "name": "Marcus Thompson",
+          "role": "Platform Engineer"
         }
       ],
       "libraries": [
@@ -452,11 +924,33 @@
         {
           "name": "Delta Lake",
           "project": "Data Lake"
+        },
+        {
+          "name": "Kubernetes",
+          "project": "Container Orchestration"
+        },
+        {
+          "name": "Terraform",
+          "project": "Infrastructure as Code"
+        },
+        {
+          "name": "Prometheus",
+          "project": "Monitoring"
+        },
+        {
+          "name": "Grafana",
+          "project": "Observability"
+        },
+        {
+          "name": "Apache Kafka",
+          "project": "Event Streaming"
         }
       ],
       "meeting_dates": [
         "2025-08-20",
-        "2025-09-17"
+        "2025-09-17",
+        "2025-10-15",
+        "2025-11-19"
       ],
       "asks": [
         {
@@ -468,12 +962,32 @@
           "ask": "Infra budget approval",
           "due": "2025-09-15",
           "status": "under-review"
+        },
+        {
+          "ask": "Additional GPU resources",
+          "due": "2025-09-30",
+          "status": "planned"
+        },
+        {
+          "ask": "Security audit for new pipeline",
+          "due": "2025-10-10",
+          "status": "proposed"
+        },
+        {
+          "ask": "Cross-region backup strategy",
+          "due": "2025-10-20",
+          "status": "under-review"
+        },
+        {
+          "ask": "Performance optimization budget",
+          "due": "2025-11-01",
+          "status": "proposed"
         }
       ],
-      "body_html": "<h1>Meeting Notes</h1>\n<ul>\n<li>Harden pipeline retries and improve Delta compaction cadence.</li>\n<li>Review cost telemetry dashboards with Finance.</li>\n</ul>",
-      "updated_at": "2025-08-19T09:52:03.663Z",
+      "body_html": "<h1>Team Overview</h1>\n<p>Neon Core is the backbone data engineering team responsible for all critical finance and core business data pipelines. We handle massive scale ETL operations processing over 10TB of data daily across multiple business units.</p>\n<h2>Current Projects</h2>\n<h3>Q3 2025 Initiatives</h3>\n<ul>\n<li><strong>Project Phoenix</strong>: Complete migration of legacy finance ETL to Delta Lake architecture</li>\n<li><strong>Real-time Analytics</strong>: Implement streaming analytics for fraud detection</li>\n<li><strong>Cost Optimization</strong>: Reduce compute costs by 40% through better resource management</li>\n<li><strong>Data Governance</strong>: Implement comprehensive data lineage tracking</li>\n</ul>\n<h3>Infrastructure Improvements</h3>\n<ul>\n<li><strong>Cluster Autoscaling</strong>: Dynamic resource allocation based on workload patterns  </li>\n<li><strong>Multi-region Setup</strong>: Disaster recovery across 3 AWS regions</li>\n<li><strong>Performance Monitoring</strong>: Real-time pipeline health dashboards</li>\n<li><strong>Security Hardening</strong>: Zero-trust security model implementation</li>\n</ul>\n<h2>Meeting Notes</h2>\n<h3>August 20, 2025 - Sprint Planning</h3>\n<ul>\n<li>Completed Delta Lake migration for customer data (85% done)</li>\n<li>Performance improvements showed 60% faster query times</li>\n<li>Identified bottlenecks in nightly reconciliation jobs</li>\n<li>Need to resolve Spark memory optimization issues</li>\n</ul>\n<h3>Technical Discussions</h3>\n<ul>\n<li><strong>Pipeline Reliability</strong>: Implementing circuit breaker patterns for external API calls</li>\n<li><strong>Data Quality</strong>: Adding automated data validation at ingestion points</li>\n<li><strong>Monitoring</strong>: Enhanced alerting for SLA violations</li>\n<li><strong>Capacity Planning</strong>: Projected 200% growth in data volume by Q1 2026</li>\n</ul>\n<h2>Key Challenges</h2>\n<h3>Resource Constraints</h3>\n<ul>\n<li>Current test environment insufficient for load testing</li>\n<li>GPU resources needed for ML feature engineering</li>\n<li>Storage costs increasing with data retention requirements</li>\n</ul>\n<h3>Technical Debt</h3>\n<ul>\n<li>Legacy Hadoop clusters still running critical monthly reports</li>\n<li>Manual deployment processes causing deployment delays</li>\n<li>Inconsistent data schemas across different source systems</li>\n</ul>\n<h3>Compliance & Security</h3>\n<ul>\n<li>GDPR compliance for European customer data</li>\n<li>SOX compliance for financial reporting pipelines</li>\n<li>Data encryption at rest and in transit requirements</li>\n</ul>\n<h2>Upcoming Milestones</h2>\n<p>1. <strong>September 1</strong>: Complete test cluster provisioning 2. <strong>September 15</strong>: Finalize infrastructure budget planning 3. <strong>September 30</strong>: Launch GPU-accelerated feature engineering 4. <strong>October 10</strong>: Security audit completion 5. <strong>October 20</strong>: Cross-region backup implementation 6. <strong>November 1</strong>: Performance optimization project kickoff</p>\n<h2>Team Metrics</h2>\n<h3>Current Performance</h3>\n<ul>\n<li><strong>Pipeline Uptime</strong>: 99.97% SLA achievement</li>\n<li><strong>Data Freshness</strong>: 95% of reports delivered within 2 hours</li>\n<li><strong>Cost Efficiency</strong>: 15% under budget for Q3</li>\n<li><strong>Incident Response</strong>: Average resolution time 12 minutes</li>\n</ul>\n<h3>Goals for Q4</h3>\n<ul>\n<li>Achieve 99.99% pipeline uptime</li>\n<li>Reduce data latency to under 30 minutes</li>\n<li>Maintain cost efficiency while scaling 2x</li>\n<li>Implement predictive alerting to prevent incidents</li>\n</ul>",
+      "updated_at": "2025-08-19T21:22:27.053Z",
       "source_file": "content/teams/neon-core.md",
-      "excerpt": "# Meeting Notes - Harden pipeline retries and improve Delta compaction cadence. - Review cost telemetry dashboards with Finance.",
+      "excerpt": "# Team Overview Neon Core is the backbone data engineering team responsible for all critical finance and core business data pipelines. We handle massive scale ETL operations processing over 10TB of data daily across multiple business units.",
       "customer_type": "internal-team"
     },
     {
@@ -514,7 +1028,7 @@
         }
       ],
       "body_html": "<h1>Summary</h1>\n<p>OmniTek focuses on ultra-low-latency streams; they prefer self-serve patterns and minimal SLO dependencies.</p>\n<h2>Notes</h2>\n<ul>\n<li>Concerned about cross-region lag during failover.</li>\n<li>Requests better observability hooks from connectors.</li>\n</ul>",
-      "updated_at": "2025-08-19T09:16:04.841Z",
+      "updated_at": "2025-08-19T18:30:15.975Z",
       "source_file": "content/customers/omnitek.md",
       "excerpt": "# Summary OmniTek focuses on ultra-low-latency streams; they prefer self-serve patterns and minimal SLO dependencies. ## Notes - Concerned about cross-region lag during failover. - Requests better observability hooks from connectors.",
       "customer_type": "external",
@@ -523,270 +1037,632 @@
     {
       "id": "ops-squad",
       "name": "Ops Squad",
-      "account_owner": "Theo J",
+      "account_owner": "Theo Jackson",
       "frameworks": [
         "Terraform",
-        "Flyway"
+        "Flyway",
+        "Kubernetes",
+        "Prometheus",
+        "Grafana",
+        "ArgoCD",
+        "Vault",
+        "Consul"
       ],
       "services": [],
       "tags": [
         "internal",
-        "team"
+        "team",
+        "sre",
+        "devops",
+        "infrastructure",
+        "reliability",
+        "monitoring"
       ],
       "feature_requests": [],
       "issues": [],
       "contacts": [
         {
-          "name": "Theo J",
-          "role": "On-call",
+          "name": "Theo Jackson",
+          "role": "Site Reliability Engineering Lead",
           "email": ""
         },
         {
-          "name": "Priya C",
-          "role": "Reliability",
+          "name": "Priya Chakraborty",
+          "role": "Principal DevOps Engineer",
+          "email": ""
+        },
+        {
+          "name": "Miguel Santos",
+          "role": "Infrastructure Engineer",
+          "email": ""
+        },
+        {
+          "name": "Luna Kim",
+          "role": "Platform Reliability Engineer",
+          "email": ""
+        },
+        {
+          "name": "Jordan Williams",
+          "role": "Cloud Operations Specialist",
+          "email": ""
+        },
+        {
+          "name": "Aarav Singh",
+          "role": "Monitoring & Observability Engineer",
           "email": ""
         }
       ],
       "avatar": "assets/avatars/ops-squad.svg",
       "members": [
         {
-          "name": "Theo J",
-          "role": "On-call"
+          "name": "Theo Jackson",
+          "role": "Site Reliability Engineering Lead"
         },
         {
-          "name": "Priya C",
-          "role": "Reliability"
+          "name": "Priya Chakraborty",
+          "role": "Principal DevOps Engineer"
+        },
+        {
+          "name": "Miguel Santos",
+          "role": "Infrastructure Engineer"
+        },
+        {
+          "name": "Luna Kim",
+          "role": "Platform Reliability Engineer"
+        },
+        {
+          "name": "Jordan Williams",
+          "role": "Cloud Operations Specialist"
+        },
+        {
+          "name": "Aarav Singh",
+          "role": "Monitoring & Observability Engineer"
         }
       ],
       "libraries": [
         {
           "name": "Terraform",
-          "project": "Infra"
+          "project": "Infrastructure as Code"
         },
         {
           "name": "Flyway",
-          "project": "DB Migrations"
+          "project": "Database Migration Management"
+        },
+        {
+          "name": "Kubernetes",
+          "project": "Container Orchestration"
+        },
+        {
+          "name": "Prometheus",
+          "project": "Metrics Collection & Alerting"
+        },
+        {
+          "name": "Grafana",
+          "project": "Observability Dashboards"
+        },
+        {
+          "name": "ArgoCD",
+          "project": "GitOps Deployment"
+        },
+        {
+          "name": "Vault",
+          "project": "Secrets Management"
+        },
+        {
+          "name": "Consul",
+          "project": "Service Discovery"
         }
       ],
       "meeting_dates": [
         "2025-08-19",
-        "2025-09-12"
+        "2025-09-12",
+        "2025-10-10",
+        "2025-11-14"
       ],
       "asks": [
         {
-          "ask": "Pager SLO budget",
+          "ask": "SRE error budget framework",
           "due": "2025-09-05",
+          "status": "proposed"
+        },
+        {
+          "ask": "Multi-region disaster recovery",
+          "due": "2025-09-30",
+          "status": "under-review"
+        },
+        {
+          "ask": "Observability platform upgrade",
+          "due": "2025-10-15",
+          "status": "planned"
+        },
+        {
+          "ask": "Infrastructure cost optimization",
+          "due": "2025-11-01",
+          "status": "under-review"
+        },
+        {
+          "ask": "On-call rotation automation",
+          "due": "2025-11-30",
           "status": "proposed"
         }
       ],
-      "body_html": "<h1>Meeting Notes</h1>\n<ul>\n<li>Rotate on-call; improve runbooks.</li>\n</ul>",
-      "updated_at": "2025-08-19T09:52:52.995Z",
+      "body_html": "<h1>Ops Squad - Site Reliability & Infrastructure Team</h1>\n<p>The Ops Squad ensures the reliability, scalability, and performance of our entire technology infrastructure. We maintain 99.99% uptime across 500+ services, manage multi-cloud deployments, and implement SRE best practices to keep the platform running smoothly 24/7.</p>\n<h2>Infrastructure Architecture Overview</h2>\n<h3>Multi-Cloud Platform</h3>\n<ul>\n<li><strong>AWS</strong>: Primary production environment with 15+ regions for global coverage</li>\n<li><strong>Google Cloud</strong>: Analytics and ML workloads with BigQuery and Vertex AI integration</li>\n<li><strong>Azure</strong>: Backup and disaster recovery infrastructure with hybrid connectivity</li>\n<li><strong>Edge Computing</strong>: CDN integration with 100+ global edge locations</li>\n</ul>\n<h3>Container Orchestration Platform</h3>\n<ul>\n<li><strong>Kubernetes Clusters</strong>: 25+ production clusters across multiple regions and environments</li>\n<li><strong>Service Mesh</strong>: Istio-based service communication with zero-trust security</li>\n<li><strong>GitOps Deployment</strong>: ArgoCD managing 200+ applications with automated rollbacks</li>\n<li><strong>Auto-scaling</strong>: HPA and VPA ensuring optimal resource utilization</li>\n</ul>\n<h2>Site Reliability Engineering Excellence</h2>\n<h3>SLO/SLI Framework</h3>\n<p><strong>Service Level Objectives:</strong></p>\n<ul>\n<li><strong>API Availability</strong>: 99.95% uptime for customer-facing APIs</li>\n<li><strong>Response Time</strong>: P99 latency under 200ms for critical user journeys  </li>\n<li><strong>Data Freshness</strong>: Analytics data updated within 15 minutes of source changes</li>\n<li><strong>Deployment Success</strong>: 99.5% successful deployment rate with automated rollbacks</li>\n</ul>\n<p><strong>Service Level Indicators:</strong></p>\n<ul>\n<li><strong>Golden Signals</strong>: Latency, throughput, errors, and saturation monitoring</li>\n<li><strong>Business Metrics</strong>: User conversion rates, revenue impact, customer satisfaction</li>\n<li><strong>Infrastructure Health</strong>: CPU, memory, disk, network utilization across all services</li>\n<li><strong>Security Posture</strong>: Vulnerability scan results, compliance status, incident response times</li>\n</ul>\n<h3>Error Budget Management</h3>\n<ul>\n<li><strong>Monthly Error Budget</strong>: Calculated based on SLO targets with burn-rate alerting</li>\n<li><strong>Feature Velocity</strong>: Balance reliability investment with new feature development</li>\n<li><strong>Incident Learning</strong>: Blameless post-mortems with systemic improvement actions</li>\n<li><strong>Risk Assessment</strong>: Proactive risk analysis for new deployments and changes</li>\n</ul>\n<h2>Operational Excellence Initiatives</h2>\n<h3>Project Phoenix - Infrastructure Modernization</h3>\n<p><strong>Objective</strong>: Migrate legacy infrastructure to cloud-native, kubernetes-based platform</p>\n<ul>\n<li><strong>Scope</strong>: 200+ legacy applications and 50+ physical servers</li>\n<li><strong>Approach</strong>: Strangler fig pattern with gradual migration and validation</li>\n<li><strong>Progress</strong>: 70% complete, critical systems migrated, legacy retirement in progress</li>\n<li><strong>Benefits</strong>: 50% cost reduction, 10x faster deployments, improved reliability</li>\n</ul>\n<h3>Observability 2.0 Platform</h3>\n<p><strong>Objective</strong>: Implement comprehensive observability with OpenTelemetry and modern tooling</p>\n<ul>\n<li><strong>Components</strong>: Distributed tracing, metrics collection, log aggregation, alerting</li>\n<li><strong>Integration</strong>: Custom dashboards for business metrics and technical health</li>\n<li><strong>AI/ML Integration</strong>: Anomaly detection and predictive alerting</li>\n<li><strong>Status</strong>: Core platform deployed, application instrumentation 80% complete</li>\n</ul>\n<h3>Disaster Recovery Automation</h3>\n<p><strong>Objective</strong>: Fully automated disaster recovery with RTO under 15 minutes</p>\n<ul>\n<li><strong>Architecture</strong>: Active-passive multi-region setup with automated failover</li>\n<li><strong>Testing</strong>: Monthly disaster recovery drills with automated validation</li>\n<li><strong>Dependencies</strong>: Database replication, DNS failover, traffic routing automation</li>\n<li><strong>Timeline</strong>: Primary components complete, full automation by Q4 2025</li>\n</ul>\n<h2>Infrastructure as Code & Automation</h2>\n<h3>Terraform Excellence</h3>\n<ul>\n<li><strong>Infrastructure Modules</strong>: Reusable Terraform modules for consistent deployments</li>\n<li><strong>Multi-Environment</strong>: Dev, staging, production with environment-specific configurations</li>\n<li><strong>State Management</strong>: Remote state with locking and encryption</li>\n<li><strong>Cost Management</strong>: Resource tagging and automated cost optimization</li>\n</ul>\n<h3>CI/CD Pipeline Architecture</h3>\n<ul>\n<li><strong>GitOps Workflow</strong>: All infrastructure and application changes through Git</li>\n<li><strong>Automated Testing</strong>: Infrastructure validation, security scanning, performance testing</li>\n<li><strong>Progressive Deployment</strong>: Canary deployments with automated rollback triggers</li>\n<li><strong>Compliance Integration</strong>: Automated compliance checking and audit trail generation</li>\n</ul>\n<h2>Meeting Notes & Strategic Planning</h2>\n<h3>August 19, 2025 - SRE Quarterly Review</h3>\n<p><strong>Reliability Achievements:</strong></p>\n<ul>\n<li><strong>Uptime</strong>: Exceeded 99.99% SLA for 12 consecutive months</li>\n<li><strong>MTTR Improvement</strong>: Reduced mean time to recovery from 45 minutes to 8 minutes</li>\n<li><strong>Incident Reduction</strong>: 60% fewer production incidents through proactive monitoring</li>\n<li><strong>Cost Optimization</strong>: 35% infrastructure cost reduction while scaling 2x</li>\n</ul>\n<p><strong>Infrastructure Improvements:</strong></p>\n<ul>\n<li><strong>Kubernetes Upgrade</strong>: Successfully upgraded all clusters to v1.28 with zero downtime</li>\n<li><strong>Security Hardening</strong>: Implemented Pod Security Standards and network policies</li>\n<li><strong>Monitoring Enhancement</strong>: Deployed custom SLI dashboards for all critical services</li>\n<li><strong>Automation Expansion</strong>: 80% of operational tasks now fully automated</li>\n</ul>\n<h3>On-Call & Incident Management</h3>\n<p><strong>On-Call Rotation Optimization:</strong></p>\n<ul>\n<li><strong>Follow-the-Sun</strong>: 24/7 coverage with regional specialists for optimal response</li>\n<li><strong>Escalation Procedures</strong>: Clear escalation paths with executive notification workflows</li>\n<li><strong>Burnout Prevention</strong>: Mandatory post-incident recovery time and workload balancing</li>\n<li><strong>Knowledge Sharing</strong>: Regular incident review sessions and runbook improvements</li>\n</ul>\n<p><strong>Incident Response Excellence:</strong></p>\n<ul>\n<li><strong>Severity Classification</strong>: Clear incident severity levels with response time SLAs</li>\n<li><strong>Communication</strong>: Automated status page updates and stakeholder notifications</li>\n<li><strong>Root Cause Analysis</strong>: Structured RCA process with action item tracking</li>\n<li><strong>Learning Culture</strong>: Blameless post-mortems focusing on systemic improvements</li>\n</ul>\n<h2>Technical Challenges & Solutions</h2>\n<h3>Scale & Performance Optimization</h3>\n<p><strong>Challenge</strong>: 10x traffic growth overwhelming existing infrastructure <strong>Solution</strong>: Implemented auto-scaling, caching layers, and performance optimization <strong>Result</strong>: Maintained sub-200ms response times while handling 10x load increase</p>\n<h3>Multi-Cloud Complexity</h3>\n<p><strong>Challenge</strong>: Managing consistent deployments across multiple cloud providers <strong>Solution</strong>: Standardized Terraform modules and Kubernetes abstractions <strong>Result</strong>: Reduced deployment complexity and improved infrastructure portability</p>\n<h3>Security & Compliance</h3>\n<p><strong>Challenge</strong>: Meeting SOC2, HIPAA, and GDPR requirements across global infrastructure <strong>Solution</strong>: Automated compliance monitoring and policy-as-code implementation <strong>Result</strong>: Achieved 100% compliance audit success rate with automated evidence collection</p>\n<h3>Cost Management at Scale</h3>\n<p><strong>Challenge</strong>: Cloud costs growing faster than business metrics <strong>Solution</strong>: Implemented FinOps practices with automated rightsizing and scheduling <strong>Result</strong>: 40% cost reduction while maintaining performance and reliability standards</p>\n<h2>Monitoring & Observability Excellence</h2>\n<h3>Comprehensive Monitoring Stack</h3>\n<ul>\n<li><strong>Metrics</strong>: Prometheus with custom exporters for business and technical metrics</li>\n<li><strong>Logging</strong>: Centralized logging with ELK stack and intelligent log analysis</li>\n<li><strong>Tracing</strong>: Distributed tracing with Jaeger for complex transaction analysis</li>\n<li><strong>Alerting</strong>: PagerDuty integration with intelligent alert routing and escalation</li>\n</ul>\n<h3>Proactive Monitoring Strategies</h3>\n<ul>\n<li><strong>Synthetic Monitoring</strong>: Continuous testing of critical user journeys</li>\n<li><strong>Chaos Engineering</strong>: Regular chaos experiments to validate system resilience</li>\n<li><strong>Capacity Planning</strong>: Predictive analysis for resource planning and scaling</li>\n<li><strong>Performance Baseline</strong>: Continuous performance benchmarking and regression detection</li>\n</ul>\n<h2>Infrastructure Security & Compliance</h2>\n<h3>Zero-Trust Security Model</h3>\n<ul>\n<li><strong>Network Segmentation</strong>: Micro-segmentation with service mesh security policies</li>\n<li><strong>Identity Management</strong>: RBAC with just-in-time access and audit logging</li>\n<li><strong>Secrets Management</strong>: Vault-based secrets rotation with encryption at rest</li>\n<li><strong>Vulnerability Management</strong>: Automated scanning and patching with security dashboards</li>\n</ul>\n<h3>Compliance Automation</h3>\n<ul>\n<li><strong>Policy as Code</strong>: Automated policy enforcement with Open Policy Agent</li>\n<li><strong>Audit Trail</strong>: Immutable audit logs with tamper-proof storage</li>\n<li><strong>Compliance Monitoring</strong>: Real-time compliance status with automated remediation</li>\n<li><strong>Documentation</strong>: Auto-generated compliance reports and evidence collection</li>\n</ul>\n<h2>Team Performance & KPIs</h2>\n<h3>Operational Metrics</h3>\n<ul>\n<li><strong>System Uptime</strong>: 99.99% availability across all critical services</li>\n<li><strong>Deployment Frequency</strong>: 50+ deployments per day with 99.5% success rate</li>\n<li><strong>Incident Response</strong>: Mean time to detection under 2 minutes, MTTR under 8 minutes</li>\n<li><strong>Infrastructure Efficiency</strong>: 95% resource utilization with auto-scaling optimization</li>\n</ul>\n<h3>Business Impact</h3>\n<ul>\n<li><strong>Cost Optimization</strong>: $2M annual savings through infrastructure rightsizing</li>\n<li><strong>Developer Velocity</strong>: 5x faster deployment cycles enabling rapid feature delivery</li>\n<li><strong>Customer Experience</strong>: 99.95% API availability supporting business growth</li>\n<li><strong>Risk Mitigation</strong>: Zero data breaches, 100% compliance audit success rate</li>\n</ul>\n<h3>Team Development</h3>\n<ul>\n<li><strong>Skill Development</strong>: 100% team members certified in cloud platforms and SRE practices</li>\n<li><strong>Knowledge Sharing</strong>: Weekly tech talks and cross-team collaboration sessions</li>\n<li><strong>Innovation</strong>: 10+ internal tools developed and open-sourced for community benefit</li>\n<li><strong>Mentorship</strong>: Trained 25+ engineers across teams in SRE and DevOps practices</li>\n</ul>\n<h2>Future Roadmap & Innovation</h2>\n<h3>2026 Strategic Initiatives</h3>\n<ul>\n<li><strong>AI-Powered Operations</strong>: Machine learning for predictive maintenance and optimization</li>\n<li><strong>Edge Computing</strong>: Distributed computing platform for ultra-low latency applications</li>\n<li><strong>Quantum-Ready Security</strong>: Post-quantum cryptography implementation</li>\n<li><strong>Carbon-Neutral Infrastructure</strong>: Renewable energy integration and carbon offset tracking</li>\n</ul>\n<h3>Emerging Technologies</h3>\n<ul>\n<li><strong>WebAssembly</strong>: Edge computing with WASM for enhanced security and performance</li>\n<li><strong>Service Mesh Evolution</strong>: Advanced traffic management and security policies</li>\n<li><strong>Infrastructure AI</strong>: Automated infrastructure optimization using machine learning</li>\n<li><strong>Sustainability</strong>: Green computing practices and environmental impact monitoring</li>\n</ul>",
+      "updated_at": "2025-08-20T00:19:50.554Z",
       "source_file": "content/teams/ops-squad.md",
-      "excerpt": "# Meeting Notes - Rotate on-call; improve runbooks.",
+      "excerpt": "# Ops Squad - Site Reliability & Infrastructure Team The Ops Squad ensures the reliability, scalability, and performance of our entire technology infrastructure. We maintain 99.99% uptime across 500+ services, manage multi-cloud deployments",
       "customer_type": "internal-team"
     },
     {
       "id": "platform-x",
       "name": "Platform X",
-      "account_owner": "Owen S",
+      "account_owner": "Owen Sterling",
       "frameworks": [
         "Kubernetes",
-        "ArgoCD"
+        "ArgoCD",
+        "Istio",
+        "Helm",
+        "Crossplane",
+        "Falco",
+        "Cilium",
+        "KEDA"
       ],
       "services": [],
       "tags": [
         "internal",
-        "team"
+        "team",
+        "kubernetes",
+        "platform-engineering",
+        "devops",
+        "cloud-native"
       ],
       "feature_requests": [],
       "issues": [],
       "contacts": [
         {
-          "name": "Owen S",
-          "role": "Architect",
+          "name": "Owen Sterling",
+          "role": "Principal Platform Architect",
           "email": ""
         },
         {
-          "name": "Jia W",
-          "role": "Engineer",
+          "name": "Jia Wang",
+          "role": "Senior Kubernetes Engineer",
           "email": ""
         },
         {
-          "name": "Kira N",
-          "role": "Engineer",
+          "name": "Kira Nakamura",
+          "role": "DevOps Platform Engineer",
+          "email": ""
+        },
+        {
+          "name": "Diego Martinez",
+          "role": "Container Platform Specialist",
+          "email": ""
+        },
+        {
+          "name": "Aisha Patel",
+          "role": "Cloud Native Engineer",
+          "email": ""
+        },
+        {
+          "name": "Felix Thompson",
+          "role": "Platform Automation Engineer",
           "email": ""
         }
       ],
       "avatar": "assets/avatars/platform-x.svg",
       "members": [
         {
-          "name": "Owen S",
-          "role": "Architect"
+          "name": "Owen Sterling",
+          "role": "Principal Platform Architect"
         },
         {
-          "name": "Jia W",
-          "role": "Engineer"
+          "name": "Jia Wang",
+          "role": "Senior Kubernetes Engineer"
         },
         {
-          "name": "Kira N",
-          "role": "Engineer"
+          "name": "Kira Nakamura",
+          "role": "DevOps Platform Engineer"
+        },
+        {
+          "name": "Diego Martinez",
+          "role": "Container Platform Specialist"
+        },
+        {
+          "name": "Aisha Patel",
+          "role": "Cloud Native Engineer"
+        },
+        {
+          "name": "Felix Thompson",
+          "role": "Platform Automation Engineer"
         }
       ],
       "libraries": [
         {
           "name": "Kubernetes",
-          "project": "Runtime"
+          "project": "Container Orchestration Platform"
         },
         {
           "name": "ArgoCD",
-          "project": "GitOps"
+          "project": "GitOps Deployment Platform"
+        },
+        {
+          "name": "Istio",
+          "project": "Service Mesh Infrastructure"
+        },
+        {
+          "name": "Helm",
+          "project": "Package Management"
+        },
+        {
+          "name": "Crossplane",
+          "project": "Infrastructure Provisioning"
+        },
+        {
+          "name": "Falco",
+          "project": "Runtime Security Monitoring"
+        },
+        {
+          "name": "Cilium",
+          "project": "Container Networking"
+        },
+        {
+          "name": "KEDA",
+          "project": "Event-Driven Autoscaling"
         }
       ],
       "meeting_dates": [
         "2025-08-28",
-        "2025-09-26"
+        "2025-09-26",
+        "2025-10-24",
+        "2025-11-28"
       ],
       "asks": [
         {
-          "ask": "Prod multi-tenancy plan",
+          "ask": "Production multi-tenancy architecture",
           "due": "2025-10-01",
+          "status": "proposed"
+        },
+        {
+          "ask": "Kubernetes cluster scaling budget",
+          "due": "2025-10-15",
+          "status": "under-review"
+        },
+        {
+          "ask": "Service mesh performance optimization",
+          "due": "2025-11-01",
+          "status": "planned"
+        },
+        {
+          "ask": "Container security scanning platform",
+          "due": "2025-11-15",
+          "status": "under-review"
+        },
+        {
+          "ask": "Developer self-service portal",
+          "due": "2025-12-01",
           "status": "proposed"
         }
       ],
-      "body_html": "<h1>Meeting Notes</h1>\n<ul>\n<li>Evaluate node pool isolation; cost vs resilience.</li>\n</ul>",
-      "updated_at": "2025-08-19T09:53:05.364Z",
+      "body_html": "<h1>Platform X - Cloud Native Platform Engineering</h1>\n<p>Platform X is the foundational team building and operating our cloud-native application platform. We provide developers with a self-service, secure, and scalable Kubernetes-based platform that enables rapid application deployment while maintaining enterprise-grade reliability and security standards.</p>\n<h2>Cloud Native Platform Architecture</h2>\n<h3>Kubernetes Infrastructure</h3>\n<ul>\n<li><strong>Production Clusters</strong>: 15 Kubernetes clusters across multiple regions and environments</li>\n<li><strong>Multi-Cloud Deployment</strong>: AWS EKS, Google GKE, and Azure AKS for vendor diversification</li>\n<li><strong>Node Pool Strategy</strong>: Specialized node pools for compute, memory, GPU, and spot workloads</li>\n<li><strong>Auto-Scaling</strong>: Cluster autoscaler and HPA enabling elastic resource allocation</li>\n</ul>\n<h3>Developer Experience Platform</h3>\n<ul>\n<li><strong>GitOps Workflow</strong>: ArgoCD managing 500+ applications with automated sync and rollback</li>\n<li><strong>Self-Service Portal</strong>: Custom developer portal for application lifecycle management</li>\n<li><strong>CI/CD Integration</strong>: Seamless integration with existing CI/CD pipelines and testing frameworks</li>\n<li><strong>Resource Management</strong>: Automated resource quotas and limits with cost attribution</li>\n</ul>\n<h2>Platform Engineering Excellence</h2>\n<h3>Multi-Tenancy Architecture Design</h3>\n<p><strong>Objective</strong>: Secure, scalable multi-tenant platform supporting 100+ development teams</p>\n<ul>\n<li><strong>Namespace Isolation</strong>: Network policies and RBAC ensuring tenant separation</li>\n<li><strong>Resource Allocation</strong>: Fair resource sharing with burst capabilities and cost tracking</li>\n<li><strong>Security Boundaries</strong>: Pod security standards and admission controllers</li>\n<li><strong>Compliance</strong>: SOC2 and HIPAA compliant workload isolation</li>\n</ul>\n<h3>Service Mesh Implementation</h3>\n<p><strong>Istio-Based Architecture:</strong></p>\n<ul>\n<li><strong>Traffic Management</strong>: Intelligent routing, load balancing, and circuit breaking</li>\n<li><strong>Security</strong>: Mutual TLS, authorization policies, and zero-trust networking</li>\n<li><strong>Observability</strong>: Distributed tracing, metrics collection, and service topology</li>\n<li><strong>Performance</strong>: Sub-millisecond latency overhead with 99.99% reliability</li>\n</ul>\n<h3>Platform Automation & Self-Service</h3>\n<p><strong>Developer Productivity Focus:</strong></p>\n<ul>\n<li><strong>Application Templates</strong>: Standardized Helm charts and Kubernetes manifests</li>\n<li><strong>Automated Provisioning</strong>: Infrastructure as Code with Crossplane and Terraform</li>\n<li><strong>Policy Enforcement</strong>: Open Policy Agent ensuring security and compliance</li>\n<li><strong>Cost Management</strong>: Real-time cost allocation and optimization recommendations</li>\n</ul>\n<h2>Current Platform Initiatives</h2>\n<h3>Project Constellation - Multi-Tenant Production Platform</h3>\n<p><strong>Objective</strong>: Launch enterprise-grade multi-tenant Kubernetes platform</p>\n<ul>\n<li><strong>Scope</strong>: Support 100+ teams with strict isolation and performance guarantees</li>\n<li><strong>Architecture</strong>: Namespace-based tenancy with cluster-level isolation for sensitive workloads</li>\n<li><strong>Security</strong>: Zero-trust networking with automated threat detection and response</li>\n<li><strong>Timeline</strong>: Pilot with 10 teams complete, full rollout planned for Q4 2025</li>\n</ul>\n<h3>Developer Experience 2.0</h3>\n<p><strong>Objective</strong>: Create world-class developer experience with self-service capabilities</p>\n<ul>\n<li><strong>Features</strong>: One-click application deployment, automated testing, and monitoring setup</li>\n<li><strong>Integration</strong>: Deep integration with existing development tools and workflows</li>\n<li><strong>Documentation</strong>: Interactive tutorials and comprehensive platform documentation</li>\n<li><strong>Status</strong>: Core portal complete, advanced features in development</li>\n</ul>\n<h3>Edge Computing Platform</h3>\n<p><strong>Objective</strong>: Extend Kubernetes platform to edge locations for ultra-low latency applications</p>\n<ul>\n<li><strong>Architecture</strong>: Lightweight Kubernetes distributions with centralized management</li>\n<li><strong>Use Cases</strong>: Real-time processing, IoT data collection, and content delivery</li>\n<li><strong>Challenges</strong>: Intermittent connectivity, resource constraints, and remote management</li>\n<li><strong>Progress</strong>: Proof of concept complete, pilot deployment planned</li>\n</ul>\n<h2>Technical Leadership & Innovation</h2>\n<h3>Kubernetes Expertise</h3>\n<ul>\n<li><strong>Core Contributions</strong>: Active contributors to Kubernetes, Istio, and ArgoCD projects</li>\n<li><strong>Custom Operators</strong>: Developed 15+ Kubernetes operators for platform automation</li>\n<li><strong>Performance Optimization</strong>: Achieved 40% improvement in pod startup times</li>\n<li><strong>Security Hardening</strong>: Implemented comprehensive security baseline with CIS benchmarks</li>\n</ul>\n<h3>Platform Engineering Best Practices</h3>\n<ul>\n<li><strong>Infrastructure as Code</strong>: 100% of platform infrastructure defined in Git repositories</li>\n<li><strong>Automated Testing</strong>: Comprehensive testing including chaos engineering and load testing</li>\n<li><strong>Monitoring & Alerting</strong>: Comprehensive observability with SLO-based alerting</li>\n<li><strong>Documentation</strong>: Self-service documentation with interactive tutorials</li>\n</ul>\n<h2>Meeting Notes & Strategic Planning</h2>\n<h3>August 28, 2025 - Platform Architecture Review</h3>\n<p><strong>Multi-Tenancy Strategy:</strong></p>\n<ul>\n<li><strong>Node Pool Isolation</strong>: Evaluated dedicated nodes vs shared nodes with strict resource limits</li>\n<li><strong>Cost Analysis</strong>: Shared tenancy reduces costs by 60% while maintaining security boundaries</li>\n<li><strong>Performance Impact</strong>: Network policies and service mesh add 2ms latency but improve security</li>\n<li><strong>Scalability</strong>: Platform can support 500+ tenants with current architecture</li>\n</ul>\n<p><strong>Technology Decisions:</strong></p>\n<ul>\n<li><strong>Service Mesh</strong>: Istio selected over Linkerd for advanced traffic management features</li>\n<li><strong>Container Runtime</strong>: Containerd adoption complete, 30% improvement in image pull times</li>\n<li><strong>Storage</strong>: Migrated to CSI drivers for better storage management and portability</li>\n<li><strong>Networking</strong>: Cilium deployment providing eBPF-based high-performance networking</li>\n</ul>\n<h3>Platform Development Priorities</h3>\n<p><strong>Developer Productivity</strong>: Focus on reducing deployment friction and improving feedback loops <strong>Security Integration</strong>: Shift-left security with automated policy enforcement and vulnerability scanning <strong>Cost Optimization</strong>: Implement intelligent workload scheduling and resource rightsizing <strong>Observability</strong>: Deep application insights with minimal developer configuration overhead</p>\n<h2>Platform Challenges & Solutions</h2>\n<h3>Scale & Resource Management</h3>\n<p><strong>Challenge</strong>: Managing resource allocation across 100+ teams with varying workload patterns <strong>Solution</strong>: Implemented dynamic resource quotas with intelligent burst allocation <strong>Result</strong>: 95% resource utilization while maintaining performance guarantees</p>\n<h3>Security & Compliance</h3>\n<p><strong>Challenge</strong>: Meeting enterprise security requirements while maintaining developer velocity <strong>Solution</strong>: Automated security controls with policy-as-code and continuous compliance monitoring <strong>Result</strong>: Zero security incidents while reducing deployment friction by 70%</p>\n<h3>Platform Reliability</h3>\n<p><strong>Challenge</strong>: Ensuring 99.99% platform availability while supporting continuous deployments <strong>Solution</strong>: Blue-green deployments, comprehensive testing, and automated rollback mechanisms <strong>Result</strong>: Exceeded 99.99% uptime SLA with 500+ deployments per week</p>\n<h3>Developer Adoption</h3>\n<p><strong>Challenge</strong>: Migrating 200+ legacy applications to the new platform <strong>Solution</strong>: Gradual migration strategy with comprehensive training and support <strong>Result</strong>: 80% application migration complete with high developer satisfaction scores</p>\n<h2>Platform Performance Metrics</h2>\n<h3>Operational Excellence</h3>\n<ul>\n<li><strong>Platform Uptime</strong>: 99.99% availability across all platform services</li>\n<li><strong>Deployment Success Rate</strong>: 99.5% successful deployments with automated rollback</li>\n<li><strong>Resource Efficiency</strong>: 90% average cluster utilization with intelligent scaling</li>\n<li><strong>Security Posture</strong>: Zero critical vulnerabilities in production workloads</li>\n</ul>\n<h3>Developer Experience</h3>\n<ul>\n<li><strong>Deployment Speed</strong>: Average deployment time reduced from 45 minutes to 3 minutes</li>\n<li><strong>Self-Service Adoption</strong>: 85% of teams using self-service deployment capabilities</li>\n<li><strong>Developer Satisfaction</strong>: 9.2/10 developer experience rating in quarterly surveys</li>\n<li><strong>Platform Onboarding</strong>: New teams productive within 2 hours of platform access</li>\n</ul>\n<h3>Business Impact</h3>\n<ul>\n<li><strong>Infrastructure Cost</strong>: 40% reduction in infrastructure costs through efficient resource utilization</li>\n<li><strong>Time to Market</strong>: 60% faster feature delivery through streamlined deployment processes</li>\n<li><strong>Compliance</strong>: 100% audit success rate with automated compliance monitoring</li>\n<li><strong>Innovation</strong>: Platform enabling 200+ microservices and event-driven architectures</li>\n</ul>\n<h2>Innovation & Future Technology</h2>\n<h3>Emerging Platform Technologies</h3>\n<ul>\n<li><strong>WebAssembly</strong>: Evaluating WASM for secure, lightweight application deployment</li>\n<li><strong>GitOps Evolution</strong>: Advanced GitOps patterns with progressive delivery and canary deployments</li>\n<li><strong>AI/ML Integration</strong>: Machine learning for resource optimization and anomaly detection</li>\n<li><strong>Quantum Computing</strong>: Preparing platform for quantum workload integration</li>\n</ul>\n<h3>Next-Generation Platform Features</h3>\n<ul>\n<li><strong>Serverless Integration</strong>: Knative-based serverless computing platform</li>\n<li><strong>Event-Driven Architecture</strong>: Native event streaming and processing capabilities</li>\n<li><strong>API Gateway</strong>: Centralized API management with rate limiting and authentication</li>\n<li><strong>Data Platform Integration</strong>: Seamless integration with data processing and ML platforms</li>\n</ul>\n<h2>Platform Ecosystem & Partnerships</h2>\n<h3>Open Source Leadership</h3>\n<ul>\n<li><strong>Community Contributions</strong>: Maintainer status on 5+ CNCF projects</li>\n<li><strong>Conference Speaking</strong>: 20+ conference presentations on platform engineering</li>\n<li><strong>Knowledge Sharing</strong>: Monthly platform engineering meetups with 500+ attendees</li>\n<li><strong>Industry Standards</strong>: Contributing to platform engineering best practices and standards</li>\n</ul>\n<h3>Vendor Partnerships</h3>\n<ul>\n<li><strong>Cloud Providers</strong>: Strategic partnerships with AWS, Google Cloud, and Microsoft Azure</li>\n<li><strong>Technology Vendors</strong>: Deep integration partnerships with HashiCorp, GitLab, and Datadog</li>\n<li><strong>Security Partners</strong>: Collaboration with security vendors for integrated threat detection</li>\n<li><strong>Training Partners</strong>: Developer training programs with cloud native education providers</li>\n</ul>\n<h2>Team Development & Culture</h2>\n<h3>Technical Excellence</h3>\n<ul>\n<li><strong>Continuous Learning</strong>: Dedicated time for learning new technologies and contributing to open source</li>\n<li><strong>Certification</strong>: 100% team members certified in Kubernetes and cloud platforms</li>\n<li><strong>Innovation</strong>: Monthly hackathons focused on platform improvements and automation</li>\n<li><strong>Knowledge Transfer</strong>: Comprehensive documentation and training for platform users</li>\n</ul>\n<h3>Operational Philosophy</h3>\n<ul>\n<li><strong>Automation First</strong>: Automate repetitive tasks to focus on strategic platform improvements</li>\n<li><strong>Developer Empathy</strong>: Design platform features from developer perspective and user experience</li>\n<li><strong>Reliability Engineering</strong>: SRE principles applied to platform operations and incident response</li>\n<li><strong>Continuous Improvement</strong>: Regular retrospectives and platform evolution based on user feedback</li>\n</ul>",
+      "updated_at": "2025-08-20T00:21:03.414Z",
       "source_file": "content/teams/platform-x.md",
-      "excerpt": "# Meeting Notes - Evaluate node pool isolation; cost vs resilience.",
+      "excerpt": "# Platform X - Cloud Native Platform Engineering Platform X is the foundational team building and operating our cloud-native application platform. We provide developers with a self-service, secure, and scalable Kubernetes-based platform tha",
       "customer_type": "internal-team"
     },
     {
       "id": "quality-lab",
       "name": "Quality Lab",
-      "account_owner": "Nina T",
+      "account_owner": "Nina Torres",
       "frameworks": [
         "Great Expectations",
-        "pytest"
+        "pytest",
+        "Selenium",
+        "Playwright",
+        "k6",
+        "Postman",
+        "Allure",
+        "TestRail"
       ],
       "services": [],
       "tags": [
         "internal",
-        "team"
+        "team",
+        "qa",
+        "testing",
+        "automation",
+        "data-quality",
+        "performance"
       ],
       "feature_requests": [],
       "issues": [],
       "contacts": [
         {
-          "name": "Nina T",
-          "role": "QA Lead",
+          "name": "Nina Torres",
+          "role": "Principal Quality Engineering Lead",
           "email": ""
         },
         {
-          "name": "Arman P",
-          "role": "QE",
+          "name": "Arman Petrosyan",
+          "role": "Senior Test Automation Engineer",
+          "email": ""
+        },
+        {
+          "name": "Rachel Kim",
+          "role": "Data Quality Specialist",
+          "email": ""
+        },
+        {
+          "name": "Carlos Mendoza",
+          "role": "Performance Testing Engineer",
+          "email": ""
+        },
+        {
+          "name": "Yuki Tanaka",
+          "role": "Security Testing Engineer",
+          "email": ""
+        },
+        {
+          "name": "Elena Volkov",
+          "role": "Quality Assurance Engineer",
           "email": ""
         }
       ],
       "avatar": "assets/avatars/quality-lab.svg",
       "members": [
         {
-          "name": "Nina T",
-          "role": "QA Lead"
+          "name": "Nina Torres",
+          "role": "Principal Quality Engineering Lead"
         },
         {
-          "name": "Arman P",
-          "role": "QE"
+          "name": "Arman Petrosyan",
+          "role": "Senior Test Automation Engineer"
+        },
+        {
+          "name": "Rachel Kim",
+          "role": "Data Quality Specialist"
+        },
+        {
+          "name": "Carlos Mendoza",
+          "role": "Performance Testing Engineer"
+        },
+        {
+          "name": "Yuki Tanaka",
+          "role": "Security Testing Engineer"
+        },
+        {
+          "name": "Elena Volkov",
+          "role": "Quality Assurance Engineer"
         }
       ],
       "libraries": [
         {
           "name": "Great Expectations",
-          "project": "DQ"
+          "project": "Data Quality Framework"
         },
         {
           "name": "pytest",
-          "project": "Tests"
+          "project": "Test Automation Framework"
+        },
+        {
+          "name": "Selenium",
+          "project": "Web UI Testing"
+        },
+        {
+          "name": "Playwright",
+          "project": "Modern Browser Testing"
+        },
+        {
+          "name": "k6",
+          "project": "Performance & Load Testing"
+        },
+        {
+          "name": "Postman",
+          "project": "API Testing & Documentation"
+        },
+        {
+          "name": "Allure",
+          "project": "Test Reporting & Analytics"
+        },
+        {
+          "name": "TestRail",
+          "project": "Test Case Management"
         }
       ],
       "meeting_dates": [
         "2025-08-26",
-        "2025-09-24"
+        "2025-09-24",
+        "2025-10-22",
+        "2025-11-26"
       ],
       "asks": [
         {
-          "ask": "Nonprod sample data",
+          "ask": "Production-like test data platform",
           "due": "2025-09-08",
           "status": "under-review"
+        },
+        {
+          "ask": "Automated testing infrastructure",
+          "due": "2025-09-30",
+          "status": "planned"
+        },
+        {
+          "ask": "Quality metrics dashboard",
+          "due": "2025-10-15",
+          "status": "proposed"
+        },
+        {
+          "ask": "Performance testing environment",
+          "due": "2025-11-01",
+          "status": "under-review"
+        },
+        {
+          "ask": "Security testing tools budget",
+          "due": "2025-11-30",
+          "status": "proposed"
         }
       ],
-      "body_html": "<h1>Meeting Notes</h1>\n<ul>\n<li>Golden dataset v2; anonymization approach.</li>\n</ul>",
-      "updated_at": "2025-08-19T09:52:59.508Z",
+      "body_html": "<h1>Quality Lab - Quality Engineering & Test Automation</h1>\n<p>The Quality Lab ensures the highest standards of software quality across our entire technology stack. We implement comprehensive testing strategies, automate quality gates, and establish data quality frameworks that enable confident, rapid software delivery while maintaining enterprise-grade reliability.</p>\n<h2>Quality Engineering Philosophy</h2>\n<h3>Shift-Left Testing Strategy</h3>\n<ul>\n<li><strong>Early Integration</strong>: Quality engineering embedded in design and development phases</li>\n<li><strong>Continuous Testing</strong>: Automated testing throughout CI/CD pipelines with instant feedback</li>\n<li><strong>Risk-Based Approach</strong>: Intelligent test prioritization based on business impact and change analysis</li>\n<li><strong>Quality Gates</strong>: Automated quality criteria preventing defective code from reaching production</li>\n</ul>\n<h3>Comprehensive Testing Pyramid</h3>\n<ul>\n<li><strong>Unit Tests</strong>: 5,000+ unit tests with 95% code coverage across all microservices</li>\n<li><strong>Integration Tests</strong>: 800+ service integration tests validating API contracts and data flow</li>\n<li><strong>End-to-End Tests</strong>: 200+ critical user journey tests ensuring business functionality</li>\n<li><strong>Performance Tests</strong>: Load, stress, and endurance testing for all customer-facing services</li>\n</ul>\n<h2>Test Automation Excellence</h2>\n<h3>Multi-Technology Testing Framework</h3>\n<p><strong>Web Application Testing:</strong></p>\n<ul>\n<li><strong>Playwright Integration</strong>: Modern browser testing with cross-browser compatibility</li>\n<li><strong>Selenium Grid</strong>: Distributed testing across multiple browser and OS combinations</li>\n<li><strong>Visual Regression</strong>: Automated screenshot comparison detecting UI inconsistencies</li>\n<li><strong>Accessibility Testing</strong>: WCAG compliance validation with automated a11y scanning</li>\n</ul>\n<p><strong>API & Microservices Testing:</strong></p>\n<ul>\n<li><strong>Contract Testing</strong>: Pact-based consumer-driven contract validation</li>\n<li><strong>Performance Testing</strong>: k6-powered load testing with realistic traffic patterns</li>\n<li><strong>Security Testing</strong>: OWASP ZAP integration for automated vulnerability scanning  </li>\n<li><strong>Chaos Testing</strong>: Resilience validation through controlled failure injection</li>\n</ul>\n<h3>Data Quality Framework</h3>\n<p><strong>Great Expectations Platform:</strong></p>\n<ul>\n<li><strong>Data Validation</strong>: 2,000+ data quality expectations across all data pipelines</li>\n<li><strong>Anomaly Detection</strong>: Statistical profiling identifying data drift and quality issues</li>\n<li><strong>Data Lineage</strong>: End-to-end data validation from source systems to analytics</li>\n<li><strong>Quality Metrics</strong>: Real-time data quality dashboards with SLA monitoring</li>\n</ul>\n<h2>Current Quality Initiatives</h2>\n<h3>Project Golden Dataset 2.0</h3>\n<p><strong>Objective</strong>: Create production-like test datasets with privacy-compliant data anonymization</p>\n<ul>\n<li><strong>Scope</strong>: Synthetic data generation for 50+ microservices and 200+ database tables</li>\n<li><strong>Innovation</strong>: AI-powered data synthesis maintaining statistical properties</li>\n<li><strong>Privacy</strong>: GDPR-compliant anonymization with differential privacy techniques</li>\n<li><strong>Impact</strong>: Enable realistic testing without production data exposure</li>\n</ul>\n<h3>Automated Quality Gates Platform</h3>\n<p><strong>Objective</strong>: Implement comprehensive quality gates preventing defects from reaching production</p>\n<ul>\n<li><strong>Components</strong>: Code quality, security scanning, performance benchmarking, accessibility checks</li>\n<li><strong>Integration</strong>: Seamless CI/CD integration with automated rollback capabilities</li>\n<li><strong>Metrics</strong>: Quality score calculation with trend analysis and predictive insights</li>\n<li><strong>Status</strong>: Core framework complete, expanding to all development teams</li>\n</ul>\n<h3>AI-Powered Test Generation</h3>\n<p><strong>Objective</strong>: Leverage machine learning for intelligent test case generation and maintenance</p>\n<ul>\n<li><strong>Capabilities</strong>: Automatic test creation from user behavior analysis and API specifications</li>\n<li><strong>Self-Healing Tests</strong>: AI-powered test maintenance reducing flaky test incidents</li>\n<li><strong>Risk Prediction</strong>: ML models identifying high-risk changes requiring additional testing</li>\n<li><strong>Timeline</strong>: Proof of concept successful, pilot program launching Q4 2025</li>\n</ul>\n<h2>Quality Assurance Methodologies</h2>\n<h3>Risk-Based Testing Approach</h3>\n<ul>\n<li><strong>Impact Analysis</strong>: Automated change impact assessment for targeted testing strategies</li>\n<li><strong>Business Priority</strong>: Testing prioritization based on revenue impact and user experience</li>\n<li><strong>Technical Risk</strong>: Code complexity analysis identifying areas requiring intensive testing</li>\n<li><strong>Historical Data</strong>: Defect pattern analysis informing future testing strategies</li>\n</ul>\n<h3>Performance Engineering</h3>\n<ul>\n<li><strong>Baseline Establishment</strong>: Performance benchmarks for all critical user journeys</li>\n<li><strong>Continuous Monitoring</strong>: Real-time performance testing in staging and production</li>\n<li><strong>Capacity Planning</strong>: Load testing validating system behavior under projected growth</li>\n<li><strong>Optimization Feedback</strong>: Performance test results driving architecture improvements</li>\n</ul>\n<h2>Meeting Notes & Strategic Planning</h2>\n<h3>August 26, 2025 - Quality Strategy Review</h3>\n<p><strong>Testing Infrastructure Improvements:</strong></p>\n<ul>\n<li><strong>Test Execution Speed</strong>: Parallel test execution reducing feedback time by 75%</li>\n<li><strong>Environment Management</strong>: Containerized test environments with on-demand provisioning</li>\n<li><strong>Data Management</strong>: Synthetic data platform providing realistic test scenarios</li>\n<li><strong>Reporting Enhancement</strong>: Real-time quality dashboards with drill-down capabilities</li>\n</ul>\n<p><strong>Quality Metrics & KPIs:</strong></p>\n<ul>\n<li><strong>Defect Escape Rate</strong>: Reduced production defects by 85% through comprehensive testing</li>\n<li><strong>Test Automation Coverage</strong>: Achieved 90% automated test coverage for critical paths</li>\n<li><strong>Mean Time to Detection</strong>: Quality issues detected within 15 minutes of deployment</li>\n<li><strong>Developer Productivity</strong>: 60% reduction in debugging time through early defect detection</li>\n</ul>\n<h3>Cross-Team Quality Collaboration</h3>\n<p><strong>Embedded QE Model</strong>: Quality engineers embedded within development teams for continuous feedback <strong>Quality Champions</strong>: Trained developers acting as quality advocates within their teams   <strong>Testing Communities</strong>: Cross-team knowledge sharing and best practice standardization <strong>Continuous Improvement</strong>: Regular retrospectives identifying and addressing quality gaps</p>\n<h2>Data Quality Engineering</h2>\n<h3>Comprehensive Data Validation</h3>\n<ul>\n<li><strong>Schema Validation</strong>: Automated detection of schema changes and compatibility issues</li>\n<li><strong>Statistical Profiling</strong>: Data distribution analysis identifying outliers and anomalies</li>\n<li><strong>Business Rule Validation</strong>: Complex business logic validation across data transformations</li>\n<li><strong>Cross-System Consistency</strong>: Data consistency validation across multiple data sources</li>\n</ul>\n<h3>Real-Time Data Quality Monitoring</h3>\n<ul>\n<li><strong>Streaming Validation</strong>: Real-time data quality checks on streaming data pipelines</li>\n<li><strong>Alert Systems</strong>: Intelligent alerting based on quality score degradation patterns</li>\n<li><strong>Quality SLAs</strong>: Data quality service level agreements with automated reporting</li>\n<li><strong>Remediation Workflows</strong>: Automated data quality incident response and correction</li>\n</ul>\n<h2>Security & Compliance Testing</h2>\n<h3>Security Testing Integration</h3>\n<ul>\n<li><strong>Vulnerability Scanning</strong>: Automated SAST, DAST, and IAST integration in CI/CD pipelines</li>\n<li><strong>Penetration Testing</strong>: Regular security assessment with automated baseline testing</li>\n<li><strong>Compliance Validation</strong>: SOC2, HIPAA, and GDPR compliance testing automation</li>\n<li><strong>Threat Modeling</strong>: Security risk assessment integrated with quality gate decisions</li>\n</ul>\n<h3>Privacy-First Testing Approach</h3>\n<ul>\n<li><strong>Data Minimization</strong>: Test data strategies using minimal necessary production data</li>\n<li><strong>Anonymization Validation</strong>: Ensuring anonymization techniques preserve data utility</li>\n<li><strong>Consent Management</strong>: Testing privacy consent workflows and data subject rights</li>\n<li><strong>Cross-Border Compliance</strong>: Multi-region compliance testing for global deployments</li>\n</ul>\n<h2>Quality Engineering Innovation</h2>\n<h3>AI & Machine Learning Integration</h3>\n<ul>\n<li><strong>Predictive Quality</strong>: ML models predicting defect probability based on code changes</li>\n<li><strong>Intelligent Test Selection</strong>: AI-powered test case prioritization reducing execution time</li>\n<li><strong>Automated Bug Triage</strong>: Natural language processing for intelligent bug classification</li>\n<li><strong>Quality Forecasting</strong>: Predictive analytics for quality trend analysis and planning</li>\n</ul>\n<h3>Emerging Testing Technologies</h3>\n<ul>\n<li><strong>Visual AI</strong>: Computer vision for advanced UI testing and visual regression detection</li>\n<li><strong>API Fuzzing</strong>: Automated API security testing through intelligent input generation</li>\n<li><strong>Chaos Engineering</strong>: Systematic resilience testing through controlled failure scenarios</li>\n<li><strong>Quantum Testing</strong>: Preparing testing strategies for quantum computing applications</li>\n</ul>\n<h2>Team Performance & Impact Metrics</h2>\n<h3>Quality Outcomes</h3>\n<ul>\n<li><strong>Production Defect Reduction</strong>: 85% fewer critical defects reaching production</li>\n<li><strong>Test Coverage</strong>: 95% automated test coverage for business-critical functionality</li>\n<li><strong>Quality Gates</strong>: 99.5% successful quality gate passage rate with automated rollback</li>\n<li><strong>Mean Time to Quality</strong>: Defects detected and resolved within 30 minutes</li>\n</ul>\n<h3>Business Impact</h3>\n<ul>\n<li><strong>Customer Satisfaction</strong>: Quality improvements contributing to 25% increase in NPS scores</li>\n<li><strong>Developer Velocity</strong>: Quality automation enabling 3x faster release cycles</li>\n<li><strong>Cost Avoidance</strong>: Prevented $5M+ in potential revenue loss through early defect detection</li>\n<li><strong>Compliance Success</strong>: 100% audit success rate with automated compliance validation</li>\n</ul>\n<h3>Innovation & Knowledge Sharing</h3>\n<ul>\n<li><strong>Open Source Contributions</strong>: Released 8 testing tools to open source community</li>\n<li><strong>Industry Recognition</strong>: Team members speaking at 15+ quality engineering conferences</li>\n<li><strong>Internal Training</strong>: Trained 100+ developers in quality engineering best practices</li>\n<li><strong>Best Practices</strong>: Established quality standards adopted by 50+ engineering teams</li>\n</ul>\n<h2>Future Quality Engineering Vision</h2>\n<h3>2026 Strategic Roadmap</h3>\n<ul>\n<li><strong>Autonomous Testing</strong>: Self-healing test suites with minimal human intervention</li>\n<li><strong>Quality AI</strong>: Advanced AI systems providing intelligent quality recommendations</li>\n<li><strong>Continuous Compliance</strong>: Real-time compliance monitoring and automated remediation</li>\n<li><strong>Quantum Quality</strong>: Quality engineering strategies for quantum computing applications</li>\n</ul>\n<h3>Emerging Quality Challenges</h3>\n<ul>\n<li><strong>Distributed Systems</strong>: Quality assurance for microservices and event-driven architectures</li>\n<li><strong>Edge Computing</strong>: Testing strategies for edge deployment and intermittent connectivity</li>\n<li><strong>AI/ML Systems</strong>: Quality validation for machine learning models and AI-powered applications</li>\n<li><strong>Privacy Technology</strong>: Advanced privacy-preserving testing methodologies and frameworks</li>\n</ul>",
+      "updated_at": "2025-08-20T00:22:15.350Z",
       "source_file": "content/teams/quality-lab.md",
-      "excerpt": "# Meeting Notes - Golden dataset v2; anonymization approach.",
+      "excerpt": "# Quality Lab - Quality Engineering & Test Automation The Quality Lab ensures the highest standards of software quality across our entire technology stack. We implement comprehensive testing strategies, automate quality gates, and establish",
       "customer_type": "internal-team"
     },
     {
       "id": "realtime-unit",
       "name": "Realtime Unit",
-      "account_owner": "Iris G",
+      "account_owner": "Iris Gonzalez",
       "frameworks": [
         "Materialize",
-        "Kafka Streams"
+        "Kafka Streams",
+        "Apache Pulsar",
+        "ClickHouse",
+        "Redis",
+        "Apache Druid",
+        "VictoriaMetrics",
+        "ScyllaDB"
       ],
       "services": [],
       "tags": [
         "internal",
-        "team"
+        "team",
+        "real-time",
+        "low-latency",
+        "stream-processing",
+        "performance",
+        "analytics"
       ],
       "feature_requests": [],
       "issues": [],
       "contacts": [
         {
-          "name": "Iris G",
-          "role": "Lead",
+          "name": "Iris Gonzalez",
+          "role": "Principal Real-time Systems Engineer",
           "email": ""
         },
         {
-          "name": "Ben C",
-          "role": "Engineer",
+          "name": "Ben Cooper",
+          "role": "Senior Stream Processing Engineer",
+          "email": ""
+        },
+        {
+          "name": "Zara Ali",
+          "role": "Low-Latency Computing Specialist",
+          "email": ""
+        },
+        {
+          "name": "Nathan Park",
+          "role": "Real-time Analytics Engineer",
+          "email": ""
+        },
+        {
+          "name": "Mira Johansson",
+          "role": "Event Processing Engineer",
+          "email": ""
+        },
+        {
+          "name": "Kai Chen",
+          "role": "Performance Optimization Engineer",
           "email": ""
         }
       ],
       "avatar": "assets/avatars/realtime-unit.svg",
       "members": [
         {
-          "name": "Iris G",
-          "role": "Lead"
+          "name": "Iris Gonzalez",
+          "role": "Principal Real-time Systems Engineer"
         },
         {
-          "name": "Ben C",
-          "role": "Engineer"
+          "name": "Ben Cooper",
+          "role": "Senior Stream Processing Engineer"
+        },
+        {
+          "name": "Zara Ali",
+          "role": "Low-Latency Computing Specialist"
+        },
+        {
+          "name": "Nathan Park",
+          "role": "Real-time Analytics Engineer"
+        },
+        {
+          "name": "Mira Johansson",
+          "role": "Event Processing Engineer"
+        },
+        {
+          "name": "Kai Chen",
+          "role": "Performance Optimization Engineer"
         }
       ],
       "libraries": [
         {
           "name": "Materialize",
-          "project": "Realtime Views"
+          "project": "Real-time Materialized Views"
         },
         {
           "name": "Kafka Streams",
-          "project": "Aggregation"
+          "project": "Stream Processing & Aggregation"
+        },
+        {
+          "name": "Apache Pulsar",
+          "project": "Ultra-Low Latency Messaging"
+        },
+        {
+          "name": "ClickHouse",
+          "project": "Real-time OLAP Analytics"
+        },
+        {
+          "name": "Redis",
+          "project": "In-Memory Real-time Cache"
+        },
+        {
+          "name": "Apache Druid",
+          "project": "Real-time Analytics Database"
+        },
+        {
+          "name": "VictoriaMetrics",
+          "project": "High-Performance Time Series"
+        },
+        {
+          "name": "ScyllaDB",
+          "project": "Ultra-Fast NoSQL Database"
         }
       ],
       "meeting_dates": [
         "2025-08-27",
-        "2025-09-27"
+        "2025-09-27",
+        "2025-10-25",
+        "2025-11-29"
       ],
       "asks": [
         {
-          "ask": "Tier-1 SLA for streams",
+          "ask": "Tier-1 SLA infrastructure for real-time streams",
           "due": "2025-09-30",
+          "status": "planned"
+        },
+        {
+          "ask": "Persistent memory computing resources",
+          "due": "2025-10-15",
+          "status": "under-review"
+        },
+        {
+          "ask": "Ultra-low latency network infrastructure",
+          "due": "2025-11-01",
+          "status": "proposed"
+        },
+        {
+          "ask": "Real-time monitoring and alerting platform",
+          "due": "2025-11-15",
+          "status": "under-review"
+        },
+        {
+          "ask": "Edge computing deployment budget",
+          "due": "2025-12-01",
           "status": "planned"
         }
       ],
-      "body_html": "<h1>Meeting Notes</h1>\n<ul>\n<li>Latency budget review; explore persistent memory options.</li>\n</ul>",
-      "updated_at": "2025-08-19T09:53:11.980Z",
+      "body_html": "<h1>Realtime Unit - Ultra-Low Latency Computing & Analytics</h1>\n<p>The Realtime Unit specializes in building and operating ultra-low latency systems that process and analyze data in real-time. We maintain sub-millisecond response times for critical business operations, powering algorithmic trading, fraud detection, and real-time personalization systems that require immediate decision-making.</p>\n<h2>Real-Time Computing Architecture</h2>\n<h3>Ultra-Low Latency Infrastructure</h3>\n<ul>\n<li><strong>Hardware Optimization</strong>: Custom-tuned servers with NVME SSDs, 10GbE networking, and DPDK</li>\n<li><strong>Kernel Bypass</strong>: User-space networking with DPDK and SPDK for minimal OS overhead</li>\n<li><strong>Memory Architecture</strong>: 3TB+ RAM per node with persistent memory for durability</li>\n<li><strong>CPU Optimization</strong>: CPU affinity, NUMA awareness, and real-time kernel configurations</li>\n</ul>\n<h3>Stream Processing Platform</h3>\n<ul>\n<li><strong>Materialize Deployment</strong>: 20+ clusters providing materialized views with <1ms refresh latency</li>\n<li><strong>Kafka Streams</strong>: 100+ stream processing applications with exactly-once semantics</li>\n<li><strong>Complex Event Processing</strong>: Pattern matching and correlation across millions of events/second</li>\n<li><strong>State Management</strong>: In-memory state stores with persistent memory backup</li>\n</ul>\n<h2>Mission-Critical Real-Time Systems</h2>\n<h3>Algorithmic Trading Platform</h3>\n<p><strong>Objective</strong>: Ultra-low latency order execution and market data processing</p>\n<ul>\n<li><strong>Latency Requirements</strong>: Sub-100 microsecond order-to-market latency</li>\n<li><strong>Throughput</strong>: 10M+ market data updates/second with guaranteed ordering</li>\n<li><strong>Architecture</strong>: Custom C++ applications with kernel bypass networking</li>\n<li><strong>Performance</strong>: Achieved 25 microsecond P99 latency for order processing</li>\n</ul>\n<h3>Real-Time Fraud Detection</h3>\n<p><strong>Objective</strong>: Instant fraud scoring and blocking for financial transactions</p>\n<ul>\n<li><strong>Processing Speed</strong>: Transaction decisions within 10ms of initiation</li>\n<li><strong>ML Integration</strong>: Real-time feature computation and model inference</li>\n<li><strong>Scale</strong>: 50,000+ transactions/second with complex rule evaluation</li>\n<li><strong>Accuracy</strong>: 99.97% fraud detection accuracy with <0.01% false positives</li>\n</ul>\n<h3>Personalization Engine</h3>\n<p><strong>Objective</strong>: Real-time content and product recommendations</p>\n<ul>\n<li><strong>Response Time</strong>: Sub-50ms recommendation generation</li>\n<li><strong>Context Processing</strong>: Real-time user behavior analysis and preference updates</li>\n<li><strong>A/B Testing</strong>: Live experiment evaluation with instant metric computation</li>\n<li><strong>Impact</strong>: 40% improvement in user engagement through real-time personalization</li>\n</ul>\n<h2>Advanced Real-Time Technologies</h2>\n<h3>Persistent Memory Computing</h3>\n<p><strong>Intel Optane Integration:</strong></p>\n<ul>\n<li><strong>Hybrid Architecture</strong>: DRAM for hot data, persistent memory for warm data</li>\n<li><strong>Performance</strong>: 2-4x improvement in application restart times</li>\n<li><strong>Durability</strong>: Critical state persistence without traditional disk I/O overhead</li>\n<li><strong>Cost Optimization</strong>: 60% reduction in memory costs while maintaining performance</li>\n</ul>\n<h3>Stream Processing Innovation</h3>\n<ul>\n<li><strong>Watermark Optimization</strong>: Custom watermark strategies reducing late data impact</li>\n<li><strong>State Evolution</strong>: Zero-downtime state schema evolution for long-running streams</li>\n<li><strong>Backpressure Management</strong>: Intelligent load shedding preventing cascade failures</li>\n<li><strong>Exactly-Once Semantics</strong>: End-to-end exactly-once processing with minimal overhead</li>\n</ul>\n<h2>Meeting Notes & Technical Excellence</h2>\n<h3>August 27, 2025 - Performance Optimization Review</h3>\n<p><strong>Latency Improvements:</strong></p>\n<ul>\n<li><strong>Network Optimization</strong>: Implemented SR-IOV reducing network latency by 40%</li>\n<li><strong>Memory Management</strong>: Custom memory allocators eliminating GC pauses</li>\n<li><strong>CPU Scheduling</strong>: Real-time scheduling reducing jitter by 90%</li>\n<li><strong>Storage Performance</strong>: NVMe over Fabrics deployment for persistent memory</li>\n</ul>\n<p><strong>Infrastructure Enhancements:</strong></p>\n<ul>\n<li><strong>Monitoring</strong>: Sub-millisecond granularity performance monitoring</li>\n<li><strong>Alerting</strong>: Predictive alerting based on latency trend analysis</li>\n<li><strong>Capacity Planning</strong>: Real-time resource utilization with automatic scaling</li>\n<li><strong>Disaster Recovery</strong>: Hot-standby systems with <100ms failover times</li>\n</ul>\n<h3>Real-Time Analytics Platform</h3>\n<p><strong>Materialize Optimization:</strong></p>\n<ul>\n<li><strong>Index Strategy</strong>: Optimized indexes reducing query latency by 70%</li>\n<li><strong>Memory Management</strong>: Custom memory allocation strategies for large datasets</li>\n<li><strong>Query Optimization</strong>: Advanced query planning for complex real-time queries</li>\n<li><strong>Scalability</strong>: Horizontal scaling supporting 100TB+ of real-time data</li>\n</ul>\n<p><strong>ClickHouse Integration:</strong></p>\n<ul>\n<li><strong>Real-time Ingestion</strong>: 1M+ inserts/second with immediate query availability</li>\n<li><strong>Compression</strong>: Advanced compression reducing storage by 80% without latency impact</li>\n<li><strong>Distributed Queries</strong>: Cross-cluster queries with sub-second response times</li>\n<li><strong>Time Series Optimization</strong>: Specialized schemas for time-series data processing</li>\n</ul>\n<h2>Performance Engineering Excellence</h2>\n<h3>Latency Optimization Strategies</h3>\n<ul>\n<li><strong>Code Optimization</strong>: Hand-tuned assembly for critical hot paths</li>\n<li><strong>Memory Layout</strong>: Cache-friendly data structures and memory access patterns</li>\n<li><strong>Branch Prediction</strong>: Profile-guided optimization reducing branch mispredictions</li>\n<li><strong>SIMD Instructions</strong>: Vectorized operations for parallel data processing</li>\n</ul>\n<h3>System Performance Monitoring</h3>\n<ul>\n<li><strong>Nanosecond Precision</strong>: High-resolution timing with hardware timestamp counters</li>\n<li><strong>Real-time Profiling</strong>: Continuous performance profiling with minimal overhead</li>\n<li><strong>Bottleneck Detection</strong>: Automated performance regression detection</li>\n<li><strong>Capacity Modeling</strong>: Predictive models for system capacity planning</li>\n</ul>\n<h2>Critical Performance Challenges</h2>\n<h3>Tail Latency Elimination</h3>\n<p><strong>Challenge</strong>: P99.9 latency spikes affecting critical business operations <strong>Solution</strong>: Implemented deterministic garbage collection and memory pre-allocation <strong>Result</strong>: Reduced P99.9 latency from 10ms to 200 microseconds</p>\n<h3>Scale vs Latency Trade-offs  </h3>\n<p><strong>Challenge</strong>: Maintaining microsecond latencies while scaling to millions of operations <strong>Solution</strong>: Horizontal partitioning with locality-aware routing and caching <strong>Result</strong>: Linear scalability while maintaining sub-millisecond response times</p>\n<h3>State Management at Scale</h3>\n<p><strong>Challenge</strong>: Managing TBs of stream processing state with durability guarantees <strong>Solution</strong>: Hybrid persistent memory architecture with incremental checkpointing <strong>Result</strong>: 10x faster recovery times with guaranteed data consistency</p>\n<h3>Real-Time Debugging</h3>\n<p><strong>Challenge</strong>: Debugging performance issues in microsecond-latency systems <strong>Solution</strong>: Custom tracing infrastructure with minimal performance impact <strong>Result</strong>: Ability to trace and debug issues without affecting production performance</p>\n<h2>Innovation & Research</h2>\n<h3>Emerging Real-Time Technologies</h3>\n<ul>\n<li><strong>Quantum Networking</strong>: Exploring quantum communication for ultra-secure real-time data</li>\n<li><strong>Neuromorphic Computing</strong>: Event-driven computing architectures for extreme efficiency</li>\n<li><strong>Optical Computing</strong>: Photonic processors for speed-of-light data processing</li>\n<li><strong>Edge AI</strong>: Real-time AI inference at network edge locations</li>\n</ul>\n<h3>Next-Generation Architectures</h3>\n<ul>\n<li><strong>Serverless Streaming</strong>: Function-based stream processing with sub-millisecond cold starts</li>\n<li><strong>AI-Optimized Hardware</strong>: Custom silicon for real-time ML inference</li>\n<li><strong>In-Memory Computing</strong>: Entire datasets resident in memory with instant processing</li>\n<li><strong>Distributed Consensus</strong>: Byzantine fault-tolerant consensus with microsecond latency</li>\n</ul>\n<h2>Real-Time System Metrics</h2>\n<h3>Performance Excellence</h3>\n<ul>\n<li><strong>End-to-End Latency</strong>: P99 < 1ms for all critical real-time operations</li>\n<li><strong>Throughput</strong>: 10M+ events/second sustained processing with linear scalability</li>\n<li><strong>Availability</strong>: 99.999% uptime with hot-standby failover capabilities</li>\n<li><strong>Data Freshness</strong>: Real-time data available within 100 microseconds of generation</li>\n</ul>\n<h3>Business Impact</h3>\n<ul>\n<li><strong>Revenue Generation</strong>: Real-time systems directly generating $50M+ annual revenue</li>\n<li><strong>Cost Avoidance</strong>: Fraud prevention systems saving $10M+ annually</li>\n<li><strong>User Experience</strong>: Real-time personalization improving engagement by 60%</li>\n<li><strong>Operational Efficiency</strong>: Automated decision-making reducing manual processes by 95%</li>\n</ul>\n<h3>Technical Innovation</h3>\n<ul>\n<li><strong>Patents Filed</strong>: 12 patents in low-latency computing and stream processing</li>\n<li><strong>Open Source</strong>: Contributing to Apache Kafka, Materialize, and ClickHouse projects</li>\n<li><strong>Industry Recognition</strong>: Team expertise recognized at 20+ real-time computing conferences</li>\n<li><strong>Research Collaboration</strong>: Partnerships with 5 universities on real-time computing research</li>\n</ul>\n<h2>Future Real-Time Computing Vision</h2>\n<h3>2026 Strategic Initiatives</h3>\n<ul>\n<li><strong>Quantum-Enhanced Processing</strong>: Quantum algorithms for real-time optimization problems</li>\n<li><strong>Brain-Computer Interfaces</strong>: Real-time processing of neural signal data</li>\n<li><strong>Autonomous Systems</strong>: Real-time decision-making for autonomous vehicle fleets</li>\n<li><strong>Space Computing</strong>: Real-time processing for satellite and space-based applications</li>\n</ul>\n<h3>Emerging Applications</h3>\n<ul>\n<li><strong>Metaverse Infrastructure</strong>: Real-time rendering and physics simulation for virtual worlds</li>\n<li><strong>Digital Twins</strong>: Real-time synchronization between physical and digital systems</li>\n<li><strong>Augmented Reality</strong>: Ultra-low latency AR overlays for industrial applications</li>\n<li><strong>Financial Markets</strong>: Next-generation trading systems with nanosecond latencies</li>\n</ul>\n<h2>Team Culture & Excellence</h2>\n<h3>Performance-First Mindset</h3>\n<ul>\n<li><strong>Optimization Culture</strong>: Every microsecond matters philosophy driving continuous improvement</li>\n<li><strong>Measurement-Driven</strong>: Comprehensive metrics and profiling informing all technical decisions</li>\n<li><strong>Innovation Focus</strong>: Regular hackathons exploring cutting-edge real-time technologies</li>\n<li><strong>Knowledge Sharing</strong>: Deep technical presentations and cross-team collaboration</li>\n</ul>\n<h3>Technical Leadership</h3>\n<ul>\n<li><strong>Industry Expertise</strong>: Team members recognized as experts in real-time computing</li>\n<li><strong>Standards Development</strong>: Contributing to real-time computing standards and best practices</li>\n<li><strong>Mentorship</strong>: Training next generation of real-time systems engineers</li>\n<li><strong>Research Impact</strong>: Publishing research advancing the field of real-time computing</li>\n</ul>",
+      "updated_at": "2025-08-20T00:23:22.270Z",
       "source_file": "content/teams/realtime-unit.md",
-      "excerpt": "# Meeting Notes - Latency budget review; explore persistent memory options.",
+      "excerpt": "# Realtime Unit - Ultra-Low Latency Computing & Analytics The Realtime Unit specializes in building and operating ultra-low latency systems that process and analyze data in real-time. We maintain sub-millisecond response times for critical ",
       "customer_type": "internal-team"
     }
   ]

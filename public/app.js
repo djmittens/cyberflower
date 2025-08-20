@@ -241,7 +241,150 @@ function bindUI() {
   $('#detail-modal').addEventListener('click', (e)=>{
     if (e.target.id === 'detail-modal') closeModal();
   });
-  window.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') closeModal(); });
+  
+  // Enhanced keyboard navigation
+  window.addEventListener('keydown', (e)=> { 
+    if (e.key === 'Escape') {
+      if (document.body.classList.contains('sidebar-open')) {
+        closeSidebar();
+      } else {
+        closeModal(); 
+      }
+    }
+  });
+  
+  // Mobile sidebar functionality
+  const mobileToggle = $('#mobile-menu-toggle');
+  const sidebar = $('#sidebar');
+  const sidebarClose = $('#sidebar-close');
+  
+  if (mobileToggle && sidebar) {
+    mobileToggle.addEventListener('click', toggleSidebar);
+  }
+  
+  if (sidebarClose) {
+    sidebarClose.addEventListener('click', closeSidebar);
+  }
+  
+  // Close sidebar when clicking outside on mobile
+  document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 767 && 
+        document.body.classList.contains('sidebar-open') &&
+        !sidebar.contains(e.target) && 
+        !mobileToggle.contains(e.target)) {
+      closeSidebar();
+    }
+  });
+  
+  // Touch gesture support for cards
+  setupTouchGestures();
+  
+  // Intersection Observer for performance
+  setupIntersectionObserver();
+}
+
+function toggleSidebar() {
+  const sidebar = $('#sidebar');
+  const toggle = $('#mobile-menu-toggle');
+  const isOpen = document.body.classList.contains('sidebar-open');
+  
+  if (isOpen) {
+    closeSidebar();
+  } else {
+    openSidebar();
+  }
+}
+
+function openSidebar() {
+  const sidebar = $('#sidebar');
+  const toggle = $('#mobile-menu-toggle');
+  
+  document.body.classList.add('sidebar-open');
+  sidebar.classList.add('active');
+  toggle.classList.add('active');
+  
+  // Add haptic feedback if supported
+  if (navigator.vibrate) {
+    navigator.vibrate(50);
+  }
+}
+
+function closeSidebar() {
+  const sidebar = $('#sidebar');
+  const toggle = $('#mobile-menu-toggle');
+  
+  document.body.classList.remove('sidebar-open');
+  sidebar.classList.remove('active');
+  toggle.classList.remove('active');
+}
+
+function setupTouchGestures() {
+  let startX = 0;
+  let startY = 0;
+  let startTime = 0;
+  
+  document.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    startTime = Date.now();
+  }, { passive: true });
+  
+  document.addEventListener('touchend', (e) => {
+    if (!e.changedTouches) return;
+    
+    const endX = e.changedTouches[0].clientX;
+    const endY = e.changedTouches[0].clientY;
+    const endTime = Date.now();
+    
+    const deltaX = endX - startX;
+    const deltaY = endY - startY;
+    const deltaTime = endTime - startTime;
+    
+    // Swipe gestures (only on mobile)
+    if (window.innerWidth <= 767 && Math.abs(deltaX) > 50 && Math.abs(deltaY) < 100 && deltaTime < 300) {
+      if (deltaX > 0 && startX < 50) {
+        // Swipe right from left edge - open sidebar
+        openSidebar();
+      } else if (deltaX < 0 && document.body.classList.contains('sidebar-open')) {
+        // Swipe left when sidebar is open - close sidebar
+        closeSidebar();
+      }
+    }
+  }, { passive: true });
+}
+
+function setupIntersectionObserver() {
+  if (!window.IntersectionObserver) return;
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Add stagger animation delay
+        const index = Array.from(entry.target.parentNode.children).indexOf(entry.target);
+        entry.target.style.animationDelay = `${index * 50}ms`;
+      }
+    });
+  }, {
+    root: null,
+    rootMargin: '0px 0px -10% 0px',
+    threshold: 0.1
+  });
+  
+  // Observe cards when they're rendered
+  const observeCards = () => {
+    document.querySelectorAll('.card:not(.observed)').forEach(card => {
+      observer.observe(card);
+      card.classList.add('observed');
+    });
+  };
+  
+  // Call after grid renders
+  const originalRenderGrid = window.renderGrid || renderGrid;
+  window.renderGrid = function() {
+    originalRenderGrid.call(this);
+    setTimeout(observeCards, 50);
+  };
 }
 
 function showModal() {
