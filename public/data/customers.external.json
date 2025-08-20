@@ -43,7 +43,7 @@
         }
       ],
       "body_html": "<h1>Overview</h1>\n<p>ACME Co. runs a multi-TB nightly pipeline backed by Delta Lake. They are a high-touch strategic account with strong roadmap influence.</p>\n<h2>Recent Notes</h2>\n<ul>\n<li>Evaluating time-travel support to unblock compliance workflows.</li>\n<li>Pain around schema drift; wants better automatic resolution.</li>\n</ul>\n<h2>Links</h2>\n<ul>\n<li><a href=\"https://example.com/\" target=\"_blank\" rel=\"noreferrer noopener\">Design doc: ACME Delta Adoption</a></li>\n</ul>\n<p><pre class=\"code\"><code>sql\n-- Example of desired time-travel usage\nSELECT * FROM acme.delta_table VERSION AS OF 42;</code></pre></p>",
-      "updated_at": "2025-08-19T18:30:15.974Z",
+      "updated_at": "2025-08-20T01:36:58.347Z",
       "source_file": "content/customers/acme-co.md",
       "excerpt": "# Overview ACME Co. runs a multi-TB nightly pipeline backed by Delta Lake. They are a high-touch strategic account with strong roadmap influence. ## Recent Notes - Evaluating time-travel support to unblock compliance workflows. - Pain aroun"
     },
@@ -85,7 +85,7 @@
         }
       ],
       "body_html": "<h1>Summary</h1>\n<p>OmniTek focuses on ultra-low-latency streams; they prefer self-serve patterns and minimal SLO dependencies.</p>\n<h2>Notes</h2>\n<ul>\n<li>Concerned about cross-region lag during failover.</li>\n<li>Requests better observability hooks from connectors.</li>\n</ul>",
-      "updated_at": "2025-08-19T18:30:15.975Z",
+      "updated_at": "2025-08-20T01:36:58.348Z",
       "source_file": "content/customers/omnitek.md",
       "excerpt": "# Summary OmniTek focuses on ultra-low-latency streams; they prefer self-serve patterns and minimal SLO dependencies. ## Notes - Concerned about cross-region lag during failover. - Requests better observability hooks from connectors."
     }

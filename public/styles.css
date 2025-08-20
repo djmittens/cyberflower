@@ -1,5 +1,12 @@
 :root {
   /* Enhanced Cyberpunk 2077 color palette with fluid design tokens */
+  /* Cyber fonts */
+  /* Default: Arasaka-esque — sleek, precise, corporate */
+  --font-brand: 'Michroma', 'Russo One', 'Exo 2', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-display: 'Exo 2', 'Michroma', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-ui: 'Rajdhani', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-mono: 'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-numeric: var(--font-mono);
   --bg: #0a0d10;
   --bg-2: #0e1217;
   --bg-3: #121922;
@@ -66,7 +73,7 @@ html, body {
 
 body {
   margin: 0;
-  font-family: 'Rajdhani', 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: var(--font-ui);
   font-size: var(--text-base);
   line-height: 1.5;
   color: var(--text);
@@ -83,38 +90,59 @@ body {
 }
 
 /* Professional subtle overlay */
-body::before {
+/* Move global overlays to local container to avoid full-viewport repaints */
+.layout::before {
   content: '';
-  position: fixed; 
-  inset: 0; 
-  pointer-events: none; 
-  z-index: 1;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
   background:
-    /* Very subtle scanlines */
     repeating-linear-gradient(
-      0deg, 
-      rgba(255,255,255,0.008) 0px, 
-      rgba(255,255,255,0.008) 1px, 
-      transparent 2px, 
+      0deg,
+      rgba(255,255,255,0.008) 0px,
+      rgba(255,255,255,0.008) 1px,
+      transparent 2px,
       transparent 4px
     );
   mix-blend-mode: overlay;
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
-/* Subtle noise pattern for professional feel */
-body::after {
+.layout::after {
   content: '';
-  position: fixed;
+  position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 2;
-  background-image: 
+  z-index: 0;
+  background-image:
     radial-gradient(1px 1px at 10% 20%, rgba(0,229,255,0.02), transparent 70%),
     radial-gradient(1px 1px at 90% 80%, rgba(252,238,9,0.015), transparent 70%);
   background-size: 100px 100px, 150px 150px;
-  opacity: 0.6;
+  opacity: 0.5;
 }
+
+/* Performance Mode — minimize paint-heavy effects */
+body.perf::before,
+body.perf::after { display: none; }
+.perf .topbar { backdrop-filter: none; box-shadow: none; background: linear-gradient(90deg, #0b1016, #101823); }
+.perf .bar-stripes { display: none; }
+.perf .layout::before,
+.perf .layout::after { display: none; }
+.perf .panel.left::before { display: none; }
+.perf .panel.left { box-shadow: none; }
+.perf .card {
+  background: var(--panel);
+  backdrop-filter: none;
+  box-shadow: none;
+  clip-path: none;
+}
+.perf .card::before,
+.perf .card::after { display: none; }
+.perf .tag { border-style: solid; border-color: rgba(255,255,255,0.16); }
+.perf .btn { box-shadow: none; }
+.perf .type-pill { border-color: rgba(255,255,255,0.16); }
+.perf .modal { backdrop-filter: none; }
 
 @keyframes neural-pulse {
   0%, 100% { opacity: 0.7; }
@@ -165,7 +193,7 @@ body::after {
 /* removed navtabs in unified view */
 /* Enhanced brand with fluid typography */
 .brand { 
-  font-family: 'Orbitron', sans-serif; 
+  font-family: var(--font-brand); 
   letter-spacing: clamp(1px, 0.2vw, 3px); 
   display: flex; 
   align-items: baseline; 
@@ -270,7 +298,8 @@ body::after {
   background: var(--cp-yellow); 
   border: none; 
   padding: var(--space-md) var(--space-lg); 
-  font-weight: 700; 
+  font-weight: 800; 
+  font-family: var(--font-display);
   font-size: var(--text-lg);
   letter-spacing: 0.8px; 
   clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
@@ -342,7 +371,7 @@ body::after {
   font-size: var(--text-sm);
 }
 
-.toolbar { display: grid; gap: 12px; padding: 12px 20px; border-bottom: 1px solid rgba(255,255,255,0.08); background: linear-gradient(180deg, rgba(252,238,9,0.04), transparent); }
+.toolbar { display: grid; gap: 12px; padding: 12px 20px; border-bottom: 1px solid rgba(255,255,255,0.08); background: linear-gradient(180deg, rgba(252,238,9,0.04), transparent); max-width: var(--container-2xl); margin-inline: auto; width: 100%; }
 .searchbox { position: relative; }
 .searchbox input {
   width: 100%; background: var(--panel); color: var(--text);
@@ -370,6 +399,17 @@ body::after {
   padding: var(--space-md) var(--space-lg);
   container-type: inline-size;
   position: relative;
+  /* Prevent children (e.g., .grid) from stretching to full available height */
+  align-items: start;
+  /* Constrain main content on wide screens */
+  max-width: var(--container-2xl);
+  margin-inline: auto;
+  width: 100%;
+  /* Make this the primary scroller to localize repaints */
+  overflow: auto;
+  overscroll-behavior: contain;
+  contain: content paint;
+  will-change: transform;
 }
 
 /* Enhanced sidebar with adaptive behavior */
@@ -470,31 +510,40 @@ body::after {
   
   /* Performance optimizations */
   contain: layout style;
-  will-change: grid-template-columns;
+  /* Do not stretch rows to fill container height at wide viewports */
+  align-content: start;
+  align-items: start;
+}
+
+/* Wide-screen polish */
+@media (min-width: 1600px) {
+  .grid { gap: 24px; }
+  /* Disable entrance animation when many cards are visible */
+  .card { animation: none; opacity: 1; transform: none; }
+  /* Reduce overlays for less visual noise at scale */
+  body::before { opacity: 0.3; }
+  body::after { opacity: 0.3; }
 }
 /* Enhanced cards with holographic effects and adaptive sizing */
 .card {
-  background: 
-    linear-gradient(135deg, rgba(16,22,30,0.95), rgba(10,16,24,0.90)),
-    var(--hologram);
+  background: linear-gradient(135deg, rgba(16,22,30,0.98), rgba(10,16,24,0.94));
   border: 1px solid rgba(255,255,255,0.15);
   padding: var(--space-md);
   position: relative;
   overflow: hidden;
   clip-path: polygon(0 0, calc(100% - var(--space-md)) 0, 100% var(--space-md), 100% 100%, 0 100%);
-  backdrop-filter: blur(8px);
-  
-  /* Smooth transitions with hardware acceleration */
+  /* Rendering: avoid painting offscreen content */
+  content-visibility: auto;
+  contain-intrinsic-size: 220px 200px;
+
+  /* Smooth transitions */
   transition: 
-    transform 200ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    box-shadow 200ms ease,
-    border-color 200ms ease,
-    backdrop-filter 200ms ease;
-  
+    transform 180ms cubic-bezier(0.4, 0.0, 0.2, 1),
+    border-color 180ms ease;
+
   /* Performance optimization */
   contain: layout style paint;
-  will-change: transform, box-shadow;
-  
+
   /* Subtle entrance animation */
   opacity: 0;
   transform: translateY(10px);
@@ -517,24 +566,7 @@ body::after {
 }
 
 /* Clean accent line */
-.card::before { 
-  content: ''; 
-  position: absolute; 
-  left: 0; right: 0; top: 0; 
-  height: clamp(2px, 0.5vw, 3px);
-  background: linear-gradient(90deg, var(--cp-cyan), var(--cp-yellow)); 
-  opacity: 0.6;
-}
-
-/* Subtle inner glow */
-.card::after { 
-  content: ''; 
-  position: absolute; 
-  inset: 0; 
-  pointer-events: none; 
-  box-shadow: inset 0 0 0 1px rgba(0,229,255,0.1);
-  mix-blend-mode: overlay;
-}
+/* Remove extra pseudo layers to keep single paint layer */
 
 /* Professional hover effects */
 .card:hover {
@@ -555,13 +587,38 @@ body::after {
 
 .card-header { display: flex; align-items: center; gap: 12px; }
 .card-headings { display: grid; gap: 2px; min-width: 0; }
-.title { font-weight: 700; letter-spacing: 0.5px; font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.title { font-family: var(--font-display); font-weight: 800; letter-spacing: 0.6px; font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .subline { color: var(--muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.type-pill { margin-left: auto; font-size: 11px; padding: 4px 8px; border: 1px solid rgba(255,255,255,0.16); text-transform: uppercase; letter-spacing: 0.6px; }
+.type-pill { margin-left: auto; font-family: var(--font-display); font-size: 11px; padding: 4px 8px; border: 1px solid rgba(255,255,255,0.16); text-transform: uppercase; letter-spacing: 0.8px; font-weight: 800; }
 .type-pill.internal { background: rgba(0,229,255,0.12); border-color: var(--cp-cyan); color: var(--cp-cyan); }
 .type-pill.external { background: rgba(252,238,9,0.12); border-color: var(--cp-yellow); color: var(--cp-yellow); }
 
-.card .meta { color: var(--muted); font-size: 12px; margin: 10px 0 8px; display: flex; gap: 8px; flex-wrap: wrap; }
+.card .meta { display: none; }
+
+/* Compact, dense stats row */
+.card-compact { padding-top: 12px; padding-bottom: 12px; }
+.stat-row { display: grid; grid-template-columns: repeat(6, auto) 1fr auto; align-items: center; gap: 10px; margin-top: 8px; }
+.stat { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 12px; }
+.stat .ico { display: inline-flex; width: 16px; height: 16px; color: var(--cp-cyan); filter: drop-shadow(0 0 4px rgba(0,229,255,0.35)); }
+.stat .num { color: var(--text); font-weight: 800; letter-spacing: 0.4px; font-family: var(--font-numeric); font-variant-numeric: tabular-nums; }
+.stat-row .spacer { flex: 1 1 auto; }
+
+/* Micro charts for feature requests and issues */
+.microcharts { display: grid; gap: 6px; margin-top: 8px; }
+.mrow { display: grid; grid-template-columns: 24px 1fr; gap: 8px; align-items: center; }
+.mlabel { font-size: 10px; color: var(--muted); letter-spacing: 0.6px; border: 1px solid rgba(255,255,255,0.16); padding: 2px 4px; text-align: center; font-family: var(--font-mono); }
+.microcharts .hbar { height: 8px; box-shadow: none; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.05); }
+
+/* Mini key/value chip */
+.kv.mini { display: inline-grid; grid-template-columns: auto auto; gap: 6px; align-items: center; font-size: 11px; color: var(--muted); }
+.kv.mini .k { color: var(--cp-yellow); text-transform: uppercase; letter-spacing: 0.6px; font-family: var(--font-display); font-weight: 800; }
+
+/* Militech variant — heavy, militaristic, compressed */
+.theme-militech {
+  --font-brand: 'Russo One', 'Teko', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-display: 'Teko', 'Russo One', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+.kv.mini .v { color: var(--text); }
 .tag { 
   font-size: 11px; 
   border: 1px dashed rgba(0,240,255,0.4); 
@@ -575,41 +632,21 @@ body::after {
 .priority.low { color: var(--accent); border-color: var(--accent); }
 .card .footer { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; font-size: 12px; color: var(--muted); }
 .card .foot-left { display: flex; align-items: center; gap: 8px; }
-.card button { 
-  background: var(--cp-yellow); 
-  color: var(--cp-yellow-ink); 
-  border: none; 
-  padding: var(--space-sm) var(--space-lg); 
-  cursor: pointer; 
-  font-weight: 700; 
-  font-size: var(--text-base);
-  min-height: 44px;
-  min-width: 80px;
-  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%); 
-  box-shadow: 0 0 0 2px #000 inset; 
-  transition: transform 160ms ease, filter 160ms ease; 
-}
-.card button:hover { 
-  filter: brightness(1.1); 
-  transform: translateY(-2px); 
-  box-shadow: 
-    0 0 0 2px #000 inset, 
-    0 4px 8px #000,
-    0 0 20px rgba(252,238,9,0.5);
-}
+.card .foot-right { display: inline-flex; align-items: center; gap: 8px; }
+.card .chev { color: var(--cp-cyan); opacity: 0.7; font-weight: 700; font-size: 18px; line-height: 1; transform: translateY(-1px); }
 .card img.avatar { flex: 0 0 auto; width: 40px; height: 40px; object-fit: cover; border:1px solid rgba(255,255,255,0.2); clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%); }
 
 .modal { 
   position: fixed; 
   inset: 0; 
-  background: rgba(4,8,12,0.75); 
-  backdrop-filter: blur(3px); 
+  background: rgba(4,8,12,0.85); 
+  /* Remove backdrop-filter to avoid full-viewport repaint cost */
   display: flex; 
   align-items: center; 
   justify-content: center; 
   padding: var(--space-lg); 
   z-index: 1000;
-  /* Important: prevent the modal backdrop from scrolling */
+  /* Prevent the modal backdrop from scrolling */
   overflow: hidden;
 }
 .modal.hidden { display: none; }
@@ -620,11 +657,12 @@ body::after {
   border: 1px solid rgba(255,255,255,0.14); 
   position: relative; 
   box-shadow: var(--shadow); 
-  
-  /* Temporarily disable clipping to test scrolling */
-  /* clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px)); */
-  
   display: block;
+  /* Make the content its own scroller to localize painting */
+  overflow: auto;
+  contain: content paint;
+  will-change: transform;
+  transform: translateZ(0);
 }
 .modal-content .close { 
   position: absolute; 

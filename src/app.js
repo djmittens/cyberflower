@@ -8,6 +8,25 @@ const state = {
 function $(sel) { return document.querySelector(sel); }
 function el(tag, cls, html) { const e = document.createElement(tag); if (cls) e.className = cls; if (html !== undefined) e.innerHTML = html; return e; }
 
+// Minimal inline iconography (monochrome SVG; styled via CSS color)
+function icon(name, size = 14) {
+  const p = (d) => `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="${d}"/></svg>`;
+  switch (name) {
+    case 'users':
+      return p('M16 11c1.657 0 3-1.567 3-3.5S17.657 4 16 4s-3 1.567-3 3.5 1.343 3.5 3 3.5zm-8 0C9.657 11 11 9.433 11 7.5S9.657 4 8 4 5 5.567 5 7.5 6.343 11 8 11zm0 2c-2.761 0-5 1.57-5 3.5V19h10v-2.5c0-1.93-2.239-3.5-5-3.5zm8 0c-.695 0-1.352.1-1.956.28 1.209.86 1.956 2.047 1.956 3.22V19h6v-2.5c0-1.93-2.239-3.5-5-3.5z');
+    case 'tag':
+      return p('M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12.99V4h8.99l8.6 8.6a2 2 0 0 1 0 2.81zM7.5 7A1.5 1.5 0 1 0 7.5 10 1.5 1.5 0 1 0 7.5 7z');
+    case 'wrench':
+      return p('M22.7 19.3l-6.4-6.4a6 6 0 0 1-7.9-7.9l3.2 3.2 2.1-2.1-3.2-3.2a6 6 0 0 1 7.9 7.9l6.4 6.4-2.1 2.1zM4 20a4 4 0 1 0 0-8 4 4 0 1 0 0 8z');
+    case 'chip':
+      return p('M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm2 6h6v8H9V8z');
+    case 'calendar':
+      return p('M7 2h2v2h6V2h2v2h3v16H4V4h3V2zm0 6v10h10V8H7z');
+    default:
+      return '';
+  }
+}
+
 async function loadData() {
   const res = await fetch('data/customers.json');
   const data = await res.json();
@@ -45,7 +64,7 @@ function renderFacet(containerSel, key) {
     chip.addEventListener('click', () => {
       if (state.active[key].has(name)) state.active[key].delete(name); else state.active[key].add(name);
       renderFacet(containerSel, key);
-      applyFilters();
+      scheduleApplyFilters();
     });
     container.appendChild(chip);
   }
@@ -90,18 +109,48 @@ function applyFilters() {
 function renderGrid() {
   const grid = $('#grid');
   grid.innerHTML = '';
+  const frag = document.createDocumentFragment();
   for (const c of state.filtered) {
-    const card = el('article', 'card');
-    const frameworks = (c.frameworks||[]).slice(0,3).map(f=>`<span class="tag">${f}</span>`).join(' ');
-    const topPriority = (c.feature_requests||[]).map(fr=>fr.priority).sort()[0];
-    const prCls = topPriority ? `priority ${topPriority}` : '';
-    const avatar = c.avatar ? `<img class="avatar" src="${c.avatar}" alt="${c.name}"/>` : '';
-    const subline = c.customer_type==='internal-team'
-      ? `Members: ${(c.members||[]).length}${(c.meeting_dates||[]).length? ' · Next mtg: '+formatNextMeeting(c.meeting_dates):''}`
-      : (c.account_owner ? `Owner: ${c.account_owner}` : '');
+    const card = el('article', 'card card-compact');
+    const avatar = c.avatar ? `<img class="avatar" src="${c.avatar}" alt="${c.name}" width="40" height="40" decoding="async" loading="lazy"/>` : '';
     const updated = new Date(c.updated_at);
     const updatedStr = isNaN(updated)? '' : updated.toLocaleDateString();
     const typePill = `<span class="type-pill ${c.customer_type==='internal-team'?'internal':'external'}">${c.customer_type==='internal-team'?'Internal':'External'}</span>`;
+    const frameworksCount = (c.frameworks||[]).length;
+    const servicesCount = (c.services||[]).length;
+    const tagsCount = (c.tags||[]).length;
+    const membersCount = c.customer_type==='internal-team' ? (c.members||[]).length : 0;
+    const next = c.customer_type==='internal-team' ? formatNextMeeting(c.meeting_dates||[]) : '';
+    const owner = c.customer_type!=='internal-team' ? (c.account_owner||'') : '';
+    const frs = (c.feature_requests||[]);
+    const frStatusCounts = ['proposed','under-review','planned','shipped'].map(s => ({ s, n: frs.filter(x => (x.status||'proposed')===s).length }));
+    const totalFr = frStatusCounts.reduce((a,b)=>a+b.n,0) || 1;
+    const issues = (c.issues||[]);
+    const issueSeverityCounts = ['critical','major','minor'].map(s => ({ s, n: issues.filter(x => (x.severity||'minor')===s).length }));
+    const totalIssues = issueSeverityCounts.reduce((a,b)=>a+b.n,0) || 1;
+
+    const frBar = frStatusCounts.map(({s,n})=>`<div class="hseg ${s}" style="width:${(n/totalFr)*100}%" title="${s}: ${n}"></div>`).join('');
+    const issueBar = issueSeverityCounts.map(({s,n})=>`<div class="hseg ${s}" style="width:${(n/totalIssues)*100}%" title="${s}: ${n}"></div>`).join('');
+
+    const subline = c.customer_type==='internal-team'
+      ? `${membersCount} members${next?` · Next: ${next}`:''}`
+      : (owner ? `Owner: ${owner}` : '');
+
+    // Determine a concise right-side status for the footer
+    const priorityWeights = { high: 3, medium: 2, low: 1 };
+    const topPriority = (c.feature_requests||[])
+      .map(fr => fr.priority || 'low')
+      .sort((a,b)=>(priorityWeights[b]||0)-(priorityWeights[a]||0))[0];
+    const asks = Array.isArray(c.asks)? c.asks : [];
+    const nextDue = asks
+      .map(a => ({...a, _d: new Date(a.due)}))
+      .filter(a => a.due && !isNaN(a._d))
+      .sort((a,b)=>a._d - b._d)[0];
+
+    const rightStatus = c.customer_type==='internal-team'
+      ? (nextDue ? `<span class="tag">Ask: ${nextDue.status||''} · ${nextDue.due}</span>` : (next?`<span class="tag">Next: ${next}</span>`:''))
+      : (topPriority ? `<span class="tag priority ${topPriority}">prio: ${topPriority}</span>` : '');
+
     card.innerHTML = `
       <div class="card-header">
         ${avatar}
@@ -111,18 +160,51 @@ function renderGrid() {
         </div>
         ${typePill}
       </div>
-      <div class="meta">${frameworks||'\u00A0'}</div>
+      <div class="stat-row">
+        <div class="stat" title="Frameworks">
+          <span class="ico">${icon('chip')}</span>
+          <span class="num">${frameworksCount}</span>
+        </div>
+        <div class="stat" title="Services">
+          <span class="ico">${icon('wrench')}</span>
+          <span class="num">${servicesCount}</span>
+        </div>
+        <div class="stat" title="Tags">
+          <span class="ico">${icon('tag')}</span>
+          <span class="num">${tagsCount}</span>
+        </div>
+        ${c.customer_type==='internal-team' ? `
+        <div class="stat" title="Members">
+          <span class="ico">${icon('users')}</span>
+          <span class="num">${membersCount}</span>
+        </div>` : ''}
+        <div class="spacer"></div>
+        ${next ? `<div class="kv mini" title="Next"><span class="k">Next</span><span class="v">${next}</span></div>` : owner ? `<div class="kv mini" title="Owner"><span class="k">Owner</span><span class="v">${owner}</span></div>` : ''}
+      </div>
+      <div class="microcharts">
+        <div class="mrow" title="Feature requests">
+          <span class="mlabel">FR</span>
+          <div class="hbar">${frBar}</div>
+        </div>
+        <div class="mrow" title="Issues">
+          <span class="mlabel">IS</span>
+          <div class="hbar">${issueBar}</div>
+        </div>
+      </div>
       <div class="footer">
         <div class="foot-left">
-          ${topPriority?`<span class="tag ${prCls}">prio: ${topPriority}</span>`: (updatedStr?`<span class="tag">Updated: ${updatedStr}</span>`:'')}
+          ${updatedStr?`<span class="tag">Updated: ${updatedStr}</span>`:''}
         </div>
-        <button data-id="${c.id}">Open</button>
+        <div class="foot-right">
+          ${rightStatus}
+          <span class="chev" aria-hidden="true">›</span>
+        </div>
       </div>
     `;
-    card.addEventListener('click', (e)=>{ if (e.target.tagName !== 'BUTTON') openDetail(c.id); });
-    card.querySelector('button').addEventListener('click', (e)=> { e.stopPropagation(); openDetail(c.id); });
-    grid.appendChild(card);
+    card.addEventListener('click', () => openDetail(c.id));
+    frag.appendChild(card);
   }
+  grid.appendChild(frag);
 }
 
 function formatNextMeeting(dates) {
@@ -162,7 +244,7 @@ function openDetail(id) {
   detail.innerHTML = `
     <div class="detail-header">
       <div style="display:flex; gap:12px; align-items:center;">
-        ${c.avatar?`<img src="${c.avatar}" alt="${c.name}" width="56" height="56" style="object-fit:cover; border:1px solid rgba(255,255,255,0.2); clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);"/>`:''}
+        ${c.avatar?`<img src="${c.avatar}" alt="${c.name}" width="56" height="56" decoding="async" style="object-fit:cover; border:1px solid rgba(255,255,255,0.2); clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);"/>`:''}
         <div>
           <h2 style="margin:0">${c.name}</h2>
           <div style="color:var(--muted); font-size:12px;">${c.customer_type||'external'} ${c.account_owner?` · Owner: ${c.account_owner}`:''}</div>
@@ -231,12 +313,26 @@ function openDetail(id) {
 function bindUI() {
   $('#search').addEventListener('input', (e)=>{
     state.active.query = e.target.value;
-    applyFilters();
+    scheduleApplyFilters();
   });
   $('#sort').addEventListener('change', (e)=>{
     state.active.sort = e.target.value;
-    applyFilters();
+    scheduleApplyFilters();
   });
+  // Performance mode toggle
+  const perfBtn = $('#perf-toggle');
+  if (perfBtn) {
+    const applyPerfPref = () => {
+      const enabled = localStorage.getItem('perfMode') === '1';
+      document.body.classList.toggle('perf', enabled);
+    };
+    applyPerfPref();
+    perfBtn.addEventListener('click', () => {
+      const next = !(localStorage.getItem('perfMode') === '1');
+      localStorage.setItem('perfMode', next ? '1' : '0');
+      applyPerfPref();
+    });
+  }
   $('#close-detail').addEventListener('click', closeModal);
   $('#detail-modal').addEventListener('click', (e)=>{
     if (e.target.id === 'detail-modal') closeModal();
@@ -279,8 +375,14 @@ function bindUI() {
   // Touch gesture support for cards
   setupTouchGestures();
   
-  // Intersection Observer for performance
-  setupIntersectionObserver();
+  // We rely on CSS content-visibility, no IO needed
+}
+
+// Batch filter application into the next animation frame
+let filterRaf = 0;
+function scheduleApplyFilters() {
+  if (filterRaf) cancelAnimationFrame(filterRaf);
+  filterRaf = requestAnimationFrame(() => { filterRaf = 0; applyFilters(); });
 }
 
 function toggleSidebar() {
@@ -353,39 +455,7 @@ function setupTouchGestures() {
   }, { passive: true });
 }
 
-function setupIntersectionObserver() {
-  if (!window.IntersectionObserver) return;
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        // Add stagger animation delay
-        const index = Array.from(entry.target.parentNode.children).indexOf(entry.target);
-        entry.target.style.animationDelay = `${index * 50}ms`;
-      }
-    });
-  }, {
-    root: null,
-    rootMargin: '0px 0px -10% 0px',
-    threshold: 0.1
-  });
-  
-  // Observe cards when they're rendered
-  const observeCards = () => {
-    document.querySelectorAll('.card:not(.observed)').forEach(card => {
-      observer.observe(card);
-      card.classList.add('observed');
-    });
-  };
-  
-  // Call after grid renders
-  const originalRenderGrid = window.renderGrid || renderGrid;
-  window.renderGrid = function() {
-    originalRenderGrid.call(this);
-    setTimeout(observeCards, 50);
-  };
-}
+function setupIntersectionObserver() { /* no-op */ }
 
 function showModal() {
   const modal = $('#detail-modal');
