@@ -123,26 +123,7 @@ body {
 }
 
 /* Performance Mode — minimize paint-heavy effects */
-body.perf::before,
-body.perf::after { display: none; }
-.perf .topbar { backdrop-filter: none; box-shadow: none; background: linear-gradient(90deg, #0b1016, #101823); }
-.perf .bar-stripes { display: none; }
-.perf .layout::before,
-.perf .layout::after { display: none; }
-.perf .panel.left::before { display: none; }
-.perf .panel.left { box-shadow: none; }
-.perf .card {
-  background: var(--panel);
-  backdrop-filter: none;
-  box-shadow: none;
-  clip-path: none;
-}
-.perf .card::before,
-.perf .card::after { display: none; }
-.perf .tag { border-style: solid; border-color: rgba(255,255,255,0.16); }
-.perf .btn { box-shadow: none; }
-.perf .type-pill { border-color: rgba(255,255,255,0.16); }
-.perf .modal { backdrop-filter: none; }
+/* Perf mode removed: keep one fast default look */
 
 @keyframes neural-pulse {
   0%, 100% { opacity: 0.7; }

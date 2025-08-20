@@ -1,0 +1,18 @@
+:root[data-theme="neon"]{
+  --bg-900:#070B12; --bg-850:#0A101B; --panel:#0D1826; --panel-raised:#112033;
+  --text-100:#EAF2FF; --text-70:#AAC1E6; --text-40:#6D809B;
+  --accent-cyan:#12F7D6; --accent-yellow:#FCEE0D; --accent-mag:#FF3D81; --accent-orange:#FF8A33;
+  --ok:#1DD1A1; --warn:#FFC048; --err:#FF4D4D;
+  --line-1:#163049; --line-2:#0F263C; --gridline:#11324D;
+
+  /* φ rhythm and type */
+  --phi:1.618;
+  --space-1:8px; --space-2:13px; --space-3:21px; --space-4:34px; --space-5:55px;
+  --font-xxs:12px; --font-xs:14px; --font-sm:16px;
+  --font-xl:clamp(26px,1.8vw,28px); --font-2xl:clamp(42px,3vw,44px);
+
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --dur-fast:80ms; --dur-med:150ms;
+  --radius-hud:18px; --stroke:1px;
+}
+html,body{background:var(--bg-900);color:var(--text-100);} 

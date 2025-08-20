@@ -10,7 +10,7 @@ function el(tag, cls, html) { const e = document.createElement(tag); if (cls) e.
 
 // Minimal inline iconography (monochrome SVG; styled via CSS color)
 function icon(name, size = 14) {
-  const p = (d) => `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="${d}"/></svg>`;
+  const p = (d) => `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="${d}"/></svg>`;
   switch (name) {
     case 'users':
       return p('M16 11c1.657 0 3-1.567 3-3.5S17.657 4 16 4s-3 1.567-3 3.5 1.343 3.5 3 3.5zm-8 0C9.657 11 11 9.433 11 7.5S9.657 4 8 4 5 5.567 5 7.5 6.343 11 8 11zm0 2c-2.761 0-5 1.57-5 3.5V19h10v-2.5c0-1.93-2.239-3.5-5-3.5zm8 0c-.695 0-1.352.1-1.956.28 1.209.86 1.956 2.047 1.956 3.22V19h6v-2.5c0-1.93-2.239-3.5-5-3.5z');
@@ -59,7 +59,7 @@ function renderFacet(containerSel, key) {
   container.innerHTML = '';
   const items = Array.from(state.facets[key].entries()).sort((a,b)=>a[0].localeCompare(b[0]));
   for (const [name, count] of items) {
-    const chip = el('div', 'chip', `${name} <span style="opacity:.6">(${count})</span>`);
+    const chip = el('div', 'chip u-chip', `${name} <span style="opacity:.6">(${count})</span>`);
     if (state.active[key].has(name)) chip.classList.add('active');
     chip.addEventListener('click', () => {
       if (state.active[key].has(name)) state.active[key].delete(name); else state.active[key].add(name);
@@ -111,11 +111,11 @@ function renderGrid() {
   grid.innerHTML = '';
   const frag = document.createDocumentFragment();
   for (const c of state.filtered) {
-    const card = el('article', 'card card-compact');
+    const card = el('article', 'card card-compact u-notch u-inset-line u-cv');
     const avatar = c.avatar ? `<img class="avatar" src="${c.avatar}" alt="${c.name}" width="40" height="40" decoding="async" loading="lazy"/>` : '';
     const updated = new Date(c.updated_at);
     const updatedStr = isNaN(updated)? '' : updated.toLocaleDateString();
-    const typePill = `<span class="type-pill ${c.customer_type==='internal-team'?'internal':'external'}">${c.customer_type==='internal-team'?'Internal':'External'}</span>`;
+    const typePill = `<span class="type-pill u-chip ${c.customer_type==='internal-team'?'internal':'external'}">${c.customer_type==='internal-team'?'Internal':'External'}</span>`;
     const frameworksCount = (c.frameworks||[]).length;
     const servicesCount = (c.services||[]).length;
     const tagsCount = (c.tags||[]).length;
@@ -160,7 +160,7 @@ function renderGrid() {
         </div>
         ${typePill}
       </div>
-      <div class="stat-row">
+      <div class="stat-row u-row">
         <div class="stat" title="Frameworks">
           <span class="ico">${icon('chip')}</span>
           <span class="num">${frameworksCount}</span>
@@ -182,11 +182,11 @@ function renderGrid() {
         ${next ? `<div class="kv mini" title="Next"><span class="k">Next</span><span class="v">${next}</span></div>` : owner ? `<div class="kv mini" title="Owner"><span class="k">Owner</span><span class="v">${owner}</span></div>` : ''}
       </div>
       <div class="microcharts">
-        <div class="mrow" title="Feature requests">
+        <div class="mrow u-row" title="Feature requests">
           <span class="mlabel">FR</span>
           <div class="hbar">${frBar}</div>
         </div>
-        <div class="mrow" title="Issues">
+        <div class="mrow u-row" title="Issues">
           <span class="mlabel">IS</span>
           <div class="hbar">${issueBar}</div>
         </div>
@@ -319,20 +319,6 @@ function bindUI() {
     state.active.sort = e.target.value;
     scheduleApplyFilters();
   });
-  // Performance mode toggle
-  const perfBtn = $('#perf-toggle');
-  if (perfBtn) {
-    const applyPerfPref = () => {
-      const enabled = localStorage.getItem('perfMode') === '1';
-      document.body.classList.toggle('perf', enabled);
-    };
-    applyPerfPref();
-    perfBtn.addEventListener('click', () => {
-      const next = !(localStorage.getItem('perfMode') === '1');
-      localStorage.setItem('perfMode', next ? '1' : '0');
-      applyPerfPref();
-    });
-  }
   $('#close-detail').addEventListener('click', closeModal);
   $('#detail-modal').addEventListener('click', (e)=>{
     if (e.target.id === 'detail-modal') closeModal();

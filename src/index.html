@@ -1,55 +1,45 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="neon">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NeonGrid CRM</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles/theme-neon.css" />
+    <link rel="stylesheet" href="styles/hud.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Teko:wght@500;700&family=Russo+One&family=Exo+2:wght@400;700&family=Rajdhani:wght@500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   </head>
   <body>
     <div class="chrome" id="app">
-      <header class="topbar">
-        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle sidebar">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </button>
-        <div class="brand glitch" data-text="NEONGRID">
-          <span class="brand-core">NEON</span><span class="brand-accent">GRID</span>
-          <span class="brand-sub">// CRM</span>
-        </div>
-        <div class="actions">
-          <button class="btn ghost" id="perf-toggle" title="Toggle Performance Mode">
-            <span class="btn-icon">⚡</span>
-            <span class="btn-text">Perf</span>
-          </button>
-          <a class="btn ghost" href="data/customers.json" download>
-            <span class="btn-icon">📊</span>
-            <span class="btn-text">Export</span>
-          </a>
-          <a class="btn primary" href="../docs/content-authoring.md" target="_blank">
-            <span class="btn-icon">📝</span>
-            <span class="btn-text">Guide</span>
-          </a>
-        </div>
-      </header>
-      <div class="bar-stripes"></div>
+      <header class="hud-banner hud-grid contain-paint">
+  <div class="hud-banner__row">
+    <div class="brand">
+      <span class="brand__jp" aria-hidden="true">ネオングリッド</span>
+      <span class="brand__title">NEON<span class="accent">GRID</span> <small>CRM</small></span>
+    </div>
+    <div class="banner-actions"><!-- optional KPIs/buttons --></div>
+  </div>
 
-      <section class="toolbar">
-        <div class="searchbox">
-          <input id="search" type="search" placeholder="Search customers, frameworks, tags, issues..." />
-          <div class="scanline"></div>
-        </div>
-        <div class="filters" id="filters">
-          <div id="facet-type" class="facet"></div>
-        </div>
-      </section>
+  <div class="hud-banner__row">
+    <label class="bracket-label" for="search">Search</label>
+    <div class="bracket-box">
+      <input id="search" data-search class="hud-input" placeholder="Search customers, frameworks, tags, issues…">
+      <span class="notch" aria-hidden="true"></span>
+    </div>
+    <div class="chip-row">
+      <button class="hud-chip" data-active="true">external <span class="meta">(2)</span></button>
+      <button class="hud-chip">internal-team <span class="meta">(10)</span></button>
+    </div>
+  </div>
+</header>
 
-      <main class="layout">
-        <aside class="panel left cut" id="sidebar">
+      <main class="layout u-matrix">
+        <aside class="panel left cut u-notch u-inset-line" id="sidebar">
           <div class="sidebar-header">
             <h3>Quick Filters</h3>
             <button class="sidebar-close" id="sidebar-close" aria-label="Close sidebar">×</button>
@@ -77,8 +67,8 @@
       </main>
 
       <div id="detail-modal" class="modal hidden">
-        <div class="modal-content">
-          <button class="close" id="close-detail">×</button>
+        <div class="modal-content u-notch u-inset-line">
+          <button class="close" id="close-detail" aria-label="Close detail">×</button>
           <div id="detail"></div>
         </div>
       </div>
