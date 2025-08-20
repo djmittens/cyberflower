@@ -27,14 +27,13 @@
 
   <div class="hud-banner__row">
     <label class="bracket-label" for="search">Search</label>
-    <div class="bracket-box">
-      <input id="search" data-search class="hud-input" placeholder="Search customers, frameworks, tags, issues…">
+    <div class="bracket-box action-bar">
+      <input id="search" data-search class="hud-input action-input" placeholder="Type to search • try: framework: react  tag: ai  sort: priority">
+      <span class="kbd-hint" id="kbd-hint" aria-hidden="true">⌘K</span>
       <span class="notch" aria-hidden="true"></span>
+      <div id="action-panel" class="action-panel hidden" role="listbox" aria-label="Search actions"></div>
     </div>
-    <div class="chip-row">
-      <button class="hud-chip" data-active="true">external <span class="meta">(2)</span></button>
-      <button class="hud-chip">internal-team <span class="meta">(10)</span></button>
-    </div>
+    <!-- unified records: no type chips -->
   </div>
 </header>
 

@@ -7,6 +7,7 @@ Author one Markdown file per customer. Use JSON frontmatter between `---` lines 
 Required fields: `id`, `name`
 
 Optional recommended fields: `account_owner`, `frameworks[]`, `services[]`, `tags[]`, `feature_requests[]`, `issues[]`, `contacts[]`.
+Team-specific optional fields (if applicable): `members[]` (name, role, email), `libraries[]` (name, project), `meeting_dates[]`, `asks[]` (ask, due, status).
 
 ## Template
 
@@ -50,36 +51,4 @@ Short overview of the customer, key context, and goals.
 - The Markdown body supports headings, lists, bold, italics, links, inline and fenced code blocks.
 - Files are sorted by `name` in the grid; the detail view shows structured fields and renders the Markdown body as notes.
 
-## Teams
-
-Author teams in `content/teams/` with the following JSON frontmatter. The Markdown body is used for meeting notes or longer docs.
-
-```
----
-{
-  "id": "neon-core",
-  "name": "Neon Core",
-  "avatar": "assets/avatars/neon-core.svg",
-  "members": [
-    { "name": "Ava Reed", "role": "Tech Lead" },
-    { "name": "Max Ono", "role": "Data Engineer" }
-  ],
-  "libraries": [
-    { "name": "Spark", "project": "Finance ETL" },
-    { "name": "dbt", "project": "Sales Models" }
-  ],
-  "meeting_dates": ["2025-08-15", "2025-09-12"],
-  "asks": [
-    { "ask": "Dedicated test cluster", "due": "2025-09-01", "status": "proposed" },
-    { "ask": "New CDC connector", "due": "2025-10-10", "status": "under-review" }
-  ]
-}
----
-
-# Meeting Notes
-
-- Highlights and decisions.
-- Risks and follow-ups.
-```
-
-Note: The site builds a unified customer catalog that includes external customers from `content/customers/` and internal teams from `content/teams/`. Internal teams are tagged as `internal` and show members, libraries, meeting dates, and asks in the detail view.
+Note: Author both external customers and internal teams under `content/customers/`. Include team fields where relevant; the build script derives helpful defaults (e.g., frameworks from libraries, owner from members) when not provided. If `avatar` is omitted, a placeholder at `assets/avatars/avatar-template.svg` is used.

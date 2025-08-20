@@ -570,9 +570,6 @@ body {
 .card-headings { display: grid; gap: 2px; min-width: 0; }
 .title { font-family: var(--font-display); font-weight: 800; letter-spacing: 0.6px; font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .subline { color: var(--muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.type-pill { margin-left: auto; font-family: var(--font-display); font-size: 11px; padding: 4px 8px; border: 1px solid rgba(255,255,255,0.16); text-transform: uppercase; letter-spacing: 0.8px; font-weight: 800; }
-.type-pill.internal { background: rgba(0,229,255,0.12); border-color: var(--cp-cyan); color: var(--cp-cyan); }
-.type-pill.external { background: rgba(252,238,9,0.12); border-color: var(--cp-yellow); color: var(--cp-yellow); }
 
 .card .meta { display: none; }
 

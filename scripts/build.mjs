@@ -11,8 +11,7 @@ const __dirname = path.dirname(__filename);
 
 const ROOT = path.resolve(__dirname, '..');
 const SRC_DIR = path.join(ROOT, 'src');
-const CUSTOMERS_DIR = path.join(ROOT, 'content', 'customers');
-const TEAMS_DIR = path.join(ROOT, 'content', 'teams');
+const RECORDS_DIR = path.join(ROOT, 'content', 'customers');
 const PUBLIC_DIR = path.join(ROOT, 'public');
 const DATA_DIR = path.join(PUBLIC_DIR, 'data');
 
@@ -141,12 +140,12 @@ function markdownToHtml(md) {
   return html;
 }
 
-async function loadCustomers() {
-  await ensureDir(CUSTOMERS_DIR);
-  const files = (await fs.readdir(CUSTOMERS_DIR)).filter(f => f.endsWith('.md'));
-  const customers = [];
+async function loadRecords() {
+  await ensureDir(RECORDS_DIR);
+  const files = (await fs.readdir(RECORDS_DIR)).filter(f => f.endsWith('.md'));
+  const records = [];
   for (const file of files) {
-    const full = path.join(CUSTOMERS_DIR, file);
+    const full = path.join(RECORDS_DIR, file);
     const raw = await fs.readFile(full, 'utf8');
     const { meta, body } = extractFrontmatter(raw);
     if (!meta.id || !meta.name) {
@@ -154,54 +153,40 @@ async function loadCustomers() {
     }
     const stats = await fs.stat(full);
     const body_html = markdownToHtml(body);
-    customers.push({
-      ...meta,
-      body_html,
-      updated_at: stats.mtime.toISOString(),
-      source_file: path.relative(ROOT, full),
-      excerpt: body.replace(/\s+/g, ' ').slice(0, 240)
-    });
-  }
-  // sort by name
-  customers.sort((a, b) => a.name.localeCompare(b.name));
-  return customers;
-}
-
-async function loadTeams() {
-  await ensureDir(TEAMS_DIR);
-  const files = (await fs.readdir(TEAMS_DIR)).filter(f => f.endsWith('.md'));
-  const teams = [];
-  for (const file of files) {
-    const full = path.join(TEAMS_DIR, file);
-    const raw = await fs.readFile(full, 'utf8');
-    const { meta, body } = extractFrontmatter(raw);
-    if (!meta.id || !meta.name) {
-      throw new Error(`Missing required fields 'id' and 'name' in team ${file}`);
-    }
-    const stats = await fs.stat(full);
-    const body_html = markdownToHtml(body);
+    // derive helpful fields if missing
+    const members = Array.isArray(meta.members) ? meta.members : [];
+    const libraries = Array.isArray(meta.libraries) ? meta.libraries : [];
+    const frameworksFromLibs = libraries.map(l => l.name).filter(Boolean);
+    const frameworks = Array.isArray(meta.frameworks) ? meta.frameworks : frameworksFromLibs;
+    const ownerFromMembers = members.find(m => /lead|owner|manager/i.test(m.role||'')) || members[0];
+    const account_owner = meta.account_owner || (ownerFromMembers ? ownerFromMembers.name : '');
     const meeting_dates = Array.isArray(meta.meeting_dates) ? meta.meeting_dates : [];
-    const upcoming = meeting_dates
-      .map(d => new Date(d))
-      .filter(d => !isNaN(d.getTime()) && d >= new Date())
-      .sort((a,b)=>a-b)[0];
     const asks = Array.isArray(meta.asks) ? meta.asks : [];
-    const next_due = asks
-      .map(a => ({...a, _d: new Date(a.due)}))
-      .filter(a => a.due && !isNaN(a._d.getTime()))
-      .sort((a,b)=>a._d - b._d)[0];
-    teams.push({
+    const excerpt = body.replace(/\s+/g, ' ').slice(0, 240);
+    // avatar resolution: explicit meta > file named after id > template
+    let avatar = meta.avatar || '';
+    if (!avatar) {
+      const candidate = path.join(SRC_DIR, 'assets', 'avatars', `${meta.id}.svg`);
+      try { await fs.access(candidate); avatar = `assets/avatars/${meta.id}.svg`; } catch {}
+    }
+    if (!avatar) avatar = 'assets/avatars/avatar-template.svg';
+    records.push({
       ...meta,
+      avatar,
+      account_owner,
+      frameworks,
+      members,
+      libraries,
+      meeting_dates,
+      asks,
       body_html,
       updated_at: stats.mtime.toISOString(),
       source_file: path.relative(ROOT, full),
-      excerpt: body.replace(/\s+/g, ' ').slice(0, 240),
-      next_meeting_at: upcoming ? upcoming.toISOString() : null,
-      next_due_ask: next_due ? { ask: next_due.ask, due: next_due.due, status: next_due.status } : null,
+      excerpt,
     });
   }
-  teams.sort((a, b) => a.name.localeCompare(b.name));
-  return teams;
+  records.sort((a, b) => a.name.localeCompare(b.name));
+  return records;
 }
 
 async function build() {
@@ -212,53 +197,12 @@ async function build() {
   console.log('• Copying static assets from src/ ...');
   await copyDir(SRC_DIR, PUBLIC_DIR);
 
-  console.log('• Compiling customer markdown ...');
-  const customersExternal = await loadCustomers();
+  console.log('• Compiling records (customers + teams) ...');
+  const customers = await loadRecords();
   await ensureDir(DATA_DIR);
-  // Keep writing standalone customers and teams for debugging
-  await fs.writeFile(path.join(DATA_DIR, 'customers.external.json'), JSON.stringify({ customers: customersExternal }, null, 2));
-  console.log('• Compiling teams markdown ...');
-  const teams = await loadTeams();
-  await fs.writeFile(path.join(DATA_DIR, 'teams.json'), JSON.stringify({ teams }, null, 2));
-
-  // Normalize teams into unified customers list
-  const normalizedTeams = teams.map(t => {
-    const owner = (Array.isArray(t.members)? t.members.find(m => /lead/i.test(m.role||'')) : null) || (t.members && t.members[0]);
-    const frameworks = Array.isArray(t.libraries) ? t.libraries.map(l => l.name).filter(Boolean) : [];
-    const contacts = Array.isArray(t.members) ? t.members.map(m => ({ name: m.name, role: m.role, email: m.email||'' })) : [];
-    return {
-      id: t.id,
-      name: t.name,
-      account_owner: owner ? owner.name : '',
-      frameworks,
-      services: [],
-      tags: ["internal", "team", ...(t.tags||[])],
-      feature_requests: [],
-      issues: [],
-      contacts,
-      avatar: t.avatar || '',
-      members: t.members || [],
-      libraries: t.libraries || [],
-      meeting_dates: t.meeting_dates || [],
-      asks: t.asks || [],
-      body_html: t.body_html || '',
-      updated_at: t.updated_at,
-      source_file: t.source_file,
-      excerpt: t.excerpt,
-      customer_type: 'internal-team',
-    };
-  });
-
-  const customers = [
-    ...customersExternal.map(c => ({ ...c, customer_type: 'external', avatar: c.avatar||'' })),
-    ...normalizedTeams
-  ];
-
-  // Sort unified customers by name
-  customers.sort((a,b)=> a.name.localeCompare(b.name));
   await fs.writeFile(path.join(DATA_DIR, 'customers.json'), JSON.stringify({ customers }, null, 2));
 
-  console.log(`✓ Built ${customersExternal.length} external customers, ${teams.length} teams → ${customers.length} unified customers.`);
+  console.log(`✓ Built ${customers.length} records from content/customers/`);
   console.log('→ Open public/index.html via a local server (make run)');
 }
 

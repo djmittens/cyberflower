@@ -1,8 +1,8 @@
 const state = {
   all: [],
   filtered: [],
-  facets: { type: new Map(), frameworks: new Map(), services: new Map(), tags: new Map() },
-  active: { query: '', type: new Set(), frameworks: new Set(), services: new Set(), tags: new Set(), sort: 'name' },
+  facets: { frameworks: new Map(), services: new Map(), tags: new Map() },
+  active: { query: '', frameworks: new Set(), services: new Set(), tags: new Set(), sort: 'name' },
 };
 
 function $(sel) { return document.querySelector(sel); }
@@ -33,24 +33,22 @@ async function loadData() {
   state.all = data.customers || [];
   indexFacets();
   applyFilters();
+  // type chips removed; unified records
 }
 
 function indexFacets() {
-  state.facets.type.clear();
   state.facets.frameworks.clear();
   state.facets.services.clear();
   state.facets.tags.clear();
   for (const c of state.all) {
-    const typ = c.customer_type || 'external';
-    state.facets.type.set(typ, (state.facets.type.get(typ)||0)+1);
     (c.frameworks || []).forEach(f => state.facets.frameworks.set(f, (state.facets.frameworks.get(f)||0)+1));
     (c.services || []).forEach(s => state.facets.services.set(s, (state.facets.services.get(s)||0)+1));
     (c.tags || []).forEach(t => state.facets.tags.set(t, (state.facets.tags.get(t)||0)+1));
   }
-  renderFacet('#facet-type', 'type');
   renderFacet('#facet-frameworks', 'frameworks');
   renderFacet('#facet-services', 'services');
   renderFacet('#facet-tags', 'tags');
+  // no type chips
 }
 
 function renderFacet(containerSel, key) {
@@ -83,11 +81,10 @@ function applyFilters() {
       (c.members||[]).some(m=> (m.name||'').toLowerCase().includes(q) || (m.role||'').toLowerCase().includes(q)) ||
       (c.libraries||[]).some(l=> (l.name||'').toLowerCase().includes(q) || (l.project||'').toLowerCase().includes(q))
     );
-    const matchesType = state.active.type.size===0 || state.active.type.has(c.customer_type||'external');
     const matchesFrameworks = state.active.frameworks.size===0 || (c.frameworks||[]).some(x=>state.active.frameworks.has(x));
     const matchesServices = state.active.services.size===0 || (c.services||[]).some(x=>state.active.services.has(x));
     const matchesTags = state.active.tags.size===0 || (c.tags||[]).some(x=>state.active.tags.has(x));
-    return matchesText && matchesType && matchesFrameworks && matchesServices && matchesTags;
+    return matchesText && matchesFrameworks && matchesServices && matchesTags;
   });
 
   const sortKey = state.active.sort;
@@ -115,13 +112,13 @@ function renderGrid() {
     const avatar = c.avatar ? `<img class="avatar" src="${c.avatar}" alt="${c.name}" width="40" height="40" decoding="async" loading="lazy"/>` : '';
     const updated = new Date(c.updated_at);
     const updatedStr = isNaN(updated)? '' : updated.toLocaleDateString();
-    const typePill = `<span class="type-pill u-chip ${c.customer_type==='internal-team'?'internal':'external'}">${c.customer_type==='internal-team'?'Internal':'External'}</span>`;
+    const typePill = '';
     const frameworksCount = (c.frameworks||[]).length;
     const servicesCount = (c.services||[]).length;
     const tagsCount = (c.tags||[]).length;
-    const membersCount = c.customer_type==='internal-team' ? (c.members||[]).length : 0;
-    const next = c.customer_type==='internal-team' ? formatNextMeeting(c.meeting_dates||[]) : '';
-    const owner = c.customer_type!=='internal-team' ? (c.account_owner||'') : '';
+    const membersCount = (c.members||[]).length;
+    const next = formatNextMeeting(c.meeting_dates||[]);
+    const owner = c.account_owner || '';
     const frs = (c.feature_requests||[]);
     const frStatusCounts = ['proposed','under-review','planned','shipped'].map(s => ({ s, n: frs.filter(x => (x.status||'proposed')===s).length }));
     const totalFr = frStatusCounts.reduce((a,b)=>a+b.n,0) || 1;
@@ -132,7 +129,7 @@ function renderGrid() {
     const frBar = frStatusCounts.map(({s,n})=>`<div class="hseg ${s}" style="width:${(n/totalFr)*100}%" title="${s}: ${n}"></div>`).join('');
     const issueBar = issueSeverityCounts.map(({s,n})=>`<div class="hseg ${s}" style="width:${(n/totalIssues)*100}%" title="${s}: ${n}"></div>`).join('');
 
-    const subline = c.customer_type==='internal-team'
+    const subline = membersCount>0
       ? `${membersCount} members${next?` · Next: ${next}`:''}`
       : (owner ? `Owner: ${owner}` : '');
 
@@ -147,9 +144,9 @@ function renderGrid() {
       .filter(a => a.due && !isNaN(a._d))
       .sort((a,b)=>a._d - b._d)[0];
 
-    const rightStatus = c.customer_type==='internal-team'
-      ? (nextDue ? `<span class="tag">Ask: ${nextDue.status||''} · ${nextDue.due}</span>` : (next?`<span class="tag">Next: ${next}</span>`:''))
-      : (topPriority ? `<span class="tag priority ${topPriority}">prio: ${topPriority}</span>` : '');
+    const rightStatus = nextDue
+      ? `<span class="tag">Ask: ${nextDue.status||''} · ${nextDue.due}</span>`
+      : (next ? `<span class="tag">Next: ${next}</span>` : (topPriority ? `<span class="tag priority ${topPriority}">prio: ${topPriority}</span>` : ''));
 
     card.innerHTML = `
       <div class="card-header">
@@ -173,7 +170,7 @@ function renderGrid() {
           <span class="ico">${icon('tag')}</span>
           <span class="num">${tagsCount}</span>
         </div>
-        ${c.customer_type==='internal-team' ? `
+        ${membersCount>0 ? `
         <div class="stat" title="Members">
           <span class="ico">${icon('users')}</span>
           <span class="num">${membersCount}</span>
@@ -247,7 +244,7 @@ function openDetail(id) {
         ${c.avatar?`<img src="${c.avatar}" alt="${c.name}" width="56" height="56" decoding="async" style="object-fit:cover; border:1px solid rgba(255,255,255,0.2); clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);"/>`:''}
         <div>
           <h2 style="margin:0">${c.name}</h2>
-          <div style="color:var(--muted); font-size:12px;">${c.customer_type||'external'} ${c.account_owner?` · Owner: ${c.account_owner}`:''}</div>
+          <div style="color:var(--muted); font-size:12px;">${c.account_owner?`Owner: ${c.account_owner}`:''}</div>
         </div>
       </div>
       <div>${tags}</div>
@@ -257,7 +254,7 @@ function openDetail(id) {
         <div class="detail-body">
           <div class="section-title">Notes</div>
           <div class="section-box">${c.body_html||'<p style="color:var(--muted)">No notes yet.</p>'}</div>
-          ${c.customer_type==='internal-team' ? `
+          ${((c.asks && c.asks.length) || (c.meeting_dates && c.meeting_dates.length)) ? `
           <div class="section-title">Asks Timeline</div>
           <div class="section-box">
             <ul class="timeline">
@@ -270,7 +267,7 @@ function openDetail(id) {
         </div>
         <aside class="detail-aside">
           <div class="kv">
-            <div class="k">Type</div><div class="v">${c.customer_type||'external'}</div>
+            
             <div class="k">Updated</div><div class="v">${new Date(c.updated_at).toLocaleString()}</div>
             <div class="k">Frameworks</div><div class="v">${frameworks||'—'}</div>
             <div class="k">Services</div><div class="v">${services||'—'}</div>
@@ -297,9 +294,11 @@ function openDetail(id) {
             </div>
             <ul style="margin-top:8px">${issueList||'<li>—</li>'}</ul>
           </div>
-          ${c.customer_type==='internal-team' ? `
+          ${(c.members && c.members.length) ? `
           <div class="section-title">Members</div>
           <div class="section-box"><ul>${members||'<li>—</li>'}</ul></div>
+          ` : ''}
+          ${(c.libraries && c.libraries.length) ? `
           <div class="section-title">Libraries</div>
           <div class="section-box"><ul>${libs||'<li>—</li>'}</ul></div>
           ` : ''}
@@ -311,9 +310,11 @@ function openDetail(id) {
 }
 
 function bindUI() {
-  $('#search').addEventListener('input', (e)=>{
+  const searchInput = $('#search');
+  searchInput.addEventListener('input', (e)=>{
     state.active.query = e.target.value;
     scheduleApplyFilters();
+    updateActionPanel();
   });
   $('#sort').addEventListener('change', (e)=>{
     state.active.sort = e.target.value;
@@ -326,14 +327,28 @@ function bindUI() {
   
   // Enhanced keyboard navigation
   window.addEventListener('keydown', (e)=> { 
+    // Command palette shortcut
+    if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'p')) {
+      e.preventDefault();
+      const si = $('#search');
+      si.focus();
+      openActionPanel();
+      return;
+    }
     if (e.key === 'Escape') {
       if (document.body.classList.contains('sidebar-open')) {
         closeSidebar();
       } else {
-        closeModal(); 
+        closeModal();
+        closeActionPanel();
       }
     }
   });
+
+  // Action panel focus/hover handling
+  searchInput.addEventListener('focus', openActionPanel);
+  searchInput.addEventListener('keydown', actionPanelKeydown);
+  searchInput.addEventListener('blur', () => setTimeout(closeActionPanel, 120));
   
   // Mobile sidebar functionality
   const mobileToggle = $('#mobile-menu-toggle');
@@ -363,6 +378,122 @@ function bindUI() {
   
   // We rely on CSS content-visibility, no IO needed
 }
+
+// ----- Action bar / Command palette -----
+const actionState = { open: false, items: [], activeIndex: 0 };
+
+function platformShortcut() {
+  const isMac = /Mac|iPhone|iPad/.test(navigator.platform);
+  return isMac ? '⌘K' : 'Ctrl K';
+}
+
+function openActionPanel() {
+  const hint = $('#kbd-hint');
+  if (hint) hint.textContent = platformShortcut();
+  const p = $('#action-panel');
+  if (!p) return;
+  p.classList.remove('hidden');
+  actionState.open = true;
+  updateActionPanel();
+}
+function closeActionPanel() {
+  const p = $('#action-panel');
+  if (!p) return;
+  p.classList.add('hidden');
+  actionState.open = false;
+}
+
+function actionPanelKeydown(e) {
+  if (!actionState.open) return;
+  const max = actionState.items.length - 1;
+  if (e.key === 'ArrowDown') { e.preventDefault(); actionState.activeIndex = Math.min(max, actionState.activeIndex + 1); renderActionPanel(); }
+  if (e.key === 'ArrowUp') { e.preventDefault(); actionState.activeIndex = Math.max(0, actionState.activeIndex - 1); renderActionPanel(); }
+  if (e.key === 'Enter') { e.preventDefault(); const it = actionState.items[actionState.activeIndex]; if (it && it.onSelect) it.onSelect(); }
+}
+
+function updateActionPanel() { renderActionPanel(); }
+
+function suggestionItems(query) {
+  const q = (query || $('#search').value || '').trim().toLowerCase();
+  const items = [];
+
+  // Quick actions
+  if (!q) {
+    items.push(
+      { label: 'Clear all filters', kind: 'action', meta: '', onSelect: ()=> { clearFilters(); } },
+      { label: `Sort: Name A→Z`, kind: 'sort', meta: '', onSelect: ()=> setSort('name') },
+      { label: `Sort: Recently Updated`, kind: 'sort', meta: '', onSelect: ()=> setSort('updated') },
+      { label: `Sort: Highest Priority`, kind: 'sort', meta: '', onSelect: ()=> setSort('priority') },
+    );
+  }
+
+  // removed: type prefix
+
+  // Facets matchers
+  const addFacetMatches = (map, key) => {
+    const arr = Array.from(map.entries());
+    const matches = arr.filter(([name])=> name.toLowerCase().includes(q) && q.length >= 2).slice(0, 6);
+    for (const [name, count] of matches) {
+      items.push({ label: `${name}`, kind: key, meta: `${count}`, onSelect: ()=> toggleFacet(key, name) });
+    }
+  };
+  if (q) {
+    addFacetMatches(state.facets.frameworks, 'frameworks');
+    addFacetMatches(state.facets.services, 'services');
+    addFacetMatches(state.facets.tags, 'tags');
+  }
+
+  // Fallback direct search entry
+  if (q) {
+    items.push({ label: `Search for: "${q}"`, kind: 'search', meta: '', onSelect: ()=> { /* already bound */ closeActionPanel(); } });
+  }
+
+  return items;
+}
+
+function renderActionPanel() {
+  const p = $('#action-panel'); if (!p) return;
+  const q = $('#search').value || '';
+  const items = suggestionItems(q);
+  actionState.items = items;
+  actionState.activeIndex = Math.min(actionState.activeIndex, Math.max(0, items.length-1));
+  const groups = [];
+  // simple single list for now
+  const lis = items.map((it, idx)=> `
+    <li class="action-item ${idx===actionState.activeIndex?'is-active':''}" role="option" aria-selected="${idx===actionState.activeIndex}">
+      <span class="kind">${it.kind}</span>
+      <span class="label">${it.label}</span>
+      ${it.meta?`<span class="meta">${it.meta}</span>`:''}
+    </li>
+  `).join('');
+  p.innerHTML = `
+    ${q?`<div class="action-group-title">Suggestions</div>`:`<div class="action-group-title">Quick actions</div>`}
+    <ul class="action-list">${lis || '<li class="action-item">No matches</li>'}</ul>
+  `;
+  Array.from(p.querySelectorAll('.action-item')).forEach((el, idx)=>{
+    el.addEventListener('mouseenter', ()=> { actionState.activeIndex = idx; renderActionPanel(); });
+    el.addEventListener('mousedown', (e)=> e.preventDefault());
+    el.addEventListener('click', ()=> { const it = actionState.items[idx]; if (it && it.onSelect) it.onSelect(); });
+  });
+}
+
+function toggleFacet(key, name) {
+  const set = state.active[key];
+  if (set.has(name)) set.delete(name); else set.add(name);
+  scheduleApplyFilters();
+}
+function setSort(v) { state.active.sort = v; const sel = $('#sort'); if (sel) sel.value = v; scheduleApplyFilters(); closeActionPanel(); }
+function clearFilters() {
+  state.active.query = '';
+  state.active.frameworks.clear();
+  state.active.services.clear();
+  state.active.tags.clear();
+  const si = $('#search'); if (si) si.value = '';
+  scheduleApplyFilters();
+  closeActionPanel();
+}
+
+// type chips removed
 
 // Batch filter application into the next animation frame
 let filterRaf = 0;
