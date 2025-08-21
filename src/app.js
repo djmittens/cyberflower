@@ -1,8 +1,26 @@
 const state = {
   all: [],
   filtered: [],
-  facets: { frameworks: new Map(), services: new Map(), tags: new Map() },
-  active: { query: '', frameworks: new Set(), services: new Set(), tags: new Set(), sort: 'name' },
+  facets: {
+    frameworks: new Map(),
+    services: new Map(),
+    tags: new Map(),
+    adoption: new Map(),
+    environments: new Map(),
+    sla: new Map(),
+    health: new Map(),
+  },
+  active: {
+    query: '',
+    frameworks: new Set(),
+    services: new Set(),
+    tags: new Set(),
+    adoption: new Set(),
+    environments: new Set(),
+    sla: new Set(),
+    health: new Set(),
+    sort: 'name'
+  },
 };
 
 function $(sel) { return document.querySelector(sel); }
@@ -40,14 +58,30 @@ function indexFacets() {
   state.facets.frameworks.clear();
   state.facets.services.clear();
   state.facets.tags.clear();
+  state.facets.adoption.clear();
+  state.facets.environments.clear();
+  state.facets.sla.clear();
+  state.facets.health.clear();
   for (const c of state.all) {
     (c.frameworks || []).forEach(f => state.facets.frameworks.set(f, (state.facets.frameworks.get(f)||0)+1));
     (c.services || []).forEach(s => state.facets.services.set(s, (state.facets.services.get(s)||0)+1));
     (c.tags || []).forEach(t => state.facets.tags.set(t, (state.facets.tags.get(t)||0)+1));
+    const adoption = c.adoption_stage || c.adoptionStage || '';
+    if (adoption) state.facets.adoption.set(adoption, (state.facets.adoption.get(adoption)||0)+1);
+    const envs = (c.environments || c.environment ? (Array.isArray(c.environments)? c.environments : [c.environment]) : []);
+    envs.filter(Boolean).forEach(env => state.facets.environments.set(env, (state.facets.environments.get(env)||0)+1));
+    const sla = c.sla_tier || c.slaTier || '';
+    if (sla) state.facets.sla.set(sla, (state.facets.sla.get(sla)||0)+1);
+    const health = c.health || '';
+    if (health) state.facets.health.set(health, (state.facets.health.get(health)||0)+1);
   }
   renderFacet('#facet-frameworks', 'frameworks');
   renderFacet('#facet-services', 'services');
   renderFacet('#facet-tags', 'tags');
+  renderFacet('#facet-adoption', 'adoption');
+  renderFacet('#facet-env', 'environments');
+  renderFacet('#facet-sla', 'sla');
+  renderFacet('#facet-health', 'health');
   // no type chips
 }
 
@@ -84,7 +118,15 @@ function applyFilters() {
     const matchesFrameworks = state.active.frameworks.size===0 || (c.frameworks||[]).some(x=>state.active.frameworks.has(x));
     const matchesServices = state.active.services.size===0 || (c.services||[]).some(x=>state.active.services.has(x));
     const matchesTags = state.active.tags.size===0 || (c.tags||[]).some(x=>state.active.tags.has(x));
-    return matchesText && matchesFrameworks && matchesServices && matchesTags;
+    const adoption = c.adoption_stage || c.adoptionStage || '';
+    const matchesAdoption = state.active.adoption.size===0 || (adoption && state.active.adoption.has(adoption));
+    const envs = (c.environments || c.environment ? (Array.isArray(c.environments)? c.environments : [c.environment]) : []);
+    const matchesEnv = state.active.environments.size===0 || envs.some(x=>state.active.environments.has(x));
+    const sla = c.sla_tier || c.slaTier || '';
+    const matchesSla = state.active.sla.size===0 || (sla && state.active.sla.has(sla));
+    const health = c.health || '';
+    const matchesHealth = state.active.health.size===0 || (health && state.active.health.has(health));
+    return matchesText && matchesFrameworks && matchesServices && matchesTags && matchesAdoption && matchesEnv && matchesSla && matchesHealth;
   });
 
   const sortKey = state.active.sort;
@@ -116,6 +158,11 @@ function renderGrid() {
     const frameworksCount = (c.frameworks||[]).length;
     const servicesCount = (c.services||[]).length;
     const tagsCount = (c.tags||[]).length;
+    const adoption = c.adoption_stage || c.adoptionStage || '';
+    const envs = (c.environments || c.environment ? (Array.isArray(c.environments)? c.environments : [c.environment]) : []);
+    const version = c.version || '';
+    const sla = c.sla_tier || c.slaTier || '';
+    const health = c.health || '';
     const membersCount = (c.members||[]).length;
     const next = formatNextMeeting(c.meeting_dates||[]);
     const owner = c.account_owner || '';
@@ -144,9 +191,12 @@ function renderGrid() {
       .filter(a => a.due && !isNaN(a._d))
       .sort((a,b)=>a._d - b._d)[0];
 
-    const rightStatus = nextDue
-      ? `<span class="tag">Ask: ${nextDue.status||''} · ${nextDue.due}</span>`
-      : (next ? `<span class="tag">Next: ${next}</span>` : (topPriority ? `<span class="tag priority ${topPriority}">prio: ${topPriority}</span>` : ''));
+    const crit = issueSeverityCounts[0].n;
+    const maj = issueSeverityCounts[1].n;
+    const blockers = (crit + maj) > 0 ? `<span class=\"tag\">Blockers: ${crit}/${maj}</span>` : '';
+    const healthTag = health ? `<span class=\"tag\">${health}</span>` : '';
+    const ownerTag = !health && owner ? `<span class=\"tag\">Owner: ${owner}</span>` : '';
+    const rightStatus = [blockers, healthTag || ownerTag].filter(Boolean).join(' ');
 
     card.innerHTML = `
       <div class="card-header">
@@ -189,9 +239,7 @@ function renderGrid() {
         </div>
       </div>
       <div class="footer">
-        <div class="foot-left">
-          ${updatedStr?`<span class="tag">Updated: ${updatedStr}</span>`:''}
-        </div>
+        <div class="foot-left"></div>
         <div class="foot-right">
           ${rightStatus}
           <span class="chev" aria-hidden="true">›</span>
@@ -219,6 +267,11 @@ function openDetail(id) {
   const issueList = (c.issues||[]).map(is=>`<li><strong>${is.title}</strong> — <em>${is.severity||'minor'}</em> <span style="opacity:.7">${is.date||''}</span></li>`).join('');
   const frameworks = (c.frameworks||[]).map(f=>`<span class="tag">${f}</span>`).join(' ');
   const services = (c.services||[]).map(s=>`<span class="tag">${s}</span>`).join(' ');
+  const adoption = c.adoption_stage || c.adoptionStage || '';
+  const envs = (c.environments || c.environment ? (Array.isArray(c.environments)? c.environments : [c.environment]) : []);
+  const version = c.version || '';
+  const sla = c.sla_tier || c.slaTier || '';
+  const health = c.health || '';
   const contacts = (c.contacts||[]).map(ct=>`<div>${ct.name||''} <span style="opacity:.6">${ct.role||''}</span> ${ct.email?`<a href="mailto:${ct.email}">${ct.email}</a>`:''}</div>`).join('');
   const members = (c.members||[]).map(m=>`<li>${m.name} <span style="opacity:.7">${m.role||''}</span></li>`).join('');
   const libs = (c.libraries||[]).map(l=>`<li><strong>${l.name}</strong> — <em>${l.project||''}</em></li>`).join('');
@@ -269,6 +322,11 @@ function openDetail(id) {
           <div class="kv">
             
             <div class="k">Updated</div><div class="v">${new Date(c.updated_at).toLocaleString()}</div>
+            ${adoption?`<div class="k">Adoption</div><div class="v">${adoption}</div>`:''}
+            ${envs.length?`<div class="k">Environment</div><div class="v">${envs.join(', ')}</div>`:''}
+            ${version?`<div class="k">Version</div><div class="v">${version}</div>`:''}
+            ${sla?`<div class="k">SLA</div><div class="v">${sla}</div>`:''}
+            ${health?`<div class="k">Health</div><div class="v">${health}</div>`:''}
             <div class="k">Frameworks</div><div class="v">${frameworks||'—'}</div>
             <div class="k">Services</div><div class="v">${services||'—'}</div>
             <div class="k">Contacts</div><div class="v">${contacts||'—'}</div>
@@ -441,6 +499,10 @@ function suggestionItems(query) {
     addFacetMatches(state.facets.frameworks, 'frameworks');
     addFacetMatches(state.facets.services, 'services');
     addFacetMatches(state.facets.tags, 'tags');
+    addFacetMatches(state.facets.adoption, 'adoption');
+    addFacetMatches(state.facets.environments, 'environments');
+    addFacetMatches(state.facets.sla, 'sla');
+    addFacetMatches(state.facets.health, 'health');
   }
 
   // Fallback direct search entry
@@ -488,6 +550,10 @@ function clearFilters() {
   state.active.frameworks.clear();
   state.active.services.clear();
   state.active.tags.clear();
+  state.active.adoption.clear();
+  state.active.environments.clear();
+  state.active.sla.clear();
+  state.active.health.clear();
   const si = $('#search'); if (si) si.value = '';
   scheduleApplyFilters();
   closeActionPanel();

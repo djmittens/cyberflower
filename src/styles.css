@@ -1072,13 +1072,15 @@ body {
     scroll-behavior: smooth;
   }
   
-  /* Add scroll-driven animations */
-  @supports (animation-timeline: scroll()) {
+  /* NOTE: Scroll-driven animations caused cards to remain hidden
+     (opacity: 0 at timeline progress 0) in Chrome until the user
+     scrolled, making the grid appear empty. Disabled for reliability. */
+  /* @supports (animation-timeline: scroll()) {
     .card {
       animation-timeline: scroll(root);
       animation-range: entry 0% entry 100%;
     }
-  }
+  } */
 }
 
 /* High contrast mode support */

@@ -6,6 +6,11 @@
   "frameworks": ["Spark", "Delta Lake"],
   "services": ["Batch ETL", "Data Lake"],
   "tags": ["strategic", "high-touch"],
+  "adoption_stage": "Adopted",
+  "environments": ["dev", "prod"],
+  "version": "1.4.2",
+  "sla_tier": "Gold",
+  "health": "Healthy",
   "feature_requests": [
     { "title": "Native Delta Lake time travel", "status": "proposed", "priority": "high" },
     { "title": "Faster schema inference", "status": "under-review", "priority": "medium" }
@@ -36,4 +41,3 @@ ACME Co. runs a multi-TB nightly pipeline backed by Delta Lake. They are a high-
 -- Example of desired time-travel usage
 SELECT * FROM acme.delta_table VERSION AS OF 42;
 ```
-

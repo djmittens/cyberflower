@@ -31,7 +31,12 @@
   ],
   "frameworks": ["pytest", "Selenium", "Great Expectations"],
   "services": ["Quality Assurance", "Test Automation", "Data Quality"],
-  "tags": ["qa", "testing", "automation", "data-quality", "performance"]
+  "tags": ["qa", "testing", "automation", "data-quality", "performance"],
+  "adoption_stage": "Pilot",
+  "environments": ["dev", "stage"],
+  "version": "0.9.0",
+  "sla_tier": "Silver",
+  "health": "At-risk"
 }
 ---
 
@@ -208,4 +213,3 @@ The Quality Lab ensures the highest standards of software quality across our ent
 - **Edge Computing**: Testing strategies for edge deployment and intermittent connectivity
 - **AI/ML Systems**: Quality validation for machine learning models and AI-powered applications
 - **Privacy Technology**: Advanced privacy-preserving testing methodologies and frameworks
-

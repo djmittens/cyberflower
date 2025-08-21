@@ -31,7 +31,12 @@
   ],
   "frameworks": ["Materialize", "Kafka Streams", "Apache Pulsar"],
   "services": ["Real-time Processing", "Stream Analytics", "Low-Latency Computing"],
-  "tags": ["real-time", "low-latency", "stream-processing", "performance", "analytics"]
+  "tags": ["real-time", "low-latency", "stream-processing", "performance", "analytics"],
+  "adoption_stage": "Adopted",
+  "environments": ["prod"],
+  "version": "2.1.0",
+  "sla_tier": "Platinum",
+  "health": "At-risk"
 }
 ---
 
@@ -216,4 +221,3 @@ The Realtime Unit specializes in building and operating ultra-low latency system
 - **Standards Development**: Contributing to real-time computing standards and best practices
 - **Mentorship**: Training next generation of real-time systems engineers
 - **Research Impact**: Publishing research advancing the field of real-time computing
-
